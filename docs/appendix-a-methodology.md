@@ -1,0 +1,23 @@
+# Appendix A: Protocol Selection Methodology
+
+The protocol set was anchored on the DeFiLlama TVL leaderboard (July 2026) and finalized editorially by the research owner. Entries excluded as uninstructive for GTM study: Binance staked ETH (a centralized exchange product whose growth derives from Binance's user base, with no independent go-to-market), Securitize (a regulated TradFi tokenization firm whose growth motion is conventional enterprise sales, outside this report's DeFi-native scope), and similar issuer entries (Circle, Tether Gold). Protocols added for coverage and contrast: Uniswap and ether.fi (rich, well-documented growth histories), and Maple Finance and JustLend (respectively the clearest institution-first credit GTM and the clearest case of ecosystem-sponsored default status). The resulting twelve-protocol set trades strict rank fidelity for pattern coverage across every major GTM archetype: liquidity-first, embedded B2B, monetary distribution, capital seeding, category creation, points meta, compliance-first, sponsorship, and developer-platform motions.
+
+## Key sources
+
+Rankings and market data: DeFiLlama (defillama.com), July 2026 leaderboard view. Figures are point-in-time and will drift; verify before external use. This document is research for strategy purposes, not investment advice.
+
+Reading the source list against the confidence classes (see [README](../README.md)): protocol blogs, governance forums, and named news outlets (The Block, CoinDesk, Fortune, Blockworks, HBS) anchor the verified facts; DeFiLlama and rwa.xyz anchor the time-sensitive metrics; explainer-grade sources (exchange academies, aggregator summaries) support background only, and no load-bearing claim rests on them alone. The thinnest evidentiary bases in this report, in order: JustLend (largely first-party documentation), Spark's revenue figures (single research house), and macro TVL/revenue concentration claims (secondary research).
+
+- **Macro context**: Yellow Research (DeFi TVL and revenue split analysis); iBuidl (2026 TVL inflow analysis).
+- **Aave**: aave.com/blog (2025 Year in Review; Horizon launch; Blockdaemon; Kinexys); The Block (GHO strategy; Ink Foundation white-label vote); CoinDesk (Horizon); Tangem/The Defiant (ETHLend pivot).
+- **Lido**: blog.lido.fi (tokenholder updates; stVaults; Anchorage Digital integration); research.lido.fi (Liquidity Observation Lab); The Block (stVaults mainnet; Anchorage); Figment/BlockEden (Lido V3); CoinDesk 2021 (early dominance).
+- **Morpho**: morpho.org/blog (Morpho Effect; Coinbase integration); DL News (Crypto.com, Coinbase lending); Fortune and Unchained (June 2026 $175M round).
+- **Sky/MakerDAO**: CoinDesk and The Block (rebrand); Messari/Hotcoin Research (Endgame); Blockworks (adoption critique); BlockEden (DAI to USDS migration); Chainwire and Solana Compass (Keel Tokenization Regatta); Fensory (Sky 2026 revenue projections).
+- **Spark**: PANews in-depth report; BingX/Bitget (SPK airdrop); Gate Learn (Spark Liquidity Layer).
+- **EigenCloud**: Metalamp ($15B TVL analysis); Datawallet/Nansen explainers; EigenCloud docs; BeInCrypto (airdrop); Llama Risk (AVS rewards).
+- **Ethena**: CoinGecko (Shards campaign); CoinMarketCap (Bybit partnership); Bitget News (2025 roadmap, iUSDe); Messari profile; Eco (Converge chain explainer).
+- **Maple Finance**: maple.finance/insights ("syrupUSDC and syrupUSDT: Built for Scale": AUM, originations, Drips retirement; "Turning Vision into Action": 2025 scaling plan and buyback commitment); OAK Research (protocol overview; Q2 and Q3 2025 activity and financial reports); Bankless Times ($500M loan issuance); AInvest (institutional adoption analysis); Consensys (early credit-market design); coverage of the Orthogonal default and Maple 2.0.
+- **JustLend**: JustLend DAO whitepaper v2 (June 2026); JUST Foundation Medium and docs (Staked TRX, Energy Rental); CryptoSlate/CryptoBriefing (feature launches). Note: independent third-party analysis is thinner than for other protocols in this set.
+- **Ondo**: TokenInsight deep dive; CCN/LBank explainers (OUSG/USDY); CryptoAdventure 2026 review; rwa.xyz AUM data.
+- **ether.fi**: CoinDesk (neobank pivot; Cash card); ether.fi GitBook and governance forum (points, seasons); Edgen Q3 2025 review; BeInCrypto.
+- **Uniswap**: HBS case "Uniswap: Fighting a Vampire Attack"; CoinGape (airdrop case study); Cointelegraph (post-attack analysis); blog.uniswap.org and Uniswap Foundation (Unichain, UNIfication, v4 Growth Program); Gemini (SushiSwap).
