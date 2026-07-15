@@ -17,7 +17,7 @@ EigenLayer invented "restaking": staked ETH re-pledged to secure additional serv
 
 - **Scarcity mechanics.** Deposits opened with caps that filled in hours. Each cap raise became an event: TVL accumulation as a recurring news cycle.
 - **Points before token.** Restaking points (2023) accrued by amount × duration and became a currency other protocols built on. The entire liquid restaking (LRT) industry (ether.fi, Renzo, Kelp, Swell) existed to farm and tokenize EigenLayer points. **Downstream protocols became EigenLayer's salesforce**, spending their own incentives to market restaking. TVL peaked near $19–20B (time-sensitive).
-- **Two-sided marketplace seeding**: Eigen Labs shipped the first AVS itself (EigenDA) to prove demand-side utility, then let 100+ AVSs pay operators and restakers in fees and airdrops. The EIGEN stakedrop (May 2024, 15% to restakers) rewarded the supply side, though geo-restrictions and initial non-transferability drew significant backlash.
+- **Two-sided marketplace seeding**: Eigen Labs shipped the first AVS itself (EigenDA) to prove demand-side utility, then let 100+ AVSs pay operators and restakers in fees and airdrops. The EIGEN stakedrop (May 2024) rewarded the supply side: Season 1 allocated 5% to restakers, within a ~15% total community allocation across seasons. Geo-restrictions and initial non-transferability drew significant backlash.
 
 ## Distribution channels
 
@@ -25,7 +25,7 @@ Supply side: **LRT issuers and LSTs**. That was the real acquisition surface; mo
 
 ## Current phase
 
-With the yield narrative fading (TVL $4.8B at snapshot, down roughly 75% from the points-era peak), Eigen Labs rebranded to **EigenCloud** (June 2025): a "verifiable cloud" spanning EigenDA, EigenCompute, EigenAI, and EigenVerify. This is a pivot from incentive-driven TVL to developer-platform GTM, selling verifiability to builders rather than yield to stakers.
+With the yield narrative fading (TVL $4.8B at snapshot, down roughly 75% from the points-era peak), Eigen Labs rebranded to **EigenCloud** (June 2025): a "verifiable cloud" spanning EigenDA, EigenCompute, and EigenVerify. This is a pivot from incentive-driven TVL to developer-platform GTM, selling verifiability to builders rather than yield to stakers.
 
 ## GTM lessons (inference)
 

@@ -15,13 +15,13 @@ Founded by Goldman Sachs alumni, Ondo pivoted from DeFi structured products to t
 
 ## GTM & growth levers
 
-- **Jurisdictional product segmentation**: OUSG for U.S. qualified purchasers ($1.1B+ TVL late 2025, backed in part by BlackRock's BUIDL); USDY, a yield-bearing dollar for non-U.S. retail with no minimums (~$2.1B AUM; time-sensitive, per rwa.xyz). Same engine, two compliant wrappers, near-total market coverage.
+- **Jurisdictional product segmentation**: OUSG for U.S. qualified purchasers ($1.1B+ in that product line alone late 2025, backed in part by BlackRock's BUIDL; Ondo's total TVL is $3.5B); USDY, a yield-bearing dollar for non-U.S. retail with no minimums (~$2.1B AUM; time-sensitive, per rwa.xyz). Same engine, two compliant wrappers, near-total market coverage.
 - **Borrowed institutional trust**: association with BlackRock's ecosystem and top custodians compresses years of brand-building.
 - **Policy engagement and ecosystem investment** (summits, Washington presence, Ondo Foundation token distribution) built the "institutional RWA leader" position. Tokenized stocks (Global Markets) and an RWA-purpose chain extend the franchise.
 
 ## Distribution channels
 
-Custodians (Fireblocks, Zodia), exchanges, and 14-chain deployment place Ondo assets inside existing institutional workflows. Known constraint (reported): a thin salesforce and limited marketing bottleneck USDY's reach. Compliance-first GTM eventually needs conventional enterprise sales capacity.
+Custodians (Fireblocks, Zodia), exchanges, and multichain deployment (14 chains per DeFiLlama; independently verified only in part, and fewer for specific product lines like Global Markets) place Ondo assets inside existing institutional workflows. Known constraint (reported): a thin salesforce and limited marketing bottleneck USDY's reach. Compliance-first GTM eventually needs conventional enterprise sales capacity.
 
 ## GTM lessons (inference)
 

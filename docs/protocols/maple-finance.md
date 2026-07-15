@@ -1,7 +1,7 @@
 ---
 protocol: Maple Finance
 category: Institutional credit
-tvl_snapshot: "$4.1B (July 2026 DeFiLlama)"
+tvl_snapshot: "$4.1B leaderboard view (July 2026); netted TVL ~$2.3B, self-reported AUM $4.1-4.6B — see Scale section"
 gtm_archetype: Institution-first + retail wrapper
 main_channels: Delegates' networks; Syrup integrations
 incentive_style: Points retired; revenue-funded buybacks
@@ -27,7 +27,7 @@ The response was a full reset: Maple 2.0 re-architected around secured, overcoll
 
 ## Scale (time-sensitive, 2025–2026)
 
-The rebuild shows up in the numbers. TVL $4.1B at the July 2026 snapshot, with reports citing ~$4B in deposits, $4.19–4.6B AUM, roughly 8.5x TVL growth versus early 2025, and over $20B in total originations. Q3/Q4 2025 revenue hit record highs, on the order of 500% year-over-year growth, with multichain deployments on Solana, Plasma, Arbitrum and Base (reported: Maple insights posts, OAK Research Q2/Q3 2025 reports, Bankless Times, AInvest). Treat the exact figures as reported; the direction is well corroborated.
+The rebuild shows up in the numbers, but label them carefully. The $4.1–4.6B figures are **Maple's self-reported AUM**, which includes off-chain loan-book value; DeFiLlama-tracked netted TVL is materially lower (~$2.3B), and the leaderboard view used in the [market snapshot](../01-market-snapshot.md) sits between the two depending on inclusion settings. Do not use AUM and TVL interchangeably. Reports also cite roughly 8.5x growth versus early 2025 and over $20B in total originations. Q3/Q4 2025 revenue hit record highs; year-over-year growth rates cluster around 50–150% depending on the period compared (earlier ~500% claims were not corroborated). Multichain deployments on Solana, Plasma, Arbitrum and Base (reported: Maple insights posts, OAK Research Q2/Q3 2025 reports, Bankless Times). Treat exact figures as reported; the direction is well corroborated.
 
 ## Distribution channels
 

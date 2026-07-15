@@ -2,6 +2,8 @@
 
 Design spec for the interactive portal. The quiz maps a founder's answers to the closest GTM archetype(s) from the [twelve case studies](../docs/15-synthesis.md#gtm-archetype-map), with transparent scoring — every match must be explainable as "you answered X, which is the pattern <protocol> used."
 
+Trap and flag text for Spark and Maple were updated to reflect the source research's v9 fact-check pass (onchain verification of Spark's retail-user claims; the Maple AUM-vs-TVL distinction). No scoring weights changed — these were evidence-quality corrections, not reclassifications.
+
 **Principles**
 
 1. **Transparent, not clever.** No black-box score. The result page shows which answers drove the match.
@@ -135,10 +137,10 @@ Determines which slice of the [condensed playbook](../docs/16-playbook.md) the r
 | LIDO | Subsidizing liquidity works only if integrations make it permanent before subsidies taper |
 | MORPHO | Building on incumbents caps you until you graduate to your own primitive — plan the Blue moment |
 | SKY | Default-asset status is the moat; anything that breaks user habit (rebrand, migration) risks destroying rather than transferring it |
-| SPARK | Parent-seeded TVL is mercenary at the margin — the moat must migrate from rates to product before subsidies taper |
+| SPARK | Parent-seeded TVL is mercenary at the margin, and verify retail-adoption claims yourself — Spark's own "200K users" figure didn't survive onchain scrutiny (~2,800 real wallets found). The moat must migrate from rates to product before subsidies taper |
 | EIGEN | Narrative TVL is fast in, fast out — plan the platform pivot **before** incentives decay |
 | ETHENA | Cyclical yield needs a structural hedge (TradFi wrappers) built while the cycle is still favorable |
-| MAPLE | In credit, underwriting failure is GTM failure — risk management *is* the growth strategy |
+| MAPLE | In credit, underwriting failure is GTM failure — risk management *is* the growth strategy. Separately: Maple's headline $4.1-4.6B is self-reported AUM including off-chain loan-book value, not netted TVL (~$2.3B on DeFiLlama) — don't let a comparable's AUM-style reporting inflate your own targets |
 | JUSTLEND | Sponsorship doesn't travel — credibility built inside one ecosystem doesn't transfer out |
 | ONDO | Compliance-first GTM eventually scales with sales headcount, not points — budget for enterprise sales |
 | ETHERFI | You're renting the category's growth, not owning it — convert mercenary users into a daily-use relationship before yields compress |
@@ -150,7 +152,7 @@ Determines which slice of the [condensed playbook](../docs/16-playbook.md) the r
 
 | Flag | Trigger | Warning shown (source: [failure modes](../docs/15-synthesis.md#common-gtm-failure-modes-anti-playbook)) |
 |---|---|---|
-| Mercenary TVL | Q4 = "no native yield" AND stage plans include incentives (Q8 ≤ pre-liquidity) | "Incentives without a real economic engine rent TVL, they don't buy it — Spark's campaign swings, EigenLayer's −75% drawdown." |
+| Mercenary TVL | Q4 = "no native yield" AND stage plans include incentives (Q8 ≤ pre-liquidity) | "Incentives without a real economic engine rent TVL, they don't buy it — Spark's campaign swings (onchain analysis found only ~2,800 real retail wallets behind a widely reported '200K users' claim), EigenLayer's −75% drawdown." |
 | Sponsorship ceiling | Q5 = "all-in on one ecosystem" | "Ecosystem-default status works but doesn't travel — see JustLend's limits." |
 | Pivot timing | Q7 = "creating the category" | "Category creators must plan the platform pivot before incentive decay — EigenCloud and ether.fi both pivoted from strength; waiting for churn is too late." |
 | Underwriting risk | Q1 = "credit / RWA" | "Credit protocols sell underwriting. One default can kill the growth loop, not just the balance sheet — Maple 2022." |

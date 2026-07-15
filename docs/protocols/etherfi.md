@@ -21,7 +21,7 @@ ether.fi rose by attaching itself to the hottest narrative of 2023–24, EigenLa
 
 ## Distribution channels & the neobank pivot
 
-Initially: the EigenLayer points economy and DeFi integrations. Since April 2025: **consumer fintech rails**. With restaking yields compressing and the LRT category commoditizing, ether.fi pivoted to a crypto neobank: a Visa "Cash" card spending against staked collateral (no selling, no tax event), U.S. rollout, bill pay and payroll, membership tiers with cashback (verified: CoinDesk). Cash processed a reported $10M+ daily volume within months.
+Initially: the EigenLayer points economy and DeFi integrations. Then: **consumer fintech rails**. The Visa "Cash" card launched in September 2024 (spending against staked collateral: no selling, no tax event); April 2025 marked the expansion into a full neobank framing with U.S. rollout, bill pay and payroll, and membership tiers with cashback (verified: CoinDesk). On volume, be careful: a widely repeated $10M+/day figure looks overstated by roughly an order of magnitude; independent reporting clusters around $0.65–2M/day through Q1 2026.
 
 The pivot targets the 30–50M-user CeFi/neobank market rather than a shrinking pool of restaking TVL. The aim: convert a farmed, mercenary user base into daily-active fintech customers while the position was still strong.
 

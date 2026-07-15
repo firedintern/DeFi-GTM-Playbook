@@ -15,9 +15,9 @@ Lido launched in December 2020, days after Ethereum's Beacon Chain went live. St
 
 ## GTM & growth levers
 
-- **Subsidize the bridge, not the product.** Lido funded deep stETH/ETH liquidity on Curve with LDO incentives (an initial 1M LDO program, sustained via the DAO's Liquidity Observation Lab; verified via Lido governance forums). Deep liquidity made stETH credibly redeemable years before withdrawals existed.
+- **Subsidize the bridge, not the product.** Lido funded deep stETH/ETH liquidity on Curve with LDO incentives from early 2021 (an initial program on the order of 1M LDO, reported). The DAO's Liquidity Observation Lab formalized and continued this incentive management from around 2023; the two are distinct eras of the same strategy. Deep liquidity made stETH credibly redeemable years before withdrawals existed.
 - **Integration-first BD.** stETH was pushed as collateral into Aave, Maker, and Terra's Anchor. Every integration turned another protocol's users into a Lido channel and hardened stETH as DeFi's default yield-bearing asset.
-- **Referral program (July 2021)** paying LDO for referred stake (reported: ~15 LDO per referred staker), plus network effects: deepest liquidity attracted the most integrations, which attracted the most stake. The flywheel took Lido to ~30% of staked ETH.
+- **Referral program (July 2021)** paying LDO for referred stake (reported: ~15 LDO per referred staker), plus network effects: deepest liquidity attracted the most integrations, which attracted the most stake. The flywheel took Lido to ~32% of staked ETH at peak.
 - **Credibility capital.** LDO launched January 2021 with only a small airdrop to early stakers (reported: ~0.4% of supply) plus liquidity mining (including SushiSwap Onsen for LDO-ETH). No large retroactive airdrop. Paradigm-led VC backing (2021), joined by Dragonfly, Coinbase Ventures and others, supplied credibility during the trust-scarce early phase.
 - **Decentralization as a growth asset.** The Community Staking Module and Distributed Validator Technology (Obol, SSV) were funded proactively to defuse the "Lido too big" critique before it capped institutional adoption.
 
@@ -28,7 +28,7 @@ Lido growth loop: liquidity as the product
         -> 2. Deep, credible exit liquidity (stETH redeemable pre-withdrawals)
         -> 3. Integrations accept stETH (Aave, Maker, Anchor)
         -> 4. stETH = default yield-bearing ETH (collateral everywhere)
-        -> 5. More stake flows to Lido (~30% of staked ETH at peak)
+        -> 5. More stake flows to Lido (~32% of staked ETH at peak)
         -> 6. Deeper liquidity, more integrations (network effect compounds)
         -> loops back to 1
 
@@ -38,9 +38,9 @@ Lido growth loop: liquidity as the product
 
 ## Distribution channels
 
-Two tracks. **Track 1, DeFi-native composability**: money markets, DEX pools, yield aggregators and structured products holding stETH/wstETH as inventory. **Track 2, regulated custody workflows**: Lido V3 "stVaults" (mainnet early 2026) for institutions, ETFs and custodians (day-one users included Linea and Nansen; WisdomTree launched an ETP; VanEck/Northstake are building regulated ETF infrastructure after the SEC's 2025 ruling that LSTs are not securities), and the July 2026 Anchorage Digital integration letting institutions mint and redeem wstETH without leaving regulated custody (verified: Lido blog, The Block).
+Two tracks. **Track 1, DeFi-native composability**: money markets, DEX pools, yield aggregators and structured products holding stETH/wstETH as inventory. **Track 2, regulated custody workflows**: Lido V3 "stVaults" (mainnet early 2026) for institutions, ETFs and custodians (day-one users included Linea and Nansen; WisdomTree launched an ETP; VanEck/Northstake are building regulated ETF infrastructure after the SEC's 2025 staff statement that liquid staking tokens are not securities — note this was staff guidance, not a formal Commission ruling), and the July 2026 Anchorage Digital integration letting institutions mint and redeem wstETH without leaving regulated custody (verified: Lido blog, The Block).
 
-Two things to note. The Anchorage pathway shows the product didn't change; the access path did. The channel is the custody workflow itself, which makes Lido the leading example of the "institutionalization = distribution upgrade" pattern (see [synthesis](../15-synthesis.md)). And the regulatory clarity was itself a GTM enabler: the SEC's LST ruling didn't just remove a constraint, it created the ETP/ETF/stVaults channel Lido then productized.
+Two things to note. The Anchorage pathway shows the product didn't change; the access path did. The channel is the custody workflow itself, which makes Lido the leading example of the "institutionalization = distribution upgrade" pattern (see [synthesis](../15-synthesis.md)). And the regulatory clarity was itself a GTM enabler: the SEC's LST guidance didn't just remove a constraint, it created the ETP/ETF/stVaults channel Lido then productized.
 
 ## GTM lessons (inference)
 

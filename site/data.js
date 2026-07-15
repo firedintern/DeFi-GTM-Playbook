@@ -42,7 +42,7 @@ const ARCHETYPES = {
     name: "Capital seeding",
     exemplar: "Spark",
     thesis: "Capital as go-to-market.",
-    trap: "Parent-seeded TVL is mercenary at the margin — the moat must migrate from rates to product before subsidies taper.",
+    trap: "Parent-seeded TVL is mercenary at the margin, and check the retail-adoption story yourself — Spark's own '200K users' figure didn't survive onchain scrutiny (~2,800 real wallets found). The moat must migrate from rates to product before subsidies taper.",
     file: CS + "spark.md",
     related: ["LIDO", "MORPHO"],
   },
@@ -242,7 +242,7 @@ const FLAGS = [
   {
     title: "Mercenary TVL risk",
     test: (a) => a[3] === 2 && (a[7] === 0 || a[7] === 1),
-    text: "Incentives without a real economic engine rent TVL, they don't buy it — see Spark's campaign-cycle swings and EigenLayer's ~75% drawdown from peak. If you run points or emissions, make sure each subsidy kills a specific adoption doubt.",
+    text: "Incentives without a real economic engine rent TVL, they don't buy it — see Spark's campaign-cycle swings (onchain analysis found only ~2,800 real retail wallets behind a widely reported '200K users' claim) and EigenLayer's ~75% drawdown from peak. If you run points or emissions, make sure each subsidy kills a specific adoption doubt.",
   },
   {
     title: "Sponsorship ceiling",
@@ -257,7 +257,7 @@ const FLAGS = [
   {
     title: "Underwriting is your GTM",
     test: (a) => a[0] === 5,
-    text: "Credit protocols sell underwriting. One default can kill the growth loop, not just the balance sheet — Maple's 2022 Orthogonal default nearly killed the protocol. Risk management is the growth strategy.",
+    text: "Credit protocols sell underwriting. One default can kill the growth loop, not just the balance sheet — Maple's 2022 Orthogonal default nearly killed the protocol. Risk management is the growth strategy. Separately: if you're benchmarking against Maple's headline numbers, note that its widely cited $4.1-4.6B figure is self-reported AUM including off-chain loan-book value, not netted TVL (~$2.3B on DeFiLlama) — don't let AUM-style reporting from a comparable inflate your own targets.",
   },
   {
     title: "Compliance is coming either way",

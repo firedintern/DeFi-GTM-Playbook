@@ -16,7 +16,7 @@ Ethena launched USDe in February 2024: a "synthetic dollar" backed by staked ETH
 ## GTM & growth levers
 
 - **Seasonal points campaigns.** "Shards" ran until USDe hit $1B supply (April 1, 2024, under two months). The ENA airdrop followed the next day, and "Sats" seasons continued through Season 5+. Points rewarded the highest-leverage behaviors: LPing, locking, and referring.
-- **Composability loops manufactured demand.** Pendle (yield-splitting points leverage), Morpho and Aave (looping sUSDe collateral) let farmers multiply exposure. Each integration compounded TVL far beyond one-wallet-one-deposit.
+- **Composability loops manufactured demand.** Pendle (yield-splitting points leverage), Morpho and Aave (looping sUSDe collateral: borrow against a deposit, redeposit the proceeds, repeat) let farmers multiply exposure. Each integration compounded TVL far beyond one-wallet-one-deposit.
 - **Narrative timing**: positioned exactly at the intersection of real-yield demand and points-farming appetite. The timing was a lever, not luck.
 
 ```
@@ -36,7 +36,7 @@ Ethena growth loop: native yield, points, CEX rails
 
 ## Distribution channels
 
-**Centralized exchanges are the moat.** Bybit and Binance listed USDe as margin collateral and spot pairs. The venues that host Ethena's hedges also distribute its product. The Binance embedding alone (reward-bearing collateral, Earn products) exposes USDe to a reported 280M+ registered users; USDe sits on ~60% of CEX markets. Chain expansion follows leverage demand: Hyperliquid, and Solana venues (Jupiter, Kamino).
+**Centralized exchanges are the moat.** Bybit and Binance listed USDe as margin collateral and spot pairs. The venues that host Ethena's hedges also distribute its product. The Binance embedding alone (reward-bearing collateral, Earn products) exposes USDe to a reported 280M+ registered users; USDe is listed as collateral or spot pairs across most major exchanges (a widely repeated ~60% CEX-market figure could not be independently corroborated). Chain expansion follows leverage demand: Hyperliquid, and Solana venues (Jupiter, Kamino).
 
 TradFi wrappers extend the ladder: iUSDe for fixed-income portfolios, USDtb built with BlackRock's BUIDL, and **Converge**. Converge deserves precision: it is not just another chain expansion. It is an RWA-native, EVM-compatible L1 co-developed with Securitize, built to embed Ethena's synthetic dollar and T-bill wrapper into a tokenized-assets stack from day one. That makes it an institutional GTM hedge against funding-rate cyclicality, not a side project.
 

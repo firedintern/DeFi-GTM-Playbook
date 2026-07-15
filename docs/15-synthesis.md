@@ -14,7 +14,7 @@ The dividing line across every case: **incentives create value only when they un
 
 High-quality examples: [Lido](protocols/lido.md)'s Curve subsidies (bought credible liquidity, which integrations then made permanent); [Uniswap](protocols/uniswap.md)'s airdrop (rewarded past behavior, so it selected real users); [Morpho](protocols/morpho.md)'s Merkl campaigns (seed one market, then let curator economics sustain it); [Ethena](protocols/ethena.md)'s points (rewarded the composability loops that outlived the campaign); [Maple](protocols/maple-finance.md)'s move to allocate ~25% of protocol revenue to SYRUP buybacks and retire Drips (incentives shift from renting TVL to compounding it).
 
-Low-quality, from the same set: [Spark](protocols/spark.md)'s TVL swings with campaign cycles; [EigenLayer](protocols/eigencloud.md)'s TVL fell roughly 75% from peak once points-era expectations cleared; [Sky](protocols/sky-maker.md)'s 1.25x migration bonus moved tokens but not preference. Same instrument, opposite outcomes. The difference is whether the subsidy targets a structural doubt or just simulates product-market fit.
+Low-quality, from the same set: [Spark](protocols/spark.md)'s TVL swings with campaign cycles; [EigenLayer](protocols/eigencloud.md)'s TVL fell roughly 75% from peak once points-era expectations cleared; [Sky](protocols/sky-maker.md)'s migration bonuses moved tokens faster than preference. Same instrument, opposite outcomes. The difference is whether the subsidy targets a structural doubt or just simulates product-market fit.
 
 ## GTM archetype map
 
@@ -48,17 +48,20 @@ Low-quality, from the same set: [Spark](protocols/spark.md)'s TVL swings with ca
 ## Common GTM failure modes (anti-playbook)
 
 - **Incentives not anchored in real yield or a structural doubt.** If the subsidy doesn't kill a specific adoption fear or sit on top of a real economic engine, TVL leaves when the rewards do (Spark's campaign-cycle swings; EigenLayer's ~75% drawdown from peak).
-- **Rebranding a network-effect asset without preserving habit.** Sky's USDS migration moved tokens, not preference. DAI demand grew again afterward. Adoption lives in collateral conventions and user mental models, and those don't migrate by contract.
+- **Rebranding a network-effect asset without preserving habit.** Sky's USDS migration moved tokens faster than preference: supply was flat and DAI briefly resurged through mid-2025 before USDS growth took hold. Adoption lives in collateral conventions and user mental models, and those migrate slowly and expensively, not by contract.
 - **Complexity as a cognitive tax on users and partners.** Endgame's structure is widely cited as a drag on Sky's adoption. Every layer a user or integration partner must understand narrows the funnel.
 - **Underwriting or risk failure in credit protocols.** Maple's Orthogonal default shows that when trust in underwriting breaks, the growth loop dies with it, not just the balance sheet. In credit, risk management is the GTM.
 
 ## Archetypes not fully covered here
 
-This report is TVL-anchored, so three GTM archetypes fall outside the case-study set but deserve naming.
+This report is TVL-anchored, so several GTM archetypes fall outside the case-study set but deserve naming, with their most distinctive mechanics.
 
-- **Perp DEX GTM** (GMX, dYdX, Hyperliquid): trader- and market-maker flywheels, fee rebates and points, liquidity partnerships, and chain co-design (dYdX's appchain; Hyperliquid's purpose-built L1). This is a distinct pattern: acquisition through execution quality and trader economics rather than lending or stablecoin loops.
-- **Solana chain-native GTM** (Jupiter, Kamino): high-velocity growth built on chain-native UX, integrated routing, and ecosystem-wide incentives. This report touches Solana via Keel's Tokenization Regatta and Ethena's integrations, but the chain-native pattern deserves its own study.
-- **Router/aggregator GTM** (1inch, LiFi, bridge aggregators): selling best execution and integrating everywhere. These protocols hold little TVL by design; their GTM variable is routing share and partnership depth, not locked capital.
+- **Perp DEX GTM** (GMX, dYdX, Hyperliquid): trader- and market-maker flywheels, fee rebates and points, and chain co-design (dYdX's appchain; Hyperliquid's purpose-built L1). Hyperliquid adds two mechanics no protocol in this set uses: HIP-3 permissionless markets (stake HYPE to launch and control your own perp market, keeping up to 50% of its fees — a builder-acquisition channel) and a buyback engine reportedly directing the large majority of trading-fee revenue, plus a negotiated share of Circle's USDC reserve yield, into HYPE buybacks. That is materially more aggressive token-value accrual than GMX or dYdX fee-share programs.
+- **Solana chain-native GTM** (Jupiter, Kamino): more specific than "UX plus incentives." Jupiter's playbook includes a governance-gated launchpad (stake JUP for access to token launches), a recurring annual airdrop cadence ("Jupuary") instead of one-off events, and roll-up acquisitions (e.g. Rain.fi) as a distribution tactic. Recurring, predictable rewards change farmer behavior versus single retroactive drops. This report touches Solana via Keel's Tokenization Regatta and Ethena's integrations, but the chain-native pattern deserves its own study.
+- **Router/aggregator GTM** (1inch, LiFi, bridge aggregators): selling best execution and integrating everywhere. Little TVL by design; the GTM variable is routing share and partnership depth.
+- **TradFi-brand-led tokenization** (Securitize): excluded from the case-study set (see [Appendix A](appendix-a-methodology.md)), but worth contrast with [Ondo](protocols/ondo-finance.md). Securitize is the #1 RWA sub-protocol by TVL (~$3.7B, ahead of any single Ondo product line), and its GTM mechanic is the inverse of Ondo's: BlackRock's existing brand and distribution do the customer acquisition, with Securitize as the rails. Ondo builds crypto-native distribution toward institutions; Securitize rides institutional distribution into crypto.
+- **AI-agent distribution** (2026, emerging): PancakeSwap's Agent Studio, Bancor/Carbon's MCP server, and Injective's iAgent SDK target agent-to-agent rather than human-facing distribution — making a protocol easy for autonomous agents to discover and transact with. Too early to score, but it is a genuinely new channel that none of the twelve human-GTM case studies capture.
+- **veTokenomics status check**: not covered in the case studies, but note the 2026 development — Balancer's veBAL effectively ended after the November 2025 exploit-driven shutdown, and Pendle replaced vePENDLE with a lock-free sPENDLE model in January 2026. The rigid multi-year-lock design is being displaced industry-wide; treat ve-style locks as a declining GTM pattern, not a current default.
 
 ## What separates winners from the rest
 
