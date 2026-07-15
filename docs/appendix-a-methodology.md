@@ -4,6 +4,8 @@ The protocol set was anchored on the DeFiLlama TVL leaderboard (July 2026) and f
 
 Two further exclusions are defensible on current TVL but debatable on historical GTM significance, and readers should know they exist: **Compound**, which originated COMP liquidity mining and is effectively the ancestor of this report's entire Era 1 playbook, and **Rocket Pool**, whose decentralization-first liquid staking GTM is a genuine counter-model to Lido's liquidity-first approach. Securitize is contrasted with Ondo in the [synthesis](15-synthesis.md#archetypes-not-fully-covered-here) rather than profiled.
 
+Not sure what a term like "looping" or "veTokenomics" means? See [Appendix B: GTM grammar](appendix-b-glossary.md) — it covers only the mechanics that drive the growth loops in the case studies, and explains why each one matters for GTM.
+
 ## Key sources
 
 Rankings and market data: DeFiLlama (defillama.com), July 2026 leaderboard view. Figures are point-in-time and will drift; verify before external use. This document is research for strategy purposes, not investment advice.

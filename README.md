@@ -1,6 +1,6 @@
 # DeFi GTM Playbook
 
-**GTM & Growth Strategies of the Leading DeFi Protocols** — twelve protocol case studies, a cross-protocol synthesis, and a condensed playbook for builders. Final edition (v7), July 2026.
+**GTM & Growth Strategies of the Leading DeFi Protocols** — twelve protocol case studies, a cross-protocol synthesis, and a condensed playbook for builders. Fact-checked edition (v9), July 2026.
 
 This project looks at how the most successful DeFi protocols went to market and grew, and distills a repeatable playbook from the patterns. It is open source: corrections, updates as protocols evolve, and new case studies are welcome via PR — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -14,6 +14,7 @@ This project looks at how the most successful DeFi protocols went to market and 
 - **[Condensed playbook](docs/16-playbook.md)** — the distilled sequence for a new DeFi protocol's GTM.
 - **[Builder's guide](docs/17-builders-guide.md)** — maps common builder situations ("designing a points campaign," "landing a B2B2C embed") to the case studies worth reading.
 - **[Appendix A: methodology](docs/appendix-a-methodology.md)** — protocol selection rationale and full source list.
+- **[Appendix B: GTM grammar](docs/appendix-b-glossary.md)** — the mechanics behind the growth loops (LP tokens, looping, LSTs/LRTs, points, veTokenomics, and more), each explained by why it matters for GTM. Skim this first if you're new to DeFi.
 
 ## Methodology and how to read claims
 

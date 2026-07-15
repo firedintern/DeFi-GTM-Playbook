@@ -1,5 +1,7 @@
 # How to Use This Document as a Builder
 
+New to DeFi-native GTM mechanics? Skim [Appendix B: GTM grammar](appendix-b-glossary.md) first — it defines the terms (looping, LSTs/LRTs, points seasons, veTokenomics) that the case studies assume you already know.
+
 Read the [Cross-Protocol Synthesis](15-synthesis.md) first for the patterns, then jump to the case studies that match your problem. This table maps common builder situations to the sections worth reading.
 
 | If you are working on... | Read these case studies | Key idea |
