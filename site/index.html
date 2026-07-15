@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeFi GTM Archetype Finder</title>
+<meta name="description" content="Answer 8 questions about your protocol. Get the closest go-to-market archetype from 12 case studies of DeFi's biggest winners — and the trap that comes with it.">
+<style>
+  :root {
+    --bg: #f6f8fa;
+    --card: #ffffff;
+    --text: #1a2233;
+    --muted: #5b6b82;
+    --border: #dde3ec;
+    --accent: #0e9f6e;
+    --accent-soft: #e6f6f0;
+    --warn: #b45309;
+    --warn-bg: #fef7ec;
+    --warn-border: #f5d9a8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --card: #161c26;
+      --text: #e6edf3;
+      --muted: #8b98ab;
+      --border: #2a3342;
+      --accent: #2dd4a7;
+      --accent-soft: #12281f;
+      --warn: #e8a33d;
+      --warn-bg: #241a0b;
+      --warn-border: #4a3a1b;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  header h1 { font-size: 1.7rem; letter-spacing: -0.02em; }
+  header p.tagline { color: var(--muted); margin-top: 8px; max-width: 56ch; }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+
+  .progress { height: 4px; background: var(--border); border-radius: 2px; margin: 32px 0 24px; overflow: hidden; }
+  .progress span { display: block; height: 100%; background: var(--accent); border-radius: 2px; transition: width .25s ease; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; margin-bottom: 16px;
+  }
+  .qnum { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+  .card h2 { font-size: 1.25rem; margin: 6px 0 4px; letter-spacing: -0.01em; }
+  .card p.sub { color: var(--muted); font-size: .95rem; margin-bottom: 16px; }
+  .opts { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  button.opt {
+    text-align: left; font: inherit; color: var(--text);
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 13px 16px; cursor: pointer;
+    transition: border-color .12s, background .12s;
+  }
+  button.opt:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .nav { margin-top: 18px; }
+  .nav button {
+    font: inherit; color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 4px 0;
+  }
+  .nav button:hover { color: var(--text); }
+
+  .badge {
+    display: inline-block; font-size: .72rem; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft);
+    border-radius: 20px; padding: 4px 12px;
+  }
+  .badge.secondary { color: var(--muted); background: var(--bg); border: 1px solid var(--border); }
+  .result h2 { font-size: 1.5rem; margin: 12px 0 2px; letter-spacing: -0.02em; }
+  .result .exemplar { color: var(--accent); font-weight: 600; }
+  .result .thesis { color: var(--muted); font-style: italic; margin-bottom: 16px; }
+  .result h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 18px 0 8px; }
+  .result ul { padding-left: 20px; }
+  .result li { margin-bottom: 6px; }
+  .why .pts { color: var(--accent); font-weight: 600; }
+  .trap {
+    border-left: 3px solid var(--warn); background: var(--warn-bg);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin-top: 8px; font-size: .95rem;
+  }
+  .links a { color: var(--accent); text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+
+  .flag {
+    background: var(--warn-bg); border: 1px solid var(--warn-border);
+    border-radius: 12px; padding: 16px 20px; margin-bottom: 12px;
+  }
+  .flag strong { color: var(--warn); display: block; margin-bottom: 4px; }
+  .flag p { font-size: .95rem; }
+
+  .step { margin-bottom: 12px; }
+  .step strong { display: block; }
+  .step p { color: var(--muted); font-size: .95rem; }
+
+  .actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  .actions button {
+    font: inherit; font-weight: 600; cursor: pointer; border-radius: 10px; padding: 10px 20px;
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+  }
+  .actions button.primary { background: var(--accent); border-color: var(--accent); color: #08120d; }
+  .actions button:hover { filter: brightness(1.05); }
+
+  footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>DeFi GTM Archetype Finder</h1>
+    <p class="tagline">Answer 8 questions about your protocol. Get the closest go-to-market archetype
+    from 12 case studies of DeFi's biggest winners — and the trap that comes with it.
+    Built from the open-source <a id="repoLink" href="#" target="_blank" rel="noopener">DeFi GTM Playbook</a>.</p>
+  </header>
+
+  <div class="progress" id="progress"><span style="width:0%"></span></div>
+  <main id="app"></main>
+
+  <footer>
+    <p>Every match is transparent — it links to the case studies it was derived from.
+    Research, not investment advice.
+    <a id="specLink" href="#" target="_blank" rel="noopener">Scoring spec</a> ·
+    <a id="footerRepo" href="#" target="_blank" rel="noopener">Source on GitHub</a></p>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const app = document.getElementById("app");
+  const progressBar = document.querySelector("#progress span");
+  document.getElementById("repoLink").href = LINKS.repo;
+  document.getElementById("footerRepo").href = LINKS.repo;
+  document.getElementById("specLink").href = LINKS.repo + "/blob/main/site/matching-logic.md";
+
+  let answers = [];
+
+  function esc(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function render() {
+    const i = answers.length;
+    if (i >= QUESTIONS.length) return renderResult();
+    progressBar.style.width = (i / QUESTIONS.length) * 100 + "%";
+    const q = QUESTIONS[i];
+    app.innerHTML = `
+      <div class="card">
+        <div class="qnum">Question ${i + 1} of ${QUESTIONS.length} — ${esc(q.short)}</div>
+        <h2>${esc(q.title)}</h2>
+        ${q.subtitle ? `<p class="sub">${esc(q.subtitle)}</p>` : ""}
+        <div class="opts">
+          ${q.options.map((o, j) => `<button class="opt" data-j="${j}">${esc(o.label)}</button>`).join("")}
+        </div>
+        <div class="nav">${i > 0 ? `<button id="back">&larr; Back</button>` : ""}</div>
+      </div>`;
+    app.querySelectorAll(".opt").forEach((b) =>
+      b.addEventListener("click", () => { answers.push(+b.dataset.j); render(); })
+    );
+    const back = document.getElementById("back");
+    if (back) back.addEventListener("click", () => { answers.pop(); render(); });
+  }
+
+  function compute() {
+    const totals = {}, contribs = {};
+    QUESTIONS.forEach((q, i) => {
+      if (q.routing) return;
+      const opt = q.options[answers[i]];
+      for (const [a, p] of Object.entries(opt.scores || {})) {
+        totals[a] = (totals[a] || 0) + p;
+        (contribs[a] = contribs[a] || []).push({ q: q.short, label: opt.label, pts: p });
+      }
+    });
+    const maxC = (a) => Math.max(...contribs[a].map((c) => c.pts));
+    const ranked = Object.keys(totals).sort((x, y) => totals[y] - totals[x] || maxC(y) - maxC(x));
+    const primary = ranked[0];
+    const secondary = ranked[1] && totals[ranked[1]] >= 0.6 * totals[primary] ? ranked[1] : null;
+    return { totals, contribs, primary, secondary, lowConfidence: totals[primary] < 6 };
+  }
+
+  function archetypeCard(id, kind, r) {
+    const a = ARCHETYPES[id];
+    const why = r.contribs[id].slice().sort((x, y) => y.pts - x.pts).slice(0, 3);
+    const related = a.related
+      .map((rid) => `<a href="${ARCHETYPES[rid].file}" target="_blank" rel="noopener">${esc(ARCHETYPES[rid].exemplar)}</a>`)
+      .join(" · ");
+    return `
+      <div class="card result">
+        <span class="badge ${kind === "secondary" ? "secondary" : ""}">${kind} match · ${r.totals[id]} pts</span>
+        <h2>${esc(a.name)}</h2>
+        <div class="exemplar">The ${esc(a.exemplar)} pattern</div>
+        <p class="thesis">${esc(a.thesis)}</p>
+        <h3>Why you matched</h3>
+        <ul class="why">
+          ${why.map((c) => `<li>${esc(c.q)}: “${esc(c.label)}” <span class="pts">+${c.pts}</span></li>`).join("")}
+        </ul>
+        <h3>The trap</h3>
+        <div class="trap">${esc(a.trap)}</div>
+        <h3>Read</h3>
+        <p class="links"><a href="${a.file}" target="_blank" rel="noopener">${esc(a.exemplar)} case study</a> — then: ${related}</p>
+      </div>`;
+  }
+
+  function renderResult() {
+    progressBar.style.width = "100%";
+    const r = compute();
+    const stageSteps = QUESTIONS[QUESTIONS.length - 1].options[answers[answers.length - 1]].steps;
+    const flags = FLAGS.filter((f) => f.test(answers));
+    let html = "";
+
+    if (r.lowConfidence) {
+      html += `
+        <div class="card result">
+          <span class="badge secondary">No clean fit</span>
+          <h2>No single archetype fits cleanly</h2>
+          <p class="thesis">Your answers don't concentrate on one pattern — that's a finding, not a failure.</p>
+          <p>Start with the <a class="links" href="${LINKS.synthesis}" target="_blank" rel="noopener">cross-protocol synthesis</a>
+          for the patterns, then use the <a class="links" href="${LINKS.buildersGuide}" target="_blank" rel="noopener">builder's guide</a>
+          to find the case studies closest to your specific problem.</p>
+        </div>`;
+    } else {
+      html += archetypeCard(r.primary, "primary", r);
+      if (r.secondary) html += archetypeCard(r.secondary, "secondary", r);
+    }
+
+    html += `
+      <div class="card">
+        <h3 style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px">Your playbook steps right now</h3>
+        ${stageSteps.map((s) => `<div class="step"><strong>${esc(PLAYBOOK_STEPS[s].title)}</strong><p>${esc(PLAYBOOK_STEPS[s].text)}</p></div>`).join("")}
+        <p style="margin-top:10px;font-size:.9rem"><a class="links" style="color:var(--accent);text-decoration:none" href="${LINKS.playbook}" target="_blank" rel="noopener">Full playbook sequence &rarr;</a></p>
+      </div>`;
+
+    if (flags.length) {
+      html += flags.map((f) => `<div class="flag"><strong>⚠ ${esc(f.title)}</strong><p>${esc(f.text)}</p></div>`).join("");
+    }
+
+    html += `
+      <div class="actions">
+        <button class="primary" id="restart">Start over</button>
+        <button id="share">Copy shareable link</button>
+      </div>`;
+
+    app.innerHTML = html;
+    location.hash = answers.join("");
+    document.getElementById("restart").addEventListener("click", () => {
+      answers = []; history.replaceState(null, "", location.pathname); render();
+    });
+    document.getElementById("share").addEventListener("click", (e) => {
+      navigator.clipboard.writeText(location.href).then(() => {
+        e.target.textContent = "Copied!";
+        setTimeout(() => (e.target.textContent = "Copy shareable link"), 1500);
+      });
+    });
+  }
+
+  // Restore from shared link
+  const hash = location.hash.slice(1);
+  if (hash && /^\d+$/.test(hash) && hash.length === QUESTIONS.length) {
+    const restored = hash.split("").map(Number);
+    if (restored.every((v, i) => v < QUESTIONS[i].options.length)) answers = restored;
+  }
+  render();
+})();
+</script>
+</body>
+</html>
