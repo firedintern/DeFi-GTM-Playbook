@@ -13,6 +13,12 @@ const ARCHETYPES = {
     trap: "Embedded distribution means your brand disappears — make sure economics (revenue share) don't disappear with it.",
     file: CS + "aave.md",
     related: ["MORPHO", "ETHENA"],
+    next90: {
+      prove: "One flagship partner integration live with real volume",
+      delay: "Building your own consumer front end as the primary channel",
+      watch: "Share of deposits arriving via partner surfaces vs. your own app",
+      avoid: "Discounting the partner relationship as \"just distribution\" — it's the product",
+    },
   },
   LIDO: {
     name: "Liquidity-first",
@@ -21,6 +27,12 @@ const ARCHETYPES = {
     trap: "Subsidizing liquidity works only if integrations make it permanent before subsidies taper.",
     file: CS + "lido.md",
     related: ["SPARK", "MORPHO"],
+    next90: {
+      prove: "Deep, credibly redeemable exit liquidity for your receipt token",
+      delay: "Chasing new integrations before the first one is truly liquid",
+      watch: "% of your receipt token accepted as collateral elsewhere",
+      avoid: "Subsidizing yield instead of subsidizing liquidity",
+    },
   },
   MORPHO: {
     name: "Embedded B2B infrastructure",
@@ -29,6 +41,12 @@ const ARCHETYPES = {
     trap: "Building on incumbents caps you until you graduate to your own primitive — plan the Blue moment.",
     file: CS + "morpho.md",
     related: ["AAVE", "ETHENA"],
+    next90: {
+      prove: "One embed where a recognizable brand outsources risk to your primitive",
+      delay: "Owning the front end — let the embed be invisible",
+      watch: "Deposits routed through partner-curated vaults vs. direct",
+      avoid: "Competing with the incumbents you should be building on top of",
+    },
   },
   SKY: {
     name: "Monetary distribution",
@@ -37,6 +55,12 @@ const ARCHETYPES = {
     trap: "Default-asset status is the moat; anything that breaks user habit (rebrand, migration) risks destroying rather than transferring it.",
     file: CS + "sky-maker.md",
     related: ["ETHENA", "AAVE"],
+    next90: {
+      prove: "Real reuse of your stable unit as collateral elsewhere, not just supply growth",
+      delay: "Any rebrand or migration before habit is fully established",
+      watch: "Combined old+new asset supply, not just the new asset in isolation",
+      avoid: "Treating a token migration as a growth event instead of a retention risk",
+    },
   },
   SPARK: {
     name: "Capital seeding",
@@ -45,6 +69,12 @@ const ARCHETYPES = {
     trap: "Parent-seeded TVL is mercenary at the margin, and check the retail-adoption story yourself — Spark's own '200K users' figure didn't survive onchain scrutiny (~2,800 real wallets found). The moat must migrate from rates to product before subsidies taper.",
     file: CS + "spark.md",
     related: ["LIDO", "MORPHO"],
+    next90: {
+      prove: "A rate you can honor without the parent subsidy for a full cycle",
+      delay: "Marketing retail-user counts before you've verified them onchain",
+      watch: "Ratio of parent-seeded vs. externally-acquired liquidity",
+      avoid: "Repeating unverified adoption claims because they're flattering",
+    },
   },
   EIGEN: {
     name: "Category creation",
@@ -53,6 +83,12 @@ const ARCHETYPES = {
     trap: "Narrative TVL is fast in, fast out — plan the platform pivot before incentives decay.",
     file: CS + "eigencloud.md",
     related: ["ETHENA", "ETHERFI"],
+    next90: {
+      prove: "A second product surface that doesn't depend on your original narrative",
+      delay: "Scaling points programs once the narrative shows signs of plateauing",
+      watch: "TVL as % of category peak, tracked monthly",
+      avoid: "Waiting for churn to show up in the data before planning the pivot",
+    },
   },
   ETHENA: {
     name: "Points meta + CEX rails",
@@ -61,14 +97,26 @@ const ARCHETYPES = {
     trap: "Cyclical yield needs a structural hedge (TradFi wrappers) built while the cycle is still favorable.",
     file: CS + "ethena.md",
     related: ["ETHERFI", "SPARK"],
+    next90: {
+      prove: "One TradFi or fixed-income wrapper live, however small",
+      delay: "Treating current APY as durable",
+      watch: "Spread between your funding-rate yield and a risk-free benchmark",
+      avoid: "Presenting cyclical yield as if it were structural",
+    },
   },
   MAPLE: {
     name: "Institution-first + retail wrapper",
     exemplar: "Maple Finance",
     thesis: "Institutional credit, then a retail wrapper.",
-    trap: "In credit, underwriting failure is GTM failure — risk management is the growth strategy.",
+    trap: "In credit, underwriting failure is GTM failure — risk management is the growth strategy. Separately: Maple's headline $4.1-4.6B is self-reported AUM including off-chain loan-book value, not netted TVL (~$2.3B on DeFiLlama) — don't let a comparable's AUM-style reporting inflate your own targets.",
     file: CS + "maple-finance.md",
     related: ["ONDO", "LIDO"],
+    next90: {
+      prove: "A second delegate/curator with an independent borrower network",
+      delay: "Publishing AUM without separating on-chain TVL from off-chain book value",
+      watch: "Netted onchain TVL, reported separately from AUM",
+      avoid: "Letting one underwriter's book concentrate your entire credit risk",
+    },
   },
   JUSTLEND: {
     name: "Ecosystem-sponsored default",
@@ -77,6 +125,12 @@ const ARCHETYPES = {
     trap: "Sponsorship doesn't travel — credibility built inside one ecosystem doesn't transfer out.",
     file: CS + "justlend.md",
     related: ["SPARK"],
+    next90: {
+      prove: "Any real usage outside your home ecosystem, however small",
+      delay: "Assuming ecosystem-default status transfers to a second chain",
+      watch: "Revenue/usage tied to the ecosystem's core activity vs. general DeFi usage",
+      avoid: "Mistaking sponsorship for product-market fit",
+    },
   },
   ONDO: {
     name: "Compliance-first institutional",
@@ -85,6 +139,12 @@ const ARCHETYPES = {
     trap: "Compliance-first GTM eventually scales with sales headcount, not points — budget for enterprise sales.",
     file: CS + "ondo-finance.md",
     related: ["MAPLE", "LIDO"],
+    next90: {
+      prove: "A second sales/distribution channel beyond your first institutional partner",
+      delay: "Assuming compliance alone will generate inbound demand",
+      watch: "Enterprise pipeline and sales cycle length, not just AUM",
+      avoid: "Calling a licensed wrapper \"GTM\" without a salesforce behind it",
+    },
   },
   ETHERFI: {
     name: "Narrative surfing + points",
@@ -93,6 +153,12 @@ const ARCHETYPES = {
     trap: "You're renting the category's growth, not owning it — convert mercenary users into a daily-use relationship before yields compress.",
     file: CS + "etherfi.md",
     related: ["EIGEN", "UNI"],
+    next90: {
+      prove: "Daily-active usage on your non-yield product surface (card, app)",
+      delay: "Scaling a second points season before the first cohort's retention is known",
+      watch: "Daily actives on the retention product vs. total TVL",
+      avoid: "Confusing farmed TVL with a loyal user base",
+    },
   },
   UNI: {
     name: "Developer platform",
@@ -101,6 +167,12 @@ const ARCHETYPES = {
     trap: "Free growth builds the moat but monetizing too early invites forks — activate fees only once default status is unassailable.",
     file: CS + "uniswap.md",
     related: ["ETHENA", "SPARK"],
+    next90: {
+      prove: "A second team building on your primitive without your help",
+      delay: "Turning on fees or extraction before default status is unquestioned",
+      watch: "External developers/integrations building on you, not just volume",
+      avoid: "Monetizing before the free-growth flywheel has fully compounded",
+    },
   },
 };
 
@@ -115,7 +187,8 @@ const QUESTIONS = [
       { label: "Stablecoin — CDP / non-yield-bearing", scores: { SKY: 3, ETHENA: 1 } },
       { label: "Yield-bearing stablecoin / synthetic dollar", scores: { ETHENA: 3, SKY: 2, SPARK: 1, ETHERFI: 1 } },
       { label: "Savings / yield product (non-stablecoin)", scores: { SPARK: 2, ETHERFI: 2, ETHENA: 1 } },
-      { label: "Onchain credit / RWA / tokenized treasuries", scores: { MAPLE: 3, ONDO: 3 } },
+      { label: "Private / onchain credit, underwriting-led", scores: { MAPLE: 4 } },
+      { label: "Tokenized treasury / regulated yield access", scores: { ONDO: 4 } },
       { label: "DEX / trading / liquidity infrastructure", scores: { UNI: 3 } },
       { label: "An entirely new primitive — no existing category", scores: { EIGEN: 3, ETHENA: 1 } },
     ],
@@ -128,6 +201,7 @@ const QUESTIONS = [
       { label: "A parent protocol/DAO treasury seeds my liquidity day one", scores: { SPARK: 6, JUSTLEND: 1 } },
       { label: "A chain/foundation sponsors me as their ecosystem default", scores: { JUSTLEND: 6, SPARK: 1 } },
       { label: "I build on top of incumbents and inherit their trust/liquidity", scores: { MORPHO: 6, LIDO: 1 } },
+      { label: "I already have (or am close to) a distribution deal with an exchange, wallet, or fintech", scores: { AAVE: 5, ETHENA: 2, MORPHO: 1 } },
       { label: "Strong credibility capital (top-tier VC, academic, founder brand) behind a new narrative", scores: { EIGEN: 3, LIDO: 1, ETHENA: 1 } },
       { label: "None of the above — product + incentives, bootstrapped in the open", scores: { UNI: 2, ETHENA: 1, ETHERFI: 1 } },
     ],
@@ -145,12 +219,15 @@ const QUESTIONS = [
   },
   {
     short: "Yield source",
-    title: "Is there a real yield or efficiency source under your product?",
+    title: "What actually pays for the promise you're making to users?",
     subtitle: "The single strongest predictor of whether growth survives the end of incentives.",
     options: [
-      { label: "Yes — structural (credit spreads, T-bills, rate efficiency)", scores: { SKY: 2, MAPLE: 2, ONDO: 2, MORPHO: 2 } },
-      { label: "Yes — but market-cyclical (funding rates, staking demand, narrative yields)", scores: { ETHENA: 3, ETHERFI: 2, EIGEN: 1 } },
-      { label: "No native yield — the product's value is utility, not yield", scores: { UNI: 2, EIGEN: 1 } },
+      { label: "Credit spreads / treasury yield / real cash flows", scores: { MAPLE: 3, MORPHO: 2, ONDO: 1 } },
+      { label: "Market-cyclical funding, staking, or basis trades", scores: { ETHENA: 3, ETHERFI: 2, EIGEN: 1 } },
+      { label: "Subsidy from a parent treasury, foundation, or ecosystem sponsor", scores: { SPARK: 4, JUSTLEND: 2 } },
+      { label: "Utility or workflow advantage, not yield", scores: { UNI: 2, EIGEN: 1 } },
+      { label: "Habit / default-money status — monetary distribution, not yield", scores: { SKY: 4 } },
+      { label: "A compliance or access wrapper around assets that already yield elsewhere", scores: { ONDO: 4, MAPLE: 1 } },
     ],
   },
   {
@@ -160,18 +237,20 @@ const QUESTIONS = [
     options: [
       { label: "Chain-neutral, aggressively multichain", scores: { AAVE: 2, ONDO: 1, ETHENA: 1 } },
       { label: "Ethereum-first, deep composability bet", scores: { LIDO: 2, SKY: 1, EIGEN: 1 } },
-      { label: "All-in on one non-mainnet ecosystem", scores: { JUSTLEND: 3, SPARK: 1 } },
+      { label: "We're the default financial layer for one specific ecosystem (chain/foundation sponsored)", scores: { JUSTLEND: 5 } },
+      { label: "Deliberately single-ecosystem for product or composability reasons, not sponsorship", scores: { SPARK: 2, LIDO: 1 } },
       { label: "Planning my own chain/L2 eventually", scores: { UNI: 2, ETHENA: 1 } },
     ],
   },
   {
-    short: "Regulatory posture",
-    title: "What's your regulatory posture?",
-    subtitle: "A durability signal, not a detail — the long-term winners all converge on a compliant access path.",
+    short: "Compliance timing",
+    title: "When does compliance actually become necessary for growth?",
+    subtitle: "Not your posture — the timing. Founders over-claim \"compliance-first\" because it sounds mature.",
     options: [
-      { label: "Compliance-first from day one (KYC, licensed entities, jurisdiction wrappers)", scores: { ONDO: 3, MAPLE: 3 } },
-      { label: "Hybrid: permissionless core, permissioned instances in parallel", scores: { AAVE: 2, LIDO: 2, MAPLE: 1, ETHENA: 1 } },
-      { label: "Permissionless-first; institutional wrappers later if it works", scores: { UNI: 1, AAVE: 1, LIDO: 1, ETHENA: 1 } },
+      { label: "Day one — it's the wedge, not a later feature", scores: { ONDO: 3, MAPLE: 3 } },
+      { label: "After PMF — permissionless core first, permissioned instances once it works", scores: { AAVE: 2, LIDO: 2, MAPLE: 1, ETHENA: 1 } },
+      { label: "Only for a specific institutional wrapper, not the core product", scores: { MAPLE: 2, LIDO: 1, ETHENA: 1 } },
+      { label: "Probably never core to this wedge", scores: { UNI: 1, AAVE: 1 } },
     ],
   },
   {
@@ -196,7 +275,37 @@ const QUESTIONS = [
       { label: "Scaling / category leader", steps: ["institutionalize", "pivot", "replatform"] },
     ],
   },
+  {
+    short: "Distribution owner",
+    title: "Who owns the relationship that actually brings users in?",
+    subtitle: "Not who uses the product (Q3) — who controls the acquisition channel itself.",
+    options: [
+      { label: "We do — our own app or front end is the primary touchpoint", scores: { UNI: 2, ETHERFI: 1, ETHENA: 1 } },
+      { label: "Partners do — exchanges, wallets, custodians, fintechs embed us", scores: { AAVE: 5, MORPHO: 2, ETHENA: 2 } },
+      { label: "A parent ecosystem does — DAO, chain, or foundation channels users to us", scores: { SPARK: 5, JUSTLEND: 3 } },
+      { label: "Integrators/builders do — other protocols build on top of us", scores: { MORPHO: 5, EIGEN: 2, UNI: 1 } },
+      { label: "Institutional sales/distribution partners do — brokers, allocators, custodians", scores: { ONDO: 4, MAPLE: 3 } },
+    ],
+  },
+  {
+    short: "Post-incentive pull",
+    title: "If incentives disappeared tomorrow, what would still pull users in?",
+    subtitle: "The durable-loop test — the difference between renting TVL and owning it.",
+    options: [
+      { label: "Deep liquidity, integrations, and composability", scores: { LIDO: 5, MORPHO: 1 } },
+      { label: "Better rates or balance-sheet efficiency that we can actually honor", scores: { AAVE: 2, MORPHO: 2, SPARK: 1 } },
+      { label: "Captive distribution from a sponsor or parent ecosystem", scores: { SPARK: 4, JUSTLEND: 3 } },
+      { label: "A regulatory wrapper or institutional access path competitors don't have", scores: { ONDO: 4, MAPLE: 2 } },
+      { label: "New-category mindshare — we own the vocabulary", scores: { EIGEN: 5 } },
+      { label: "A developer ecosystem building products we don't have to build ourselves", scores: { UNI: 5 } },
+      { label: "Honestly, not much yet — we're still mid-narrative", scores: { ETHENA: 2, ETHERFI: 3 } },
+    ],
+  },
 ];
+
+// Index map: scored questions in QUESTIONS order excludes the routing question (index 7 / "Stage").
+const SCORED_INDEXES = [0, 1, 2, 3, 4, 5, 6, 8, 9];
+const STAGE_INDEX = 7;
 
 const PLAYBOOK_STEPS = {
   wedge: {
@@ -237,11 +346,11 @@ const PLAYBOOK_STEPS = {
   },
 };
 
-// answers = array of chosen option indices, one per question (Q8 = index 7)
+// answers = array of chosen option indices, one per question, indexed by QUESTIONS position (7 = Stage, routing-only)
 const FLAGS = [
   {
     title: "Mercenary TVL risk",
-    test: (a) => a[3] === 2 && (a[7] === 0 || a[7] === 1),
+    test: (a) => a[9] === 6 && (a[7] === 0 || a[7] === 1),
     text: "Incentives without a real economic engine rent TVL, they don't buy it — see Spark's campaign-cycle swings (onchain analysis found only ~2,800 real retail wallets behind a widely reported '200K users' claim) and EigenLayer's ~75% drawdown from peak. If you run points or emissions, make sure each subsidy kills a specific adoption doubt.",
   },
   {
@@ -257,12 +366,27 @@ const FLAGS = [
   {
     title: "Underwriting is your GTM",
     test: (a) => a[0] === 5,
-    text: "Credit protocols sell underwriting. One default can kill the growth loop, not just the balance sheet — Maple's 2022 Orthogonal default nearly killed the protocol. Risk management is the growth strategy. Separately: if you're benchmarking against Maple's headline numbers, note that its widely cited $4.1-4.6B figure is self-reported AUM including off-chain loan-book value, not netted TVL (~$2.3B on DeFiLlama) — don't let AUM-style reporting from a comparable inflate your own targets.",
+    text: "Credit protocols sell underwriting. One default can kill the growth loop, not just the balance sheet — Maple's 2022 Orthogonal default nearly killed the protocol. Risk management is the growth strategy.",
   },
   {
     title: "Compliance is coming either way",
-    test: (a) => a[5] === 2,
+    test: (a) => a[5] === 3,
     text: "Every mature archetype in this set eventually added a compliant access path (Aave Horizon, Lido stVaults, Ethena iUSDe). Institutionalization is a distribution upgrade, not a separate category — plan the wrapper into your roadmap even if you launch permissionless.",
+  },
+  {
+    title: "Metric laundering risk",
+    test: (a) => a[1] === 0 || a[3] === 2 || a[0] === 5,
+    text: "Don't mix TVL, deposits, borrowed balances, AUM, and off-chain balances into one growth story. Maple's self-reported AUM ($4.1-4.6B) and DeFiLlama's netted TVL (~$2.3B) tell different stories from the same protocol — pick one metric basis and disclose it, because a shifting metric basis makes your GTM narrative untrustworthy the moment someone checks.",
+  },
+  {
+    title: "Channel concentration risk",
+    test: (a) => (a[8] === 1 || a[8] === 2 || a[8] === 4) && a[4] !== 0,
+    text: "If one exchange, one chain, one foundation, or one treasury explains most of your acquisition, you have dependency risk, not GTM durability — see JustLend's single-ecosystem ceiling and Spark's parent-subsidy dependence. A second independent channel is the test of whether this is a strategy or a subsidy.",
+  },
+  {
+    title: "Compliance theater risk",
+    test: (a) => a[5] === 0 && a[8] !== 4,
+    text: "A compliance-first story without actual wrappers, licenses, counterparties, or sales capacity behind it is branding, not GTM. Ondo and Maple's compliance-first posture is backed by real institutional sales relationships — if you don't have the sales motion yet, the compliance claim is aspirational, not a moat.",
   },
 ];
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DeFi GTM Archetype Finder</title>
-<meta name="description" content="Answer 8 questions about your protocol. Get the closest go-to-market archetype from 12 case studies of DeFi's biggest winners — and the trap that comes with it.">
+<meta name="description" content="Answer 10 questions about your protocol. Get the closest go-to-market archetype from 12 case studies of DeFi's biggest winners — the trap that comes with it, and what to do in the next 90 days.">
 <style>
   :root {
     --bg: #f6f8fa;
@@ -76,6 +76,10 @@
     border-radius: 20px; padding: 4px 12px;
   }
   .badge.secondary { color: var(--muted); background: var(--bg); border: 1px solid var(--border); }
+  .badge.confidence { margin-left: 8px; }
+  .badge.confidence.high { color: var(--accent); background: var(--accent-soft); }
+  .badge.confidence.mixed { color: var(--warn); background: var(--warn-bg); }
+  .badge.confidence.weak { color: var(--muted); background: var(--bg); border: 1px solid var(--border); }
   .result h2 { font-size: 1.5rem; margin: 12px 0 2px; letter-spacing: -0.02em; }
   .result .exemplar { color: var(--accent); font-weight: 600; }
   .result .thesis { color: var(--muted); font-style: italic; margin-bottom: 16px; }
@@ -101,6 +105,22 @@
   .step strong { display: block; }
   .step p { color: var(--muted); font-size: .95rem; }
 
+  .notmatch {
+    border-left: 3px solid var(--border); background: var(--bg);
+    border-radius: 0 8px 8px 0; padding: 10px 16px; margin-top: 8px; font-size: .9rem; color: var(--muted);
+  }
+
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  @media (max-width: 480px) { .action-grid { grid-template-columns: 1fr; } }
+  .action-item {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px;
+  }
+  .action-item .label {
+    font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); display: block; margin-bottom: 4px;
+  }
+  .action-item.prove { border-left: 3px solid var(--accent); }
+  .action-item.avoid { border-left: 3px solid var(--warn); }
+
   .actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
   .actions button {
     font: inherit; font-weight: 600; cursor: pointer; border-radius: 10px; padding: 10px 20px;
@@ -118,8 +138,9 @@
 <div class="wrap">
   <header>
     <h1>DeFi GTM Archetype Finder</h1>
-    <p class="tagline">Answer 8 questions about your protocol. Get the closest go-to-market archetype
-    from 12 case studies of DeFi's biggest winners — and the trap that comes with it.
+    <p class="tagline">Answer 10 questions about your protocol. Get the closest go-to-market archetype
+    from 12 case studies of DeFi's biggest winners, the trap that comes with it, and what to do
+    in the next 90 days.
     Built from the open-source <a id="repoLink" href="#" target="_blank" rel="noopener">DeFi GTM Playbook</a>.</p>
   </header>
 
@@ -173,9 +194,9 @@
 
   function compute() {
     const totals = {}, contribs = {};
-    QUESTIONS.forEach((q, i) => {
-      if (q.routing) return;
-      const opt = q.options[answers[i]];
+    SCORED_INDEXES.forEach((qi) => {
+      const q = QUESTIONS[qi];
+      const opt = q.options[answers[qi]];
       for (const [a, p] of Object.entries(opt.scores || {})) {
         totals[a] = (totals[a] || 0) + p;
         (contribs[a] = contribs[a] || []).push({ q: q.short, label: opt.label, pts: p });
@@ -184,9 +205,21 @@
     const maxC = (a) => Math.max(...contribs[a].map((c) => c.pts));
     const ranked = Object.keys(totals).sort((x, y) => totals[y] - totals[x] || maxC(y) - maxC(x));
     const primary = ranked[0];
-    const secondary = ranked[1] && totals[ranked[1]] >= 0.6 * totals[primary] ? ranked[1] : null;
-    return { totals, contribs, primary, secondary, lowConfidence: totals[primary] < 6 };
+    const primaryScore = totals[primary] || 0;
+    const secondary = ranked[1] && totals[ranked[1]] >= 0.6 * primaryScore ? ranked[1] : null;
+    const thirdScore = totals[ranked[2]] || 0;
+    const lowConfidence = primaryScore < 8;
+    let confidence = "weak";
+    if (!lowConfidence) {
+      if (primaryScore >= 16 && primaryScore >= 1.8 * thirdScore) confidence = "high";
+      else if (secondary) confidence = "mixed";
+    }
+    // "Why you didn't match": the highest-scoring archetype excluded from primary/secondary
+    const runnerUpId = ranked.find((id) => id !== primary && id !== secondary) || null;
+    return { totals, contribs, ranked, primary, secondary, runnerUpId, confidence, lowConfidence };
   }
+
+  const CONFIDENCE_LABEL = { high: "High confidence", mixed: "Mixed archetype", weak: "Weak fit" };
 
   function archetypeCard(id, kind, r) {
     const a = ARCHETYPES[id];
@@ -194,9 +227,26 @@
     const related = a.related
       .map((rid) => `<a href="${ARCHETYPES[rid].file}" target="_blank" rel="noopener">${esc(ARCHETYPES[rid].exemplar)}</a>`)
       .join(" · ");
+    const confidenceBadge = kind === "primary"
+      ? `<span class="badge confidence ${r.confidence}">${CONFIDENCE_LABEL[r.confidence]}</span>`
+      : "";
+    const runnerUp = kind === "primary" && r.runnerUpId ? ARCHETYPES[r.runnerUpId] : null;
+    const runnerUpBlock = runnerUp
+      ? `<h3>Why you didn't match ${esc(runnerUp.exemplar)}</h3>
+         <div class="notmatch">You scored ${r.totals[r.runnerUpId]} pts on the ${esc(runnerUp.name)} pattern — not enough to place, but worth reading if this match doesn't feel quite right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>.</div>`
+      : "";
+    const next90 = a.next90
+      ? `<h3>Next 90 days</h3>
+         <div class="action-grid">
+           <div class="action-item prove"><span class="label">Prove</span>${esc(a.next90.prove)}</div>
+           <div class="action-item"><span class="label">Delay</span>${esc(a.next90.delay)}</div>
+           <div class="action-item"><span class="label">Watch</span>${esc(a.next90.watch)}</div>
+           <div class="action-item avoid"><span class="label">Avoid</span>${esc(a.next90.avoid)}</div>
+         </div>`
+      : "";
     return `
       <div class="card result">
-        <span class="badge ${kind === "secondary" ? "secondary" : ""}">${kind} match · ${r.totals[id]} pts</span>
+        <span class="badge ${kind === "secondary" ? "secondary" : ""}">${kind} match · ${r.totals[id]} pts</span>${confidenceBadge}
         <h2>${esc(a.name)}</h2>
         <div class="exemplar">The ${esc(a.exemplar)} pattern</div>
         <p class="thesis">${esc(a.thesis)}</p>
@@ -204,8 +254,10 @@
         <ul class="why">
           ${why.map((c) => `<li>${esc(c.q)}: “${esc(c.label)}” <span class="pts">+${c.pts}</span></li>`).join("")}
         </ul>
+        ${runnerUpBlock}
         <h3>The trap</h3>
         <div class="trap">${esc(a.trap)}</div>
+        ${next90}
         <h3>Read</h3>
         <p class="links"><a href="${a.file}" target="_blank" rel="noopener">${esc(a.exemplar)} case study</a> — then: ${related}</p>
       </div>`;
@@ -214,7 +266,7 @@
   function renderResult() {
     progressBar.style.width = "100%";
     const r = compute();
-    const stageSteps = QUESTIONS[QUESTIONS.length - 1].options[answers[answers.length - 1]].steps;
+    const stageSteps = QUESTIONS[STAGE_INDEX].options[answers[STAGE_INDEX]].steps;
     const flags = FLAGS.filter((f) => f.test(answers));
     let html = "";
 
