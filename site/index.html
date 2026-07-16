@@ -138,9 +138,10 @@
 <div class="wrap">
   <header>
     <h1>DeFi GTM Archetype Finder</h1>
-    <p class="tagline">Answer 10 questions about your protocol. Get the closest go-to-market archetype
-    from 12 case studies of DeFi's biggest winners, the trap that comes with it, and what to do
-    in the next 90 days.
+    <p class="tagline">Answer 10 questions. If you're already building, get a diagnosis of the GTM
+    pattern you're already in, its trap, and what to do in the next 90 days. If you're pre-idea,
+    get a grounded recommendation instead — based on what you actually have access to, not what
+    sounds appealing.
     Built from the open-source <a id="repoLink" href="#" target="_blank" rel="noopener">DeFi GTM Playbook</a>.</p>
   </header>
 
@@ -170,18 +171,40 @@
     return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
+  // Mode is set by the Stage answer (QUESTIONS[STAGE_INDEX]), always answered first.
+  function getMode() {
+    const stageAnswer = answers[STAGE_INDEX];
+    if (stageAnswer === undefined) return null;
+    return QUESTIONS[STAGE_INDEX].options[stageAnswer].mode;
+  }
+
+  function questionTitle(q, mode) {
+    return mode === "recommender" && q.recommenderTitle ? q.recommenderTitle : q.title;
+  }
+  function questionSubtitle(q, mode) {
+    if (mode === "recommender" && q.recommenderSubtitle) return q.recommenderSubtitle;
+    if (mode === "recommender" && q.recommenderTitle && q.subtitle === undefined) return null;
+    return q.subtitle;
+  }
+  function optionLabel(o, mode) {
+    return mode === "recommender" && o.recommenderLabel ? o.recommenderLabel : o.label;
+  }
+
   function render() {
     const i = answers.length;
     if (i >= QUESTIONS.length) return renderResult();
     progressBar.style.width = (i / QUESTIONS.length) * 100 + "%";
     const q = QUESTIONS[i];
+    const mode = i === STAGE_INDEX ? null : getMode();
+    const title = questionTitle(q, mode);
+    const subtitle = questionSubtitle(q, mode);
     app.innerHTML = `
       <div class="card">
         <div class="qnum">Question ${i + 1} of ${QUESTIONS.length} — ${esc(q.short)}</div>
-        <h2>${esc(q.title)}</h2>
-        ${q.subtitle ? `<p class="sub">${esc(q.subtitle)}</p>` : ""}
+        <h2>${esc(title)}</h2>
+        ${subtitle ? `<p class="sub">${esc(subtitle)}</p>` : ""}
         <div class="opts">
-          ${q.options.map((o, j) => `<button class="opt" data-j="${j}">${esc(o.label)}</button>`).join("")}
+          ${q.options.map((o, j) => `<button class="opt" data-j="${j}">${esc(optionLabel(o, mode))}</button>`).join("")}
         </div>
         <div class="nav">${i > 0 ? `<button id="back">&larr; Back</button>` : ""}</div>
       </div>`;
@@ -192,14 +215,14 @@
     if (back) back.addEventListener("click", () => { answers.pop(); render(); });
   }
 
-  function compute() {
+  function compute(mode) {
     const totals = {}, contribs = {};
     SCORED_INDEXES.forEach((qi) => {
       const q = QUESTIONS[qi];
       const opt = q.options[answers[qi]];
       for (const [a, p] of Object.entries(opt.scores || {})) {
         totals[a] = (totals[a] || 0) + p;
-        (contribs[a] = contribs[a] || []).push({ q: q.short, label: opt.label, pts: p });
+        (contribs[a] = contribs[a] || []).push({ q: q.short, label: optionLabel(opt, mode), pts: p });
       }
     });
     const maxC = (a) => Math.max(...contribs[a].map((c) => c.pts));
@@ -221,8 +244,9 @@
 
   const CONFIDENCE_LABEL = { high: "High confidence", mixed: "Mixed archetype", weak: "Weak fit" };
 
-  function archetypeCard(id, kind, r) {
+  function archetypeCard(id, kind, r, mode) {
     const a = ARCHETYPES[id];
+    const isRecommender = mode === "recommender";
     const why = r.contribs[id].slice().sort((x, y) => y.pts - x.pts).slice(0, 3);
     const related = a.related
       .map((rid) => `<a href="${ARCHETYPES[rid].file}" target="_blank" rel="noopener">${esc(ARCHETYPES[rid].exemplar)}</a>`)
@@ -233,9 +257,10 @@
     const runnerUp = kind === "primary" && r.runnerUpId ? ARCHETYPES[r.runnerUpId] : null;
     const runnerUpBlock = runnerUp
       ? `<h3>Why you didn't match ${esc(runnerUp.exemplar)}</h3>
-         <div class="notmatch">You scored ${r.totals[r.runnerUpId]} pts on the ${esc(runnerUp.name)} pattern — not enough to place, but worth reading if this match doesn't feel quite right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>.</div>`
+         <div class="notmatch">You scored ${r.totals[r.runnerUpId]} pts on the ${esc(runnerUp.name)} pattern — not enough to place, but worth reading if this ${isRecommender ? "recommendation" : "match"} doesn't feel quite right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>.</div>`
       : "";
-    const next90 = a.next90
+    // Next 90 days is a diagnostic-only section — a pre-idea founder has no operating cadence yet.
+    const next90 = a.next90 && !isRecommender
       ? `<h3>Next 90 days</h3>
          <div class="action-grid">
            <div class="action-item prove"><span class="label">Prove</span>${esc(a.next90.prove)}</div>
@@ -244,18 +269,23 @@
            <div class="action-item avoid"><span class="label">Avoid</span>${esc(a.next90.avoid)}</div>
          </div>`
       : "";
+    const badgeLabel = isRecommender
+      ? (kind === "secondary" ? "runner-up" : "suggested archetype")
+      : `${kind} match`;
+    const whyHeading = isRecommender ? "Why this fits your constraints" : "Why you matched";
+    const trapHeading = isRecommender ? "The trap to design around" : "The trap";
     return `
       <div class="card result">
-        <span class="badge ${kind === "secondary" ? "secondary" : ""}">${kind} match · ${r.totals[id]} pts</span>${confidenceBadge}
+        <span class="badge ${kind === "secondary" ? "secondary" : ""}">${badgeLabel} · ${r.totals[id]} pts</span>${confidenceBadge}
         <h2>${esc(a.name)}</h2>
         <div class="exemplar">The ${esc(a.exemplar)} pattern</div>
         <p class="thesis">${esc(a.thesis)}</p>
-        <h3>Why you matched</h3>
+        <h3>${esc(whyHeading)}</h3>
         <ul class="why">
           ${why.map((c) => `<li>${esc(c.q)}: “${esc(c.label)}” <span class="pts">+${c.pts}</span></li>`).join("")}
         </ul>
         ${runnerUpBlock}
-        <h3>The trap</h3>
+        <h3>${esc(trapHeading)}</h3>
         <div class="trap">${esc(a.trap)}</div>
         ${next90}
         <h3>Read</h3>
@@ -265,29 +295,40 @@
 
   function renderResult() {
     progressBar.style.width = "100%";
-    const r = compute();
+    const mode = getMode();
+    const isRecommender = mode === "recommender";
+    const r = compute(mode);
     const stageSteps = QUESTIONS[STAGE_INDEX].options[answers[STAGE_INDEX]].steps;
-    const flags = FLAGS.filter((f) => f.test(answers));
+    const flags = FLAGS.filter((f) => f.modes.includes(mode) && f.test(answers));
     let html = "";
 
     if (r.lowConfidence) {
+      const noFitTitle = isRecommender
+        ? "The field is open — no strong lean yet"
+        : "No single archetype fits cleanly";
+      const noFitBody = isRecommender
+        ? "That's a common, legitimate result before you've secured a real cold-start resource or distribution relationship — not a failure of the quiz. The highest-leverage next step is landing one decisive resource (a real parent-treasury relationship, a real partner conversation, a real incumbent to build on) rather than continuing to plan in the abstract."
+        : "Your answers don't concentrate on one pattern — that's a finding, not a failure.";
       html += `
         <div class="card result">
-          <span class="badge secondary">No clean fit</span>
-          <h2>No single archetype fits cleanly</h2>
-          <p class="thesis">Your answers don't concentrate on one pattern — that's a finding, not a failure.</p>
+          <span class="badge secondary">${isRecommender ? "No clean recommendation" : "No clean fit"}</span>
+          <h2>${esc(noFitTitle)}</h2>
+          <p class="thesis">${esc(noFitBody)}</p>
           <p>Start with the <a class="links" href="${LINKS.synthesis}" target="_blank" rel="noopener">cross-protocol synthesis</a>
           for the patterns, then use the <a class="links" href="${LINKS.buildersGuide}" target="_blank" rel="noopener">builder's guide</a>
           to find the case studies closest to your specific problem.</p>
         </div>`;
     } else {
-      html += archetypeCard(r.primary, "primary", r);
-      if (r.secondary) html += archetypeCard(r.secondary, "secondary", r);
+      html += archetypeCard(r.primary, "primary", r, mode);
+      if (r.secondary) html += archetypeCard(r.secondary, "secondary", r, mode);
     }
 
+    const stepsHeading = isRecommender
+      ? "Where to start"
+      : "Your playbook steps right now";
     html += `
       <div class="card">
-        <h3 style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px">Your playbook steps right now</h3>
+        <h3 style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px">${esc(stepsHeading)}</h3>
         ${stageSteps.map((s) => `<div class="step"><strong>${esc(PLAYBOOK_STEPS[s].title)}</strong><p>${esc(PLAYBOOK_STEPS[s].text)}</p></div>`).join("")}
         <p style="margin-top:10px;font-size:.9rem"><a class="links" style="color:var(--accent);text-decoration:none" href="${LINKS.playbook}" target="_blank" rel="noopener">Full playbook sequence &rarr;</a></p>
       </div>`;

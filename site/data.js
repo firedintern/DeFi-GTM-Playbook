@@ -178,9 +178,22 @@ const ARCHETYPES = {
 
 const QUESTIONS = [
   {
+    short: "Stage",
+    title: "What stage are you at?",
+    subtitle: "This sets the rest of the quiz — pre-idea founders get a resource-based recommendation instead of a diagnosis of a shape that doesn't exist yet.",
+    routing: true,
+    options: [
+      { label: "Idea / pre-build", steps: ["wedge", "coldstart"], mode: "recommender" },
+      { label: "Building, pre-liquidity", steps: ["liquidity", "points"], mode: "diagnostic" },
+      { label: "Live, early traction", steps: ["loops", "embed"], mode: "diagnostic" },
+      { label: "Scaling / category leader", steps: ["institutionalize", "pivot", "replatform"], mode: "diagnostic" },
+    ],
+  },
+  {
     short: "Category",
     title: "What are you building?",
     subtitle: "Your category — the wedge you attack first.",
+    recommenderTitle: "What are you planning to build?",
     options: [
       { label: "Lending / money market", scores: { AAVE: 3, MORPHO: 2, SPARK: 1, JUSTLEND: 1 } },
       { label: "Liquid staking / restaking / receipt-token wrapper", scores: { LIDO: 3, ETHERFI: 2, EIGEN: 1 } },
@@ -197,19 +210,26 @@ const QUESTIONS = [
     short: "Cold start",
     title: "What's your cold-start resource?",
     subtitle: "The single biggest differentiator — how do you solve day-one liquidity and trust?",
+    recommenderTitle: "Do you already have access to one of these — a real conversation, term sheet, or relationship, not a hope?",
+    recommenderSubtitle: "Actual access, not preference. If none of these are real yet, say so — that's the honest answer.",
     options: [
       { label: "A parent protocol/DAO treasury seeds my liquidity day one", scores: { SPARK: 6, JUSTLEND: 1 } },
       { label: "A chain/foundation sponsors me as their ecosystem default", scores: { JUSTLEND: 6, SPARK: 1 } },
       { label: "I build on top of incumbents and inherit their trust/liquidity", scores: { MORPHO: 6, LIDO: 1 } },
       { label: "I already have (or am close to) a distribution deal with an exchange, wallet, or fintech", scores: { AAVE: 5, ETHENA: 2, MORPHO: 1 } },
       { label: "Strong credibility capital (top-tier VC, academic, founder brand) behind a new narrative", scores: { EIGEN: 3, LIDO: 1, ETHENA: 1 } },
-      { label: "None of the above — product + incentives, bootstrapped in the open", scores: { UNI: 2, ETHENA: 1, ETHERFI: 1 } },
+      {
+        label: "None of the above — product + incentives, bootstrapped in the open",
+        recommenderLabel: "None of these yet — I'd be bootstrapping",
+        scores: { UNI: 2, ETHENA: 1, ETHERFI: 1 },
+      },
     ],
   },
   {
     short: "Primary user",
     title: "Who is your primary user in year one?",
     subtitle: "Not who you hope to serve eventually — who actually shows up first.",
+    recommenderTitle: "Who would you target first?",
     options: [
       { label: "Retail DeFi users, directly on my front end", scores: { UNI: 2, ETHERFI: 2, LIDO: 1, ETHENA: 1 } },
       { label: "Developers / other protocols (B2B)", scores: { UNI: 3, MORPHO: 2, EIGEN: 2 } },
@@ -221,6 +241,7 @@ const QUESTIONS = [
     short: "Yield source",
     title: "What actually pays for the promise you're making to users?",
     subtitle: "The single strongest predictor of whether growth survives the end of incentives.",
+    recommenderTitle: "What would actually pay for the promise you're planning to make?",
     options: [
       { label: "Credit spreads / treasury yield / real cash flows", scores: { MAPLE: 3, MORPHO: 2, ONDO: 1 } },
       { label: "Market-cyclical funding, staking, or basis trades", scores: { ETHENA: 3, ETHERFI: 2, EIGEN: 1 } },
@@ -234,6 +255,7 @@ const QUESTIONS = [
     short: "Chain posture",
     title: "What's your chain posture?",
     subtitle: null,
+    recommenderTitle: "What's your chain plan?",
     options: [
       { label: "Chain-neutral, aggressively multichain", scores: { AAVE: 2, ONDO: 1, ETHENA: 1 } },
       { label: "Ethereum-first, deep composability bet", scores: { LIDO: 2, SKY: 1, EIGEN: 1 } },
@@ -264,21 +286,11 @@ const QUESTIONS = [
     ],
   },
   {
-    short: "Stage",
-    title: "What stage are you at?",
-    subtitle: "This doesn't affect your match — it picks which playbook steps you see.",
-    routing: true,
-    options: [
-      { label: "Idea / pre-build", steps: ["wedge", "coldstart"] },
-      { label: "Building, pre-liquidity", steps: ["liquidity", "points"] },
-      { label: "Live, early traction", steps: ["loops", "embed"] },
-      { label: "Scaling / category leader", steps: ["institutionalize", "pivot", "replatform"] },
-    ],
-  },
-  {
     short: "Distribution owner",
     title: "Who owns the relationship that actually brings users in?",
-    subtitle: "Not who uses the product (Q3) — who controls the acquisition channel itself.",
+    subtitle: "Not who uses the product (previous question) — who controls the acquisition channel itself.",
+    recommenderTitle: "Who would realistically own the relationship — do you have that partner conversation started, or is it aspirational?",
+    recommenderSubtitle: "If none of these feel \"started, not aspirational,\" the honest answer is the same bootstrapped path as the cold-start question.",
     options: [
       { label: "We do — our own app or front end is the primary touchpoint", scores: { UNI: 2, ETHERFI: 1, ETHENA: 1 } },
       { label: "Partners do — exchanges, wallets, custodians, fintechs embed us", scores: { AAVE: 5, MORPHO: 2, ETHENA: 2 } },
@@ -291,6 +303,7 @@ const QUESTIONS = [
     short: "Post-incentive pull",
     title: "If incentives disappeared tomorrow, what would still pull users in?",
     subtitle: "The durable-loop test — the difference between renting TVL and owning it.",
+    recommenderTitle: "Once you're live, what's your actual plan to pull users in without incentives — not what would be nice, what will you build?",
     options: [
       { label: "Deep liquidity, integrations, and composability", scores: { LIDO: 5, MORPHO: 1 } },
       { label: "Better rates or balance-sheet efficiency that we can actually honor", scores: { AAVE: 2, MORPHO: 2, SPARK: 1 } },
@@ -298,14 +311,18 @@ const QUESTIONS = [
       { label: "A regulatory wrapper or institutional access path competitors don't have", scores: { ONDO: 4, MAPLE: 2 } },
       { label: "New-category mindshare — we own the vocabulary", scores: { EIGEN: 5 } },
       { label: "A developer ecosystem building products we don't have to build ourselves", scores: { UNI: 5 } },
-      { label: "Honestly, not much yet — we're still mid-narrative", scores: { ETHENA: 2, ETHERFI: 3 } },
+      {
+        label: "Honestly, not much yet — we're still mid-narrative",
+        recommenderLabel: "Honestly, we don't have this figured out yet",
+        scores: { ETHENA: 2, ETHERFI: 3 },
+      },
     ],
   },
 ];
 
-// Index map: scored questions in QUESTIONS order excludes the routing question (index 7 / "Stage").
-const SCORED_INDEXES = [0, 1, 2, 3, 4, 5, 6, 8, 9];
-const STAGE_INDEX = 7;
+// Index map: scored questions in QUESTIONS order excludes the routing question (index 0 / "Stage").
+const SCORED_INDEXES = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const STAGE_INDEX = 0;
 
 const PLAYBOOK_STEPS = {
   wedge: {
@@ -347,45 +364,55 @@ const PLAYBOOK_STEPS = {
 };
 
 // answers = array of chosen option indices, one per question, indexed by QUESTIONS position (7 = Stage, routing-only)
+// answers[] is indexed by QUESTIONS position: 0=Stage, 1=Category, 2=ColdStart, 3=PrimaryUser,
+// 4=YieldSource, 5=ChainPosture, 6=ComplianceTiming, 7=CategoryStatus, 8=DistOwner, 9=PostIncentivePull
 const FLAGS = [
   {
     title: "Mercenary TVL risk",
-    test: (a) => a[9] === 6 && (a[7] === 0 || a[7] === 1),
+    modes: ["diagnostic", "recommender"],
+    test: (a) => a[9] === 6 && (a[0] === 0 || a[0] === 1),
     text: "Incentives without a real economic engine rent TVL, they don't buy it — see Spark's campaign-cycle swings (onchain analysis found only ~2,800 real retail wallets behind a widely reported '200K users' claim) and EigenLayer's ~75% drawdown from peak. If you run points or emissions, make sure each subsidy kills a specific adoption doubt.",
   },
   {
     title: "Sponsorship ceiling",
-    test: (a) => a[4] === 2,
+    modes: ["diagnostic", "recommender"],
+    test: (a) => a[5] === 2,
     text: "Ecosystem-default status works but doesn't travel — credibility built inside one chain's ecosystem transfers poorly outside it. See JustLend's limits.",
   },
   {
     title: "Plan the pivot now",
-    test: (a) => a[6] === 2,
+    modes: ["diagnostic", "recommender"],
+    test: (a) => a[7] === 2,
     text: "Category creators must plan the platform pivot before incentive decay — EigenCloud and ether.fi both pivoted from strength; waiting for churn is too late.",
   },
   {
     title: "Underwriting is your GTM",
-    test: (a) => a[0] === 5,
+    modes: ["diagnostic", "recommender"],
+    test: (a) => a[1] === 5,
     text: "Credit protocols sell underwriting. One default can kill the growth loop, not just the balance sheet — Maple's 2022 Orthogonal default nearly killed the protocol. Risk management is the growth strategy.",
   },
   {
     title: "Compliance is coming either way",
-    test: (a) => a[5] === 3,
+    modes: ["diagnostic", "recommender"],
+    test: (a) => a[6] === 3,
     text: "Every mature archetype in this set eventually added a compliant access path (Aave Horizon, Lido stVaults, Ethena iUSDe). Institutionalization is a distribution upgrade, not a separate category — plan the wrapper into your roadmap even if you launch permissionless.",
   },
   {
     title: "Metric laundering risk",
-    test: (a) => a[1] === 0 || a[3] === 2 || a[0] === 5,
+    modes: ["diagnostic", "recommender"],
+    test: (a) => a[2] === 0 || a[4] === 2 || a[1] === 5,
     text: "Don't mix TVL, deposits, borrowed balances, AUM, and off-chain balances into one growth story. Maple's self-reported AUM ($4.1-4.6B) and DeFiLlama's netted TVL (~$2.3B) tell different stories from the same protocol — pick one metric basis and disclose it, because a shifting metric basis makes your GTM narrative untrustworthy the moment someone checks.",
   },
   {
     title: "Channel concentration risk",
-    test: (a) => (a[8] === 1 || a[8] === 2 || a[8] === 4) && a[4] !== 0,
+    modes: ["diagnostic"],
+    test: (a) => (a[8] === 1 || a[8] === 2 || a[8] === 4) && a[5] !== 0,
     text: "If one exchange, one chain, one foundation, or one treasury explains most of your acquisition, you have dependency risk, not GTM durability — see JustLend's single-ecosystem ceiling and Spark's parent-subsidy dependence. A second independent channel is the test of whether this is a strategy or a subsidy.",
   },
   {
     title: "Compliance theater risk",
-    test: (a) => a[5] === 0 && a[8] !== 4,
+    modes: ["diagnostic"],
+    test: (a) => a[6] === 0 && a[8] !== 4,
     text: "A compliance-first story without actual wrappers, licenses, counterparties, or sales capacity behind it is branding, not GTM. Ondo and Maple's compliance-first posture is backed by real institutional sales relationships — if you don't have the sales motion yet, the compliance claim is aspirational, not a moat.",
   },
 ];
