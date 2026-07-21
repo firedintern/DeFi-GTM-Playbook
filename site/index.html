@@ -3,156 +3,315 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DeFi GTM Archetype Finder</title>
-<meta name="description" content="Answer 10 questions about your protocol. Get the closest go-to-market archetype from 12 case studies of DeFi's biggest winners — the trap that comes with it, and what to do in the next 90 days.">
+<title>DeFi GTM Archetype Finder — DeFi GTM Playbook</title>
+<meta name="description" content="A ten-question diagnostic that maps your protocol to the closest go-to-market archetype from twelve case studies of DeFi's largest winners — the trap that comes with it, and what to do next.">
+<meta property="og:title" content="DeFi GTM Archetype Finder">
+<meta property="og:description" content="Map your protocol to the closest GTM archetype from twelve DeFi case studies. Transparent scoring, the trap that comes with each pattern, and your next moves.">
+<meta property="og:type" content="website">
 <style>
+  @font-face {
+    font-family: "Inter"; font-style: normal; font-weight: 400;
+    font-display: swap; src: url("fonts/inter-400.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Inter"; font-style: normal; font-weight: 500;
+    font-display: swap; src: url("fonts/inter-500.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Inter"; font-style: normal; font-weight: 600;
+    font-display: swap; src: url("fonts/inter-600.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Inter"; font-style: normal; font-weight: 700;
+    font-display: swap; src: url("fonts/inter-700.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Plex Mono"; font-style: normal; font-weight: 400;
+    font-display: swap; src: url("fonts/plexmono-400.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Plex Mono"; font-style: normal; font-weight: 500;
+    font-display: swap; src: url("fonts/plexmono-500.woff2") format("woff2");
+  }
+
   :root {
-    --bg: #f6f8fa;
-    --card: #ffffff;
-    --text: #1a2233;
-    --muted: #5b6b82;
-    --border: #dde3ec;
-    --accent: #0e9f6e;
-    --accent-soft: #e6f6f0;
-    --warn: #b45309;
-    --warn-bg: #fef7ec;
-    --warn-border: #f5d9a8;
+    --paper: #fbfaf8;
+    --ink: #16181d;
+    --ink-2: #3d434e;
+    --muted: #767d8a;
+    --faint: #a2a8b2;
+    --rule: #e4e2dc;
+    --rule-strong: #cfccc4;
+    --panel: #ffffff;
+    --panel-2: #f4f2ee;
+    --accent: #1b4d3e;      /* deep evergreen — used only for meaning */
+    --accent-ink: #123a2f;
+    --accent-wash: #eef2ef;
+    --warn: #8a5a1a;
+    --warn-wash: #f7f0e4;
+    --warn-rule: #e6d6b8;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0d1117;
-      --card: #161c26;
-      --text: #e6edf3;
-      --muted: #8b98ab;
-      --border: #2a3342;
-      --accent: #2dd4a7;
-      --accent-soft: #12281f;
-      --warn: #e8a33d;
-      --warn-bg: #241a0b;
-      --warn-border: #4a3a1b;
+      --paper: #0e0f12;
+      --ink: #eceef2;
+      --ink-2: #c2c7d0;
+      --muted: #8a909c;
+      --faint: #5f6672;
+      --rule: #24272e;
+      --rule-strong: #333843;
+      --panel: #16181d;
+      --panel-2: #1b1e24;
+      --accent: #6fd8b0;
+      --accent-ink: #8fe6c4;
+      --accent-wash: #12241d;
+      --warn: #d9a441;
+      --warn-wash: #241c0d;
+      --warn-rule: #423418;
     }
   }
+  :root[data-theme="light"] {
+    --paper: #fbfaf8; --ink: #16181d; --ink-2: #3d434e; --muted: #767d8a;
+    --faint: #a2a8b2; --rule: #e4e2dc; --rule-strong: #cfccc4; --panel: #ffffff;
+    --panel-2: #f4f2ee; --accent: #1b4d3e; --accent-ink: #123a2f;
+    --accent-wash: #eef2ef; --warn: #8a5a1a; --warn-wash: #f7f0e4; --warn-rule: #e6d6b8;
+  }
+  :root[data-theme="dark"] {
+    --paper: #0e0f12; --ink: #eceef2; --ink-2: #c2c7d0; --muted: #8a909c;
+    --faint: #5f6672; --rule: #24272e; --rule-strong: #333843; --panel: #16181d;
+    --panel-2: #1b1e24; --accent: #6fd8b0; --accent-ink: #8fe6c4;
+    --accent-wash: #12241d; --warn: #d9a441; --warn-wash: #241c0d; --warn-rule: #423418;
+  }
+
   * { box-sizing: border-box; margin: 0; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
-    background: var(--bg); color: var(--text);
-    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
-  header h1 { font-size: 1.7rem; letter-spacing: -0.02em; }
-  header p.tagline { color: var(--muted); margin-top: 8px; max-width: 56ch; }
-  header a { color: var(--accent); text-decoration: none; }
-  header a:hover { text-decoration: underline; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 24px 96px; }
 
-  .progress { height: 4px; background: var(--border); border-radius: 2px; margin: 32px 0 24px; overflow: hidden; }
-  .progress span { display: block; height: 100%; background: var(--accent); border-radius: 2px; transition: width .25s ease; }
-
-  .card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 24px; margin-bottom: 16px;
+  /* ── Masthead ─────────────────────────────────────────── */
+  .masthead { border-bottom: 1px solid var(--rule-strong); padding: 40px 0 20px; margin-bottom: 8px; }
+  .masthead .kicker {
+    font-family: var(--mono); font-size: .68rem; font-weight: 500;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--accent);
   }
-  .qnum { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
-  .card h2 { font-size: 1.25rem; margin: 6px 0 4px; letter-spacing: -0.01em; }
-  .card p.sub { color: var(--muted); font-size: .95rem; margin-bottom: 16px; }
-  .opts { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  .masthead h1 {
+    font-size: 1.9rem; font-weight: 700; letter-spacing: -0.025em;
+    line-height: 1.12; margin: 10px 0 0;
+  }
+  .masthead .dateline {
+    font-family: var(--mono); font-size: .72rem; letter-spacing: .04em;
+    color: var(--muted); margin-top: 12px;
+  }
+  .masthead .dateline a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+  .masthead .dateline a:hover { color: var(--ink); }
+  .lede { color: var(--ink-2); font-size: 1.0rem; line-height: 1.62; margin: 18px 0 0; max-width: 60ch; }
+
+  /* ── Progress ─────────────────────────────────────────── */
+  .progress-wrap { margin: 28px 0 26px; }
+  .progress-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--mono); font-size: .68rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+  }
+  .progress-meta .stepname { color: var(--accent); }
+  .progress { height: 2px; background: var(--rule); position: relative; }
+  .progress span { position: absolute; inset: 0 auto 0 0; background: var(--accent); transition: width .3s cubic-bezier(.4,0,.2,1); }
+
+  /* ── Questions ────────────────────────────────────────── */
+  .q-title { font-size: 1.45rem; font-weight: 650; letter-spacing: -0.02em; line-height: 1.22; margin-top: 6px; }
+  .q-sub { color: var(--muted); font-size: .95rem; line-height: 1.55; margin-top: 10px; max-width: 58ch; }
+  .opts { display: flex; flex-direction: column; margin-top: 26px; border-top: 1px solid var(--rule); }
   button.opt {
-    text-align: left; font: inherit; color: var(--text);
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 10px; padding: 13px 16px; cursor: pointer;
-    transition: border-color .12s, background .12s;
+    display: flex; align-items: baseline; gap: 14px;
+    text-align: left; font: inherit; color: var(--ink);
+    background: none; border: none; border-bottom: 1px solid var(--rule);
+    padding: 16px 4px; cursor: pointer; width: 100%;
+    transition: background .12s, padding-left .12s;
   }
-  button.opt:hover { border-color: var(--accent); background: var(--accent-soft); }
-  .nav { margin-top: 18px; }
+  button.opt .marker {
+    font-family: var(--mono); font-size: .74rem; font-weight: 500;
+    color: var(--faint); flex-shrink: 0; width: 1.4em; line-height: 1.5;
+    transition: color .12s;
+  }
+  button.opt .opt-label { flex: 1; }
+  button.opt:hover { background: var(--panel-2); padding-left: 12px; }
+  button.opt:hover .marker { color: var(--accent); }
+  button.opt:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  button.opt.selected { background: var(--accent-wash); }
+  button.opt.selected .marker { color: var(--accent); }
+
+  .nav { margin-top: 22px; }
   .nav button {
-    font: inherit; color: var(--muted); background: none; border: none;
-    cursor: pointer; padding: 4px 0;
+    font-family: var(--mono); font-size: .72rem; letter-spacing: .06em;
+    color: var(--muted); background: none; border: none; cursor: pointer; padding: 4px 0;
   }
-  .nav button:hover { color: var(--text); }
+  .nav button:hover { color: var(--ink); }
 
-  .badge {
-    display: inline-block; font-size: .72rem; font-weight: 700;
-    letter-spacing: .1em; text-transform: uppercase;
-    color: var(--accent); background: var(--accent-soft);
-    border-radius: 20px; padding: 4px 12px;
+  /* ── Result: memo layout ──────────────────────────────── */
+  .memo-head { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule-strong); padding: 14px 0; margin-bottom: 4px; }
+  .memo-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .memo-tag {
+    font-family: var(--mono); font-size: .68rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted);
   }
-  .badge.secondary { color: var(--muted); background: var(--bg); border: 1px solid var(--border); }
-  .badge.confidence { margin-left: 8px; }
-  .badge.confidence.high { color: var(--accent); background: var(--accent-soft); }
-  .badge.confidence.mixed { color: var(--warn); background: var(--warn-bg); }
-  .badge.confidence.weak { color: var(--muted); background: var(--bg); border: 1px solid var(--border); }
-  .result h2 { font-size: 1.5rem; margin: 12px 0 2px; letter-spacing: -0.02em; }
-  .result .exemplar { color: var(--accent); font-weight: 600; }
-  .result .thesis { color: var(--muted); font-style: italic; margin-bottom: 16px; }
-  .result h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 18px 0 8px; }
-  .result ul { padding-left: 20px; }
-  .result li { margin-bottom: 6px; }
-  .why .pts { color: var(--accent); font-weight: 600; }
-  .trap {
-    border-left: 3px solid var(--warn); background: var(--warn-bg);
-    border-radius: 0 8px 8px 0; padding: 12px 16px; margin-top: 8px; font-size: .95rem;
-  }
-  .links a { color: var(--accent); text-decoration: none; }
-  .links a:hover { text-decoration: underline; }
+  .memo-score { font-family: var(--mono); font-size: .82rem; font-weight: 500; color: var(--ink); }
+  .memo-score .band { margin-left: 12px; }
+  .band.high { color: var(--accent); }
+  .band.mixed { color: var(--warn); }
+  .band.weak { color: var(--muted); }
 
-  .flag {
-    background: var(--warn-bg); border: 1px solid var(--warn-border);
-    border-radius: 12px; padding: 16px 20px; margin-bottom: 12px;
-  }
-  .flag strong { color: var(--warn); display: block; margin-bottom: 4px; }
-  .flag p { font-size: .95rem; }
+  .result-block { padding: 26px 0; border-bottom: 1px solid var(--rule); }
+  .result-block:last-of-type { border-bottom: none; }
+  .arch-name { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.14; }
+  .arch-exemplar { font-family: var(--mono); font-size: .8rem; letter-spacing: .04em; color: var(--accent); margin-top: 8px; }
+  .arch-thesis { color: var(--ink-2); font-size: 1.02rem; line-height: 1.55; margin-top: 12px; max-width: 58ch; }
 
-  .step { margin-bottom: 12px; }
-  .step strong { display: block; }
-  .step p { color: var(--muted); font-size: .95rem; }
-
-  .notmatch {
-    border-left: 3px solid var(--border); background: var(--bg);
-    border-radius: 0 8px 8px 0; padding: 10px 16px; margin-top: 8px; font-size: .9rem; color: var(--muted);
+  .section-label {
+    font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted); margin: 26px 0 12px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--rule);
   }
 
-  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  .why { list-style: none; padding: 0; }
+  .why li { display: flex; align-items: baseline; gap: 12px; padding: 7px 0; border-bottom: 1px dotted var(--rule); font-size: .95rem; }
+  .why li:last-child { border-bottom: none; }
+  .why .why-q { font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; color: var(--muted); flex-shrink: 0; width: 8.5em; }
+  .why .why-label { flex: 1; color: var(--ink-2); }
+  .why .pts { font-family: var(--mono); font-size: .8rem; font-weight: 500; color: var(--accent); flex-shrink: 0; }
+
+  .notmatch { color: var(--muted); font-size: .92rem; line-height: 1.55; padding-left: 14px; border-left: 2px solid var(--rule-strong); }
+
+  .trap { padding-left: 14px; border-left: 2px solid var(--warn); color: var(--ink-2); font-size: .96rem; line-height: 1.55; }
+
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
   @media (max-width: 480px) { .action-grid { grid-template-columns: 1fr; } }
-  .action-item {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px;
+  .action-item { background: var(--panel); padding: 14px 16px; }
+  .action-item .a-label {
+    font-family: var(--mono); font-size: .66rem; font-weight: 500; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px;
   }
-  .action-item .label {
-    font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); display: block; margin-bottom: 4px;
-  }
-  .action-item.prove { border-left: 3px solid var(--accent); }
-  .action-item.avoid { border-left: 3px solid var(--warn); }
+  .action-item.prove .a-label { color: var(--accent); }
+  .action-item.avoid .a-label { color: var(--warn); }
+  .action-item .a-text { font-size: .92rem; line-height: 1.5; color: var(--ink-2); }
 
-  .actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  .links { font-size: .95rem; }
+  .links a, .lede a, .noclean a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-wash); transition: border-color .12s; }
+  .links a:hover, .lede a:hover, .noclean a:hover { border-bottom-color: var(--accent); }
+
+  .step { padding: 12px 0; border-bottom: 1px dotted var(--rule); }
+  .step:last-child { border-bottom: none; }
+  .step strong { display: block; font-weight: 600; font-size: .98rem; }
+  .step p { color: var(--muted); font-size: .92rem; line-height: 1.5; margin-top: 3px; }
+  .steps-more { margin-top: 14px; }
+
+  .flag { border: 1px solid var(--warn-rule); background: var(--warn-wash); padding: 14px 18px; margin-top: 12px; }
+  .flag strong {
+    display: block; color: var(--warn); font-family: var(--mono);
+    font-size: .72rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .flag p { font-size: .92rem; line-height: 1.55; color: var(--ink-2); }
+  .flags-head {
+    font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--warn); margin: 30px 0 4px;
+  }
+
+  .noclean { padding: 26px 0; border-bottom: 1px solid var(--rule); }
+  .noclean h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+  .noclean p { color: var(--ink-2); font-size: 1rem; line-height: 1.58; margin-top: 12px; max-width: 58ch; }
+
+  /* ── Actions ──────────────────────────────────────────── */
+  .actions { display: flex; gap: 10px; margin-top: 30px; flex-wrap: wrap; }
   .actions button {
-    font: inherit; font-weight: 600; cursor: pointer; border-radius: 10px; padding: 10px 20px;
-    border: 1px solid var(--border); background: var(--card); color: var(--text);
+    font-family: var(--mono); font-size: .74rem; font-weight: 500; letter-spacing: .04em;
+    cursor: pointer; padding: 10px 18px; border: 1px solid var(--rule-strong);
+    background: var(--panel); color: var(--ink); transition: background .12s, border-color .12s;
   }
-  .actions button.primary { background: var(--accent); border-color: var(--accent); color: #08120d; }
-  .actions button:hover { filter: brightness(1.05); }
+  .actions button:hover { border-color: var(--ink); }
+  .actions button.primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .actions button.primary:hover { background: var(--accent-ink); }
 
-  footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
-  footer a { color: var(--accent); text-decoration: none; }
-  .hidden { display: none; }
+  /* ── Footer ───────────────────────────────────────────── */
+  footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  footer .disclaimer {
+    font-family: var(--mono); font-size: .68rem; line-height: 1.6; letter-spacing: .02em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  footer .links-row { margin-top: 10px; font-size: .82rem; }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  footer a:hover { color: var(--ink); }
+
+  .theme-toggle {
+    position: fixed; top: 16px; right: 16px; z-index: 10;
+    font-family: var(--mono); font-size: .64rem; letter-spacing: .08em; text-transform: uppercase;
+    background: var(--panel); color: var(--muted); border: 1px solid var(--rule);
+    padding: 6px 10px; cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--rule-strong); }
+
+  /* Print-only elements, hidden on screen */
+  .print-only { display: none; }
+
+  @media print {
+    /* Force the light, paper palette regardless of screen theme */
+    :root, :root[data-theme="dark"], :root[data-theme="light"] {
+      --paper: #ffffff; --ink: #16181d; --ink-2: #3d434e; --muted: #767d8a;
+      --faint: #a2a8b2; --rule: #d8d5cd; --rule-strong: #b8b4aa; --panel: #ffffff;
+      --panel-2: #f4f2ee; --accent: #1b4d3e; --accent-ink: #123a2f;
+      --accent-wash: #eef2ef; --warn: #8a5a1a; --warn-wash: #f7f0e4; --warn-rule: #e6d6b8;
+    }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11pt; }
+    .theme-toggle, .actions, .progress-wrap, .nav { display: none !important; }
+    .wrap { max-width: 100%; padding: 0; }
+    .masthead { padding-top: 0; }
+    .lede { display: none; }               /* the lede is instructional, not part of the memo */
+    .print-only { display: block; }
+    .result-block, .noclean { break-inside: avoid; }
+    .action-grid { break-inside: avoid; }
+    .flag { break-inside: avoid; }
+    a { color: var(--accent) !important; text-decoration: none; }
+    /* Show the destination of case-study links on paper */
+    .links a[href]::after { content: ""; }
+    footer { margin-top: 24px; }
+    @page { margin: 18mm 16mm; }
+  }
 </style>
 </head>
 <body>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Theme</button>
 <div class="wrap">
-  <header>
-    <h1>DeFi GTM Archetype Finder</h1>
-    <p class="tagline">Answer 10 questions. If you're already building, get a diagnosis of the GTM
-    pattern you're already in, its trap, and what to do in the next 90 days. If you're pre-idea,
-    get a grounded recommendation instead — based on what you actually have access to, not what
-    sounds appealing.
-    Built from the open-source <a id="repoLink" href="#" target="_blank" rel="noopener">DeFi GTM Playbook</a>.</p>
+  <header class="masthead">
+    <div class="kicker">DeFi GTM Playbook</div>
+    <h1>The Archetype Finder</h1>
+    <div class="dateline" id="dateline">July 2026 edition · 12 protocol case studies · <a id="repoLink" href="#" target="_blank" rel="noopener">source</a></div>
+    <div class="dateline print-only" id="printDateline"></div>
+    <p class="lede" id="lede">A ten-question diagnostic. If you are already building, it names the
+    go-to-market pattern you are already in, its characteristic failure mode, and your next moves.
+    If you are pre-idea, it recommends a starting archetype grounded in what you actually have
+    access to — not what sounds appealing. Scoring is transparent and traces to the
+    <a id="ledeRepo" href="#" target="_blank" rel="noopener">published research</a>.</p>
   </header>
 
-  <div class="progress" id="progress"><span style="width:0%"></span></div>
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-meta"><span id="progressCount"></span><span class="stepname" id="progressStep"></span></div>
+    <div class="progress"><span id="progressBar" style="width:0%"></span></div>
+  </div>
+
   <main id="app"></main>
 
   <footer>
-    <p>Every match is transparent — it links to the case studies it was derived from.
-    Research, not investment advice.
-    <a id="specLink" href="#" target="_blank" rel="noopener">Scoring spec</a> ·
-    <a id="footerRepo" href="#" target="_blank" rel="noopener">Source on GitHub</a></p>
+    <p class="disclaimer">Research for strategy purposes, not investment advice. Every match is
+    transparent and traces to the case studies it was derived from.</p>
+    <p class="links-row">
+      <a id="specLink" href="#" target="_blank" rel="noopener">Scoring methodology</a> &nbsp;·&nbsp;
+      <a id="footerRepo" href="#" target="_blank" rel="noopener">Source on GitHub</a>
+    </p>
   </footer>
 </div>
 
@@ -160,24 +319,36 @@
 <script>
 (function () {
   const app = document.getElementById("app");
-  const progressBar = document.querySelector("#progress span");
+  const progressBar = document.getElementById("progressBar");
+  const progressCount = document.getElementById("progressCount");
+  const progressStep = document.getElementById("progressStep");
+  const progressWrap = document.getElementById("progressWrap");
   document.getElementById("repoLink").href = LINKS.repo;
+  document.getElementById("ledeRepo").href = LINKS.repo;
   document.getElementById("footerRepo").href = LINKS.repo;
   document.getElementById("specLink").href = LINKS.repo + "/blob/main/site/matching-logic.md";
+
+  // Theme toggle: cycles auto → light → dark. Respects OS default until first click.
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  themeToggle.addEventListener("click", () => {
+    const cur = root.getAttribute("data-theme");
+    const next = cur === "dark" ? "light" : cur === "light" ? "dark"
+      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark");
+    root.setAttribute("data-theme", next);
+  });
 
   let answers = [];
 
   function esc(s) {
-    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  // Mode is set by the Stage answer (QUESTIONS[STAGE_INDEX]), always answered first.
   function getMode() {
     const stageAnswer = answers[STAGE_INDEX];
     if (stageAnswer === undefined) return null;
     return QUESTIONS[STAGE_INDEX].options[stageAnswer].mode;
   }
-
   function questionTitle(q, mode) {
     return mode === "recommender" && q.recommenderTitle ? q.recommenderTitle : q.title;
   }
@@ -189,30 +360,34 @@
   function optionLabel(o, mode) {
     return mode === "recommender" && o.recommenderLabel ? o.recommenderLabel : o.label;
   }
+  const MARKERS = "ABCDEFGHIJ";
 
   function render() {
     const i = answers.length;
     if (i >= QUESTIONS.length) return renderResult();
-    progressBar.style.width = (i / QUESTIONS.length) * 100 + "%";
+    progressWrap.style.display = "";
+    const pct = (i / QUESTIONS.length) * 100;
+    progressBar.style.width = pct + "%";
     const q = QUESTIONS[i];
     const mode = i === STAGE_INDEX ? null : getMode();
+    progressCount.textContent = `Question ${i + 1} / ${QUESTIONS.length}`;
+    progressStep.textContent = q.short;
     const title = questionTitle(q, mode);
     const subtitle = questionSubtitle(q, mode);
     app.innerHTML = `
-      <div class="card">
-        <div class="qnum">Question ${i + 1} of ${QUESTIONS.length} — ${esc(q.short)}</div>
-        <h2>${esc(title)}</h2>
-        ${subtitle ? `<p class="sub">${esc(subtitle)}</p>` : ""}
+      <div class="q-block">
+        <h2 class="q-title">${esc(title)}</h2>
+        ${subtitle ? `<p class="q-sub">${esc(subtitle)}</p>` : ""}
         <div class="opts">
-          ${q.options.map((o, j) => `<button class="opt" data-j="${j}">${esc(optionLabel(o, mode))}</button>`).join("")}
+          ${q.options.map((o, j) => `<button class="opt" data-j="${j}"><span class="marker">${MARKERS[j]}</span><span class="opt-label">${esc(optionLabel(o, mode))}</span></button>`).join("")}
         </div>
-        <div class="nav">${i > 0 ? `<button id="back">&larr; Back</button>` : ""}</div>
+        <div class="nav">${i > 0 ? `<button id="back">← Back</button>` : ""}</div>
       </div>`;
     app.querySelectorAll(".opt").forEach((b) =>
-      b.addEventListener("click", () => { answers.push(+b.dataset.j); render(); })
+      b.addEventListener("click", () => { answers.push(+b.dataset.j); window.scrollTo(0, 0); render(); })
     );
     const back = document.getElementById("back");
-    if (back) back.addEventListener("click", () => { answers.pop(); render(); });
+    if (back) back.addEventListener("click", () => { answers.pop(); window.scrollTo(0, 0); render(); });
   }
 
   function compute(mode) {
@@ -237,7 +412,6 @@
       if (primaryScore >= 16 && primaryScore >= 1.8 * thirdScore) confidence = "high";
       else if (secondary) confidence = "mixed";
     }
-    // "Why you didn't match": the highest-scoring archetype excluded from primary/secondary
     const runnerUpId = ranked.find((id) => id !== primary && id !== secondary) || null;
     return { totals, contribs, ranked, primary, secondary, runnerUpId, confidence, lowConfidence };
   }
@@ -251,50 +425,64 @@
     const related = a.related
       .map((rid) => `<a href="${ARCHETYPES[rid].file}" target="_blank" rel="noopener">${esc(ARCHETYPES[rid].exemplar)}</a>`)
       .join(" · ");
-    const confidenceBadge = kind === "primary"
-      ? `<span class="badge confidence ${r.confidence}">${CONFIDENCE_LABEL[r.confidence]}</span>`
-      : "";
+    const bandLabel = kind === "primary" ? `<span class="band ${r.confidence}">${CONFIDENCE_LABEL[r.confidence]}</span>` : "";
+    const tag = isRecommender
+      ? (kind === "secondary" ? "Runner-up" : "Suggested archetype")
+      : (kind === "secondary" ? "Secondary match" : "Primary match");
+
     const runnerUp = kind === "primary" && r.runnerUpId ? ARCHETYPES[r.runnerUpId] : null;
     const runnerUpBlock = runnerUp
-      ? `<h3>Why you didn't match ${esc(runnerUp.exemplar)}</h3>
-         <div class="notmatch">You scored ${r.totals[r.runnerUpId]} pts on the ${esc(runnerUp.name)} pattern — not enough to place, but worth reading if this ${isRecommender ? "recommendation" : "match"} doesn't feel quite right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>.</div>`
+      ? `<div class="section-label">Why not ${esc(runnerUp.exemplar)}</div>
+         <p class="notmatch">You scored ${r.totals[r.runnerUpId]} points on the ${esc(runnerUp.name)} pattern — not enough to place, but worth reading if this ${isRecommender ? "recommendation" : "match"} doesn't feel right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>.</p>`
       : "";
-    // Next 90 days is a diagnostic-only section — a pre-idea founder has no operating cadence yet.
+
     const next90 = a.next90 && !isRecommender
-      ? `<h3>Next 90 days</h3>
+      ? `<div class="section-label">Next 90 days</div>
          <div class="action-grid">
-           <div class="action-item prove"><span class="label">Prove</span>${esc(a.next90.prove)}</div>
-           <div class="action-item"><span class="label">Delay</span>${esc(a.next90.delay)}</div>
-           <div class="action-item"><span class="label">Watch</span>${esc(a.next90.watch)}</div>
-           <div class="action-item avoid"><span class="label">Avoid</span>${esc(a.next90.avoid)}</div>
+           <div class="action-item prove"><span class="a-label">Prove</span><span class="a-text">${esc(a.next90.prove)}</span></div>
+           <div class="action-item"><span class="a-label">Delay</span><span class="a-text">${esc(a.next90.delay)}</span></div>
+           <div class="action-item"><span class="a-label">Watch</span><span class="a-text">${esc(a.next90.watch)}</span></div>
+           <div class="action-item avoid"><span class="a-label">Avoid</span><span class="a-text">${esc(a.next90.avoid)}</span></div>
          </div>`
       : "";
-    const badgeLabel = isRecommender
-      ? (kind === "secondary" ? "runner-up" : "suggested archetype")
-      : `${kind} match`;
+
     const whyHeading = isRecommender ? "Why this fits your constraints" : "Why you matched";
     const trapHeading = isRecommender ? "The trap to design around" : "The trap";
+
     return `
-      <div class="card result">
-        <span class="badge ${kind === "secondary" ? "secondary" : ""}">${badgeLabel} · ${r.totals[id]} pts</span>${confidenceBadge}
-        <h2>${esc(a.name)}</h2>
-        <div class="exemplar">The ${esc(a.exemplar)} pattern</div>
-        <p class="thesis">${esc(a.thesis)}</p>
-        <h3>${esc(whyHeading)}</h3>
-        <ul class="why">
-          ${why.map((c) => `<li>${esc(c.q)}: “${esc(c.label)}” <span class="pts">+${c.pts}</span></li>`).join("")}
-        </ul>
-        ${runnerUpBlock}
-        <h3>${esc(trapHeading)}</h3>
-        <div class="trap">${esc(a.trap)}</div>
-        ${next90}
-        <h3>Read</h3>
-        <p class="links"><a href="${a.file}" target="_blank" rel="noopener">${esc(a.exemplar)} case study</a> — then: ${related}</p>
+      <div class="result-block">
+        <div class="memo-head">
+          <div class="memo-row">
+            <span class="memo-tag">${tag}</span>
+            <span class="memo-score">${r.totals[id]} pts${kind === "primary" ? bandLabel : ""}</span>
+          </div>
+        </div>
+        <div style="padding-top:18px">
+          <div class="arch-name">${esc(a.name)}</div>
+          <div class="arch-exemplar">The ${esc(a.exemplar)} pattern</div>
+          <p class="arch-thesis">${esc(a.thesis)}</p>
+
+          <div class="section-label">${esc(whyHeading)}</div>
+          <ul class="why">
+            ${why.map((c) => `<li><span class="why-q">${esc(c.q)}</span><span class="why-label">${esc(c.label)}</span><span class="pts">+${c.pts}</span></li>`).join("")}
+          </ul>
+
+          ${runnerUpBlock}
+
+          <div class="section-label">${esc(trapHeading)}</div>
+          <p class="trap">${esc(a.trap)}</p>
+
+          ${next90}
+
+          <div class="section-label">Read</div>
+          <p class="links"><a href="${a.file}" target="_blank" rel="noopener">${esc(a.exemplar)} case study</a> &nbsp;→&nbsp; then: ${related}</p>
+        </div>
       </div>`;
   }
 
   function renderResult() {
     progressBar.style.width = "100%";
+    progressWrap.style.display = "none";
     const mode = getMode();
     const isRecommender = mode === "recommender";
     const r = compute(mode);
@@ -303,19 +491,17 @@
     let html = "";
 
     if (r.lowConfidence) {
-      const noFitTitle = isRecommender
-        ? "The field is open — no strong lean yet"
-        : "No single archetype fits cleanly";
+      const noFitTitle = isRecommender ? "The field is open — no strong lean yet" : "No single archetype fits cleanly";
       const noFitBody = isRecommender
-        ? "That's a common, legitimate result before you've secured a real cold-start resource or distribution relationship — not a failure of the quiz. The highest-leverage next step is landing one decisive resource (a real parent-treasury relationship, a real partner conversation, a real incumbent to build on) rather than continuing to plan in the abstract."
+        ? "A common, legitimate result before you've secured a real cold-start resource or distribution relationship — not a failure of the diagnostic. The highest-leverage next step is landing one decisive resource (a real parent-treasury relationship, a real partner conversation, a real incumbent to build on) rather than continuing to plan in the abstract."
         : "Your answers don't concentrate on one pattern — that's a finding, not a failure.";
       html += `
-        <div class="card result">
-          <span class="badge secondary">${isRecommender ? "No clean recommendation" : "No clean fit"}</span>
-          <h2>${esc(noFitTitle)}</h2>
-          <p class="thesis">${esc(noFitBody)}</p>
-          <p>Start with the <a class="links" href="${LINKS.synthesis}" target="_blank" rel="noopener">cross-protocol synthesis</a>
-          for the patterns, then use the <a class="links" href="${LINKS.buildersGuide}" target="_blank" rel="noopener">builder's guide</a>
+        <div class="noclean">
+          <div class="memo-head"><div class="memo-row"><span class="memo-tag">${isRecommender ? "No clean recommendation" : "No clean fit"}</span></div></div>
+          <h2 style="margin-top:18px">${esc(noFitTitle)}</h2>
+          <p>${esc(noFitBody)}</p>
+          <p style="margin-top:14px">Start with the <a href="${LINKS.synthesis}" target="_blank" rel="noopener">cross-protocol synthesis</a>
+          for the patterns, then use the <a href="${LINKS.buildersGuide}" target="_blank" rel="noopener">builder's guide</a>
           to find the case studies closest to your specific problem.</p>
         </div>`;
     } else {
@@ -323,36 +509,58 @@
       if (r.secondary) html += archetypeCard(r.secondary, "secondary", r, mode);
     }
 
-    const stepsHeading = isRecommender
-      ? "Where to start"
-      : "Your playbook steps right now";
+    const stepsHeading = isRecommender ? "Where to start" : "Your playbook steps right now";
     html += `
-      <div class="card">
-        <h3 style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px">${esc(stepsHeading)}</h3>
+      <div class="result-block">
+        <div class="section-label" style="margin-top:0">${esc(stepsHeading)}</div>
         ${stageSteps.map((s) => `<div class="step"><strong>${esc(PLAYBOOK_STEPS[s].title)}</strong><p>${esc(PLAYBOOK_STEPS[s].text)}</p></div>`).join("")}
-        <p style="margin-top:10px;font-size:.9rem"><a class="links" style="color:var(--accent);text-decoration:none" href="${LINKS.playbook}" target="_blank" rel="noopener">Full playbook sequence &rarr;</a></p>
+        <p class="steps-more links"><a href="${LINKS.playbook}" target="_blank" rel="noopener">Full playbook sequence →</a></p>
       </div>`;
 
     if (flags.length) {
-      html += flags.map((f) => `<div class="flag"><strong>⚠ ${esc(f.title)}</strong><p>${esc(f.text)}</p></div>`).join("");
+      html += `<div class="flags-head">Watch-outs from your answers</div>`;
+      html += flags.map((f) => `<div class="flag"><strong>${esc(f.title)}</strong><p>${esc(f.text)}</p></div>`).join("");
     }
 
     html += `
       <div class="actions">
         <button class="primary" id="restart">Start over</button>
         <button id="share">Copy shareable link</button>
+        <button id="printBtn">Print / save PDF</button>
       </div>`;
 
     app.innerHTML = html;
+    window.scrollTo(0, 0);
     location.hash = answers.join("");
+    // Rich permalink: the tab/share title reflects the actual result.
+    if (r.lowConfidence) {
+      document.title = "No clean fit — DeFi GTM Archetype Finder";
+    } else {
+      document.title = `${ARCHETYPES[r.primary].name} (${ARCHETYPES[r.primary].exemplar}) — DeFi GTM Archetype Finder`;
+    }
     document.getElementById("restart").addEventListener("click", () => {
-      answers = []; history.replaceState(null, "", location.pathname); render();
+      answers = []; history.replaceState(null, "", location.pathname);
+      document.title = "DeFi GTM Archetype Finder — DeFi GTM Playbook";
+      window.scrollTo(0, 0); render();
     });
     document.getElementById("share").addEventListener("click", (e) => {
       navigator.clipboard.writeText(location.href).then(() => {
-        e.target.textContent = "Copied!";
+        e.target.textContent = "Copied";
         setTimeout(() => (e.target.textContent = "Copy shareable link"), 1500);
       });
+    });
+    document.getElementById("printBtn").addEventListener("click", () => {
+      const pd = document.getElementById("printDateline");
+      const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+      let verdict;
+      if (r.lowConfidence) {
+        verdict = isRecommender ? "No clean recommendation" : "No clean fit";
+      } else {
+        const label = isRecommender ? "Suggested archetype" : "Primary match";
+        verdict = `${label}: ${ARCHETYPES[r.primary].name} (the ${ARCHETYPES[r.primary].exemplar} pattern)`;
+      }
+      pd.textContent = `${verdict} · Generated ${today}`;
+      window.print();
     });
   }
 
