@@ -204,6 +204,19 @@
   .links a, .lede a, .noclean a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-wash); transition: border-color .12s; }
   .links a:hover, .lede a:hover, .noclean a:hover { border-bottom-color: var(--accent); }
 
+  /* Live benchmark */
+  .bench-loading { font-family: var(--mono); font-size: .78rem; color: var(--muted); padding: 4px 0; }
+  .bench-note { font-family: var(--mono); font-size: .64rem; letter-spacing: .04em; color: var(--faint); text-transform: uppercase; margin-top: 10px; }
+  .bench-note a { color: var(--faint); }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (max-width: 480px) { .stat-grid { grid-template-columns: 1fr; } }
+  .stat { background: var(--panel); padding: 14px 16px; }
+  .stat .s-label { font-family: var(--mono); font-size: .64rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 5px; }
+  .stat .s-val { font-family: var(--mono); font-size: 1.15rem; font-weight: 500; color: var(--ink); }
+  .stat .s-sub { font-size: .84rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+  .stat .s-val.up { color: var(--accent); }
+  .bench-read { font-size: .93rem; line-height: 1.55; color: var(--ink-2); margin-top: 12px; }
+
   .step { padding: 12px 0; border-bottom: 1px dotted var(--rule); }
   .step:last-child { border-bottom: none; }
   .step strong { display: block; font-weight: 600; font-size: .98rem; }
@@ -474,12 +487,94 @@
           <div class="section-label">${esc(trapHeading)}</div>
           <p class="trap">${esc(a.trap)}</p>
 
+          ${kind === "primary" ? `
+          <div class="section-label">Where this pattern sits today</div>
+          <div id="benchSlot" data-archetype="${id}">
+            <p class="bench-loading">Loading live data from DeFiLlama…</p>
+          </div>` : ""}
+
           ${next90}
 
           <div class="section-label">Read</div>
           <p class="links"><a href="${a.file}" target="_blank" rel="noopener">${esc(a.exemplar)} case study</a> &nbsp;→&nbsp; then: ${related}</p>
         </div>
       </div>`;
+  }
+
+  // ── Live benchmarking (DeFiLlama) ────────────────────────
+  // Fetched once per session, cached on the module. CORS is open on
+  // api.llama.fi so this runs client-side; the page stays static.
+  let _llamaCache = null;
+  function fmtUsd(n) {
+    if (n == null || isNaN(n)) return "—";
+    if (n >= 1e9) return "$" + (n / 1e9).toFixed(1) + "B";
+    if (n >= 1e6) return "$" + (n / 1e6).toFixed(0) + "M";
+    if (n >= 1e3) return "$" + (n / 1e3).toFixed(0) + "K";
+    return "$" + Math.round(n);
+  }
+  function median(arr) {
+    if (!arr.length) return null;
+    const s = arr.slice().sort((a, b) => a - b);
+    const m = Math.floor(s.length / 2);
+    return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+  }
+
+  async function loadBenchmark(archId) {
+    const slot = document.getElementById("benchSlot");
+    if (!slot) return;
+    const a = ARCHETYPES[archId];
+    try {
+      if (!_llamaCache) {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 8000);
+        const res = await fetch("https://api.llama.fi/protocols", { signal: ctrl.signal });
+        clearTimeout(t);
+        if (!res.ok) throw new Error("http " + res.status);
+        _llamaCache = await res.json();
+      }
+      const all = _llamaCache;
+      const exemplar = all.find((p) => p.name === a.llamaName);
+      const catProtos = all.filter((p) => p.category === a.llamaCategory && typeof p.tvl === "number" && p.tvl > 0);
+      const catTvls = catProtos.map((p) => p.tvl);
+      const med = median(catTvls);
+      const total = catTvls.reduce((s, x) => s + x, 0);
+      const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+
+      if (!exemplar && !med) throw new Error("no data");
+
+      const exTvl = exemplar ? exemplar.tvl : null;
+      const rank = exemplar && med != null
+        ? (exTvl >= med ? "above" : "below")
+        : null;
+
+      let read = "";
+      if (exemplar && med != null) {
+        read = `${esc(a.exemplar)} sits ${rank} the median for its category — ${rank === "above"
+          ? "the exemplar is a category leader, which is the pattern you'd be measured against."
+          : "a reminder that the exemplar's playbook worked even from outside the top of its category."} `;
+      }
+      read += `Category economics concentrate: the ${esc(a.llamaCategory)} category holds ${fmtUsd(total)} across ${catProtos.length} tracked protocols.`;
+
+      slot.innerHTML = `
+        <div class="stat-grid">
+          <div class="stat">
+            <span class="s-label">${esc(a.exemplar)} live TVL</span>
+            <span class="s-val up">${fmtUsd(exTvl)}</span>
+            <div class="s-sub">${esc(a.llamaName)} · ${esc(a.llamaCategory)}</div>
+          </div>
+          <div class="stat">
+            <span class="s-label">${esc(a.llamaCategory)} category median</span>
+            <span class="s-val">${fmtUsd(med)}</span>
+            <div class="s-sub">across ${catProtos.length} protocols</div>
+          </div>
+        </div>
+        <p class="bench-read">${read}</p>
+        <p class="bench-note">Live from <a href="https://defillama.com" target="_blank" rel="noopener">DeFiLlama</a>, ${today} — figures drift constantly, treat as point-in-time.</p>`;
+    } catch (e) {
+      slot.innerHTML = `
+        <p class="bench-read" style="color:var(--muted)">Live data unavailable right now${e && e.name === "AbortError" ? " (request timed out)" : ""}. The published July 2026 snapshot still applies: see the
+        <a class="links" href="${LINKS.repo}/blob/main/docs/01-market-snapshot.md" target="_blank" rel="noopener">market snapshot</a> for TVL by protocol.</p>`;
+    }
   }
 
   function renderResult() {
@@ -539,6 +634,10 @@
     app.innerHTML = html;
     window.scrollTo(0, 0);
     location.hash = answers.join("");
+    // Live benchmark: fires after the core result is on screen, so a slow or
+    // failed DeFiLlama call never blocks the diagnostic (only a primary match
+    // has a benchSlot; low-confidence results don't).
+    if (!r.lowConfidence) loadBenchmark(r.primary);
     // Rich permalink: the tab/share title reflects the actual result.
     if (r.lowConfidence) {
       document.title = "No clean fit — DeFi GTM Archetype Finder";
