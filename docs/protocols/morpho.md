@@ -7,7 +7,7 @@ main_channels: Exchanges, custodians, curators
 incentive_style: Surgical Merkl campaigns
 ---
 
-# Morpho: The Pure B2B Play — Sell Through Everyone Else's App
+# Morpho: The Pure B2B Play, Sell Through Everyone Else's App
 
 ## Founding wedge
 

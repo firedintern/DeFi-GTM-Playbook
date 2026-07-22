@@ -28,4 +28,4 @@ Primarily intra-ecosystem: Sky's user base and reserves, plus the venues SLL all
 - If you have a parent with a balance sheet, liquidity seeding beats incentive farming. Rates you can actually honor are the best marketing.
 - Allocator positioning converts would-be competitors into yield sources.
 - Caveat: Spark's TVL swings around campaign cycles show subsidized liquidity is mercenary at the margin. The moat must migrate from rates to product before subsidies taper.
-- Caveat: a widely repeated "200K retail users" figure does not survive onchain scrutiny — check the user-adoption story yourself rather than citing secondary coverage, especially for a protocol whose growth is otherwise genuinely parent-seeded.
+- Caveat: a widely repeated "200K retail users" figure does not survive onchain scrutiny. Check the user-adoption story yourself rather than citing secondary coverage, especially for a protocol whose growth is otherwise genuinely parent-seeded.

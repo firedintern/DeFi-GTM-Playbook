@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compare GTM Archetypes — DeFi GTM Playbook</title>
-<meta name="description" content="Put any two DeFi GTM archetypes side by side — wedge, distribution channels, incentive style, the trap each carries, and their 90-day priorities.">
+<title>Compare GTM Archetypes: DeFi GTM Playbook</title>
+<meta name="description" content="Put any two DeFi GTM archetypes side by side: wedge, distribution channels, incentive style, the trap each carries, and their 90-day priorities.">
 <style>
   @font-face { font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/inter-400.woff2") format("woff2"); }
   @font-face { font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/inter-500.woff2") format("woff2"); }
@@ -111,7 +111,7 @@
     <h1>Compare Archetypes</h1>
     <div class="dateline"><a id="finderLink" href="index.html">the finder</a> · <a href="calculator.html">incentive durability</a> · <a id="repoLink" href="#" target="_blank" rel="noopener">source</a></div>
     <p class="lede">Put any two GTM archetypes side by side. The most useful distinctions in the
-    research are the least obvious ones — Aave versus Morpho, Maple versus Ondo — where two
+    research are the least obvious ones (Aave versus Morpho, Maple versus Ondo), where two
     protocols share a category but run fundamentally different growth engines. A green marker flags
     where the two differ on a dimension.</p>
   </header>
@@ -161,7 +161,7 @@
   const ordered = ids.slice().sort((x, y) => ARCHETYPES[x].exemplar.localeCompare(ARCHETYPES[y].exemplar));
   for (const sel of [selA, selB]) {
     sel.innerHTML = ordered.map((id) =>
-      `<option value="${id}">${esc(ARCHETYPES[id].exemplar)} — ${esc(ARCHETYPES[id].name)}</option>`
+      `<option value="${id}">${esc(ARCHETYPES[id].exemplar)}: ${esc(ARCHETYPES[id].name)}</option>`
     ).join("");
   }
 

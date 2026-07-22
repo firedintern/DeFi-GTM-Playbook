@@ -50,7 +50,7 @@ The strategic read: Aave is competing to become the default credit substrate for
 
 2025 was Aave's best year (per Aave's 2025 Year in Review): peak deposits of $75B, ending the year at $55B. TVL stands at $23.3B on the July 2026 leaderboard view (time-sensitive; deposit and TVL methodologies differ). GHO, the native stablecoin (~$600M supply at snapshot), changes the economics of distribution: one GHO minted earns the DAO roughly what $10 of borrow does, and sGHO savings (4.25% APR) holds roughly a quarter of supply (~$148M) as sticky deposits. Owning the monetary asset lets Aave fund incentives and retention from margin instead of treasury.
 
-Horizon (Aug 2025, with VanEck, Circle, Ripple, WisdomTree, Securitize and others) pairs permissioned RWA collateral with permissionless stablecoin supply: $570M+ deposits, the largest RWA lending market. Read Horizon as a permissioned-wrapper GTM move — the point is unlocking institutional allocation channels, not just adding asset types. V4 (approved March 2026) makes GHO the settlement asset of a hub-and-spoke architecture.
+Horizon (Aug 2025, with VanEck, Circle, Ripple, WisdomTree, Securitize and others) pairs permissioned RWA collateral with permissionless stablecoin supply: $570M+ deposits, the largest RWA lending market. Read Horizon as a permissioned-wrapper GTM move: the point is unlocking institutional allocation channels, not just adding asset types. V4 (approved March 2026) makes GHO the settlement asset of a hub-and-spoke architecture.
 
 ## GTM lessons (inference)
 

@@ -17,7 +17,7 @@ MakerDAO launched DAI in 2017: the first decentralized, overcollateralized stabl
 
 - **Monetary distribution, not marketing.** Sky competes by shaping where its stable units are held, borrowed, and reused. Yield pass-through (the Dai Savings Rate), reserve deployment, and ecosystem seeding move circulation directly. Clearest demonstration: the Enhanced DSR at 8% (Aug 2023), funded by RWA revenue, drove rapid supply growth.
 - **RWA pioneer.** From 2022 Maker deployed billions of reserves into T-bills, converting a high-rate macro environment into a revenue engine that subsidizes growth. Revenue-backed incentives outlast emissions-backed ones.
-- **Endgame restructuring**: the 2024 rebrand to Sky introduced USDS/SKY (1 MKR = 24,000 SKY), the Sky.money app, Sky Token Rewards, early-migration bonuses (reported variously as 1.25x rewards or a doubled Sky Savings Rate — sources conflict on the exact multiplier), and a "Stars" structure of semi-autonomous growth vehicles: Spark first, then Grove and Keel.
+- **Endgame restructuring**: the 2024 rebrand to Sky introduced USDS/SKY (1 MKR = 24,000 SKY), the Sky.money app, Sky Token Rewards, early-migration bonuses (reported variously as 1.25x rewards or a doubled Sky Savings Rate; sources conflict on the exact multiplier), and a "Stars" structure of semi-autonomous growth vehicles: Spark first, then Grove and Keel.
 
 ## Distribution channels
 

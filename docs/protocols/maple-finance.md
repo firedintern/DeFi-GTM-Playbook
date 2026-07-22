@@ -1,7 +1,7 @@
 ---
 protocol: Maple Finance
 category: Institutional credit
-tvl_snapshot: "$4.1B leaderboard view (July 2026); netted TVL ~$2.3B, self-reported AUM $4.1-4.6B — see Scale section"
+tvl_snapshot: "$4.1B leaderboard view (July 2026); netted TVL ~$2.3B, self-reported AUM $4.1-4.6B; see Scale section"
 gtm_archetype: Institution-first + retail wrapper
 main_channels: Delegates' networks; Syrup integrations
 incentive_style: Points retired; revenue-funded buybacks
@@ -11,7 +11,7 @@ incentive_style: Points retired; revenue-funded buybacks
 
 ## Founding wedge
 
-Maple launched in 2021 as an onchain **institutional capital market**: undercollateralized loans to vetted trading firms and market makers, arranged through "pool delegates" — professional credit underwriters who set terms, staked first-loss capital, and earned management and performance fees. The wedge was real: crypto trading firms had huge borrowing demand and no onchain venue priced for creditworthiness rather than overcollateralization.
+Maple launched in 2021 as an onchain **institutional capital market**: undercollateralized loans to vetted trading firms and market makers, arranged through "pool delegates," professional credit underwriters who set terms, staked first-loss capital, and earned management and performance fees. The wedge was real: crypto trading firms had huge borrowing demand and no onchain venue priced for creditworthiness rather than overcollateralization.
 
 ## Crisis and rebuild (a GTM lesson in itself)
 

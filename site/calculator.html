@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Incentive Durability Calculator — DeFi GTM Playbook</title>
+<title>Incentive Durability Calculator: DeFi GTM Playbook</title>
 <meta name="description" content="Model a DeFi incentive plan against the playbook's core test: does it unlock a loop that survives after rewards stop, or does it rent mercenary TVL?">
 <style>
   @font-face { font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/inter-400.woff2") format("woff2"); }
@@ -128,7 +128,7 @@
     <p class="lede">The playbook's single most-repeated finding: <em>incentives create value only when
     they unlock a loop that survives after rewards stop.</em> The test is retention through utility,
     not acquisition through novelty. Describe your incentive plan and see whether it looks like a
-    durable loop or mercenary TVL — and the one change most likely to move it.</p>
+    durable loop or mercenary TVL, and the one change most likely to move it.</p>
   </header>
 
   <main id="app"></main>
@@ -166,26 +166,26 @@
       id: "engine",
       weight: 30,
       q: "Is there a real yield or efficiency engine underneath the incentive?",
-      note: "The single strongest predictor that growth survives the end of emissions — Ethena's basis trade, Sky's T-bills, Maple's credit spreads, Morpho's rate edge.",
+      note: "The single strongest predictor that growth survives the end of emissions: Ethena's basis trade, Sky's T-bills, Maple's credit spreads, Morpho's rate edge.",
       options: [
-        { label: "Yes — structural cash flow (credit spreads, T-bills, rate efficiency)", v: 30 },
-        { label: "Yes — but market-cyclical (funding rates, staking demand)", v: 18 },
-        { label: "No real engine yet — the incentive is the product for now", v: 0 },
+        { label: "Yes, structural cash flow (credit spreads, T-bills, rate efficiency)", v: 30 },
+        { label: "Yes, but market-cyclical (funding rates, staking demand)", v: 18 },
+        { label: "No real engine yet, the incentive is the product for now", v: 0 },
       ],
-      fix: "Anchor the incentive to a real economic engine before you scale it. Ethena rode a funding-rate basis trade; Sky funds its savings rate from T-bill revenue. An incentive with nothing underneath rents TVL — it can't buy it.",
+      fix: "Anchor the incentive to a real economic engine before you scale it. Ethena rode a funding-rate basis trade; Sky funds its savings rate from T-bill revenue. An incentive with nothing underneath rents TVL; it can't buy it.",
       goodEx: "ETHENA", badEx: "SPARK",
     },
     {
       id: "doubt",
       weight: 22,
       q: "Does the incentive target a specific adoption doubt, or just simulate PMF?",
-      note: "The highest-ROI spend kills the one fear blocking adoption — exit liquidity, safety, compliance — rather than broadly buying deposits (Lido subsidized the doubt that stETH couldn't be redeemed).",
+      note: "The highest-ROI spend kills the one fear blocking adoption (exit liquidity, safety, compliance) rather than broadly buying deposits. Lido subsidized the doubt that stETH couldn't be redeemed.",
       options: [
         { label: "Targets a specific structural doubt (exit liquidity, safety, compliance)", v: 22 },
-        { label: "Somewhat — it rewards a useful behavior but not a named fear", v: 12 },
-        { label: "Broad emissions to whoever shows up — buying deposits", v: 0 },
+        { label: "Somewhat, it rewards a useful behavior but not a named fear", v: 12 },
+        { label: "Broad emissions to whoever shows up, buying deposits", v: 0 },
       ],
-      fix: "Point the subsidy at the one fear blocking adoption, not at deposits in general. Lido spent LDO on Curve exit liquidity — the specific doubt that stETH couldn't be redeemed — so the spend bought permanent credibility, not temporary TVL.",
+      fix: "Point the subsidy at the one fear blocking adoption, not at deposits in general. Lido spent LDO on Curve exit liquidity, the specific doubt that stETH couldn't be redeemed, so the spend bought permanent credibility, not temporary TVL.",
       goodEx: "LIDO", badEx: "SPARK",
     },
     {
@@ -194,9 +194,9 @@
       q: "Is there a retention loop that outlives the campaign?",
       note: "The test is what remains when rewards fall. Composability integrations, curator economics, or a daily-use relationship keep users after the points stop (Ethena's points rewarded the loops that outlived them).",
       options: [
-        { label: "Yes — integrations / composability / a daily-use relationship", v: 22 },
-        { label: "Partial — some stickiness, but most TVL is reward-chasing", v: 11 },
-        { label: "No — when rewards stop, there's no reason to stay", v: 0 },
+        { label: "Yes, integrations / composability / a daily-use relationship", v: 22 },
+        { label: "Partial, some stickiness, but most TVL is reward-chasing", v: 11 },
+        { label: "No, when rewards stop, there's no reason to stay", v: 0 },
       ],
       fix: "Design the incentive around a loop that compounds, not a rebate that ends. Ethena's points rewarded the composability loops (Pendle, looping collateral) that kept the asset useful once the campaign closed. Reward the loop, not the deposit.",
       goodEx: "ETHENA", badEx: "EIGEN",
@@ -211,7 +211,7 @@
         { label: "Token emissions from treasury, with a taper plan", v: 8 },
         { label: "Emissions / points with no revenue behind them yet", v: 0 },
       ],
-      fix: "Move from emissions toward revenue-funded rewards as soon as you have revenue. Maple retired its Drips points program and routed ~25% of protocol revenue into SYRUP buybacks — that turns tokenomics from renting TVL into compounding it.",
+      fix: "Move from emissions toward revenue-funded rewards as soon as you have revenue. Maple retired its Drips points program and routed ~25% of protocol revenue into SYRUP buybacks. That turns tokenomics from renting TVL into compounding it.",
       goodEx: "MAPLE", badEx: "EIGEN",
     },
     {
@@ -220,11 +220,11 @@
       q: "Does the reward select for real users or bribe prospective capital?",
       note: "Retroactive rewards for past behavior select real users and create goodwill; prospective bribes attract mercenaries (Uniswap's airdrop rewarded people who had already used the protocol).",
       options: [
-        { label: "Retroactive — rewards past, demonstrated usage", v: 10 },
-        { label: "Mixed — some retroactive, some prospective", v: 5 },
-        { label: "Prospective — pays capital to show up now", v: 0 },
+        { label: "Retroactive, rewards past, demonstrated usage", v: 10 },
+        { label: "Mixed, some retroactive, some prospective", v: 5 },
+        { label: "Prospective, pays capital to show up now", v: 0 },
       ],
-      fix: "Reward behavior that already happened, not capital you hope will arrive. Uniswap's retroactive UNI airdrop went to people who had already used the protocol — it selected real users and built goodwill, where prospective bribes select mercenaries.",
+      fix: "Reward behavior that already happened, not capital you hope will arrive. Uniswap's retroactive UNI airdrop went to people who had already used the protocol. It selected real users and built goodwill, where prospective bribes select mercenaries.",
       goodEx: "UNI", badEx: "SPARK",
     },
   ];
@@ -286,13 +286,13 @@
     let band, bandName, survives;
     if (score >= 70) {
       band = "durable"; bandName = "Durable loop";
-      survives = "When rewards taper, <strong>most of this holds</strong>. You've built an incentive that unlocks a loop rather than one that rents capital — the retention is in the utility, not the reward.";
+      survives = "When rewards taper, <strong>most of this holds</strong>. You've built an incentive that unlocks a loop rather than one that rents capital: the retention is in the utility, not the reward.";
     } else if (score >= 40) {
       band = "mixed"; bandName = "Mixed";
       survives = "When rewards taper, <strong>some of this holds and some walks</strong>. There's a real seed here, but enough of your TVL is reward-chasing that a campaign wind-down would show up as a visible drawdown. Close the weakest factor before you scale spend.";
     } else {
       band = "mercenary"; bandName = "Mercenary TVL";
-      survives = "When rewards stop, <strong>most of this leaves</strong>. This looks like the pattern that gave EigenLayer a ~75% drawdown from peak and Spark its campaign-cycle swings — the subsidy is simulating product-market fit rather than funding a loop that survives it.";
+      survives = "When rewards stop, <strong>most of this leaves</strong>. This looks like the pattern that gave EigenLayer a ~75% drawdown from peak and Spark its campaign-cycle swings: the subsidy is simulating product-market fit rather than funding a loop that survives it.";
     }
 
     const good = ARCHETYPES[worst.goodEx], bad = ARCHETYPES[worst.badEx];
@@ -309,16 +309,16 @@
          <div class="section-label">The two versions of this move</div>
          <div class="grounding">
            <div class="ground-cell good">
-             <span class="g-label">Durable — ${esc(good.exemplar)}</span>
+             <span class="g-label">Durable: ${esc(good.exemplar)}</span>
              <span class="g-text">${esc(good.thesis)} <a href="${good.file}" target="_blank" rel="noopener">Read →</a></span>
            </div>
            <div class="ground-cell bad">
-             <span class="g-label">Mercenary — ${esc(bad.exemplar)}</span>
+             <span class="g-label">Mercenary: ${esc(bad.exemplar)}</span>
              <span class="g-text">${esc(bad.thesis)} <a href="${bad.file}" target="_blank" rel="noopener">Read →</a></span>
            </div>
          </div>`
       : `<div class="section-label">Nothing to fix</div>
-         <p class="survives">Every factor maxes out — this is the shape the playbook describes as a durable loop. The remaining risk is execution, not design: the plan is only as good as your ability to honor it. Re-run this as the incentive evolves.</p>`;
+         <p class="survives">Every factor maxes out. This is the shape the playbook describes as a durable loop. The remaining risk is execution, not design: the plan is only as good as your ability to honor it. Re-run this as the incentive evolves.</p>`;
 
     slot.innerHTML = `
       <div class="result">

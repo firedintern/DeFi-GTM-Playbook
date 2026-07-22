@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DeFi GTM Archetype Finder — DeFi GTM Playbook</title>
-<meta name="description" content="A ten-question diagnostic that maps your protocol to the closest go-to-market archetype from twelve case studies of DeFi's largest winners — the trap that comes with it, and what to do next.">
+<title>DeFi GTM Archetype Finder: DeFi GTM Playbook</title>
+<meta name="description" content="A ten-question diagnostic that maps your protocol to the closest go-to-market archetype from twelve case studies of DeFi's largest winners, the trap that comes with it, and what to do next.">
 <meta property="og:title" content="DeFi GTM Archetype Finder">
 <meta property="og:description" content="Map your protocol to the closest GTM archetype from twelve DeFi case studies. Transparent scoring, the trap that comes with each pattern, and your next moves.">
 <meta property="og:type" content="website">
@@ -44,7 +44,7 @@
     --rule-strong: #cfccc4;
     --panel: #ffffff;
     --panel-2: #f4f2ee;
-    --accent: #1b4d3e;      /* deep evergreen — used only for meaning */
+    --accent: #1b4d3e;      /* deep evergreen, used only for meaning */
     --accent-ink: #123a2f;
     --accent-wash: #eef2ef;
     --warn: #8a5a1a;
@@ -307,7 +307,7 @@
     <p class="lede" id="lede">A ten-question diagnostic. If you are already building, it names the
     go-to-market pattern you are already in, its characteristic failure mode, and your next moves.
     If you are pre-idea, it recommends a starting archetype grounded in what you actually have
-    access to — not what sounds appealing. Scoring is transparent and traces to the
+    access to, not what sounds appealing. Scoring is transparent and traces to the
     <a id="ledeRepo" href="#" target="_blank" rel="noopener">published research</a>.</p>
   </header>
 
@@ -448,7 +448,7 @@
     const runnerUp = kind === "primary" && r.runnerUpId ? ARCHETYPES[r.runnerUpId] : null;
     const runnerUpBlock = runnerUp
       ? `<div class="section-label">Why not ${esc(runnerUp.exemplar)}</div>
-         <p class="notmatch">You scored ${r.totals[r.runnerUpId]} points on the ${esc(runnerUp.name)} pattern — not enough to place, but worth reading if this ${isRecommender ? "recommendation" : "match"} doesn't feel right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>, or <a href="compare.html#${id}-${r.runnerUpId}">see the two side by side</a>.</p>`
+         <p class="notmatch">You scored ${r.totals[r.runnerUpId]} points on the ${esc(runnerUp.name)} pattern, not enough to place, but worth reading if this ${isRecommender ? "recommendation" : "match"} doesn't feel right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>, or <a href="compare.html#${id}-${r.runnerUpId}">see the two side by side</a>.</p>`
       : "";
 
     const next90 = a.next90 && !isRecommender
@@ -506,7 +506,7 @@
   // api.llama.fi so this runs client-side; the page stays static.
   let _llamaCache = null;
   function fmtUsd(n) {
-    if (n == null || isNaN(n)) return "—";
+    if (n == null || isNaN(n)) return "n/a";
     if (n >= 1e9) return "$" + (n / 1e9).toFixed(1) + "B";
     if (n >= 1e6) return "$" + (n / 1e6).toFixed(0) + "M";
     if (n >= 1e3) return "$" + (n / 1e3).toFixed(0) + "K";
@@ -549,7 +549,7 @@
 
       let read = "";
       if (exemplar && med != null) {
-        read = `${esc(a.exemplar)} sits ${rank} the median for its category — ${rank === "above"
+        read = `${esc(a.exemplar)} sits ${rank} the median for its category: ${rank === "above"
           ? "the exemplar is a category leader, which is the pattern you'd be measured against."
           : "a reminder that the exemplar's playbook worked even from outside the top of its category."} `;
       }
@@ -569,7 +569,7 @@
           </div>
         </div>
         <p class="bench-read">${read}</p>
-        <p class="bench-note">Live from <a href="https://defillama.com" target="_blank" rel="noopener">DeFiLlama</a>, ${today} — figures drift constantly, treat as point-in-time.</p>`;
+        <p class="bench-note">Live from <a href="https://defillama.com" target="_blank" rel="noopener">DeFiLlama</a>, ${today}. Figures drift constantly, treat as point-in-time.</p>`;
     } catch (e) {
       slot.innerHTML = `
         <p class="bench-read" style="color:var(--muted)">Live data unavailable right now${e && e.name === "AbortError" ? " (request timed out)" : ""}. The published July 2026 snapshot still applies: see the
@@ -588,10 +588,10 @@
     let html = "";
 
     if (r.lowConfidence) {
-      const noFitTitle = isRecommender ? "The field is open — no strong lean yet" : "No single archetype fits cleanly";
+      const noFitTitle = isRecommender ? "The field is open, no strong lean yet" : "No single archetype fits cleanly";
       const noFitBody = isRecommender
-        ? "A common, legitimate result before you've secured a real cold-start resource or distribution relationship — not a failure of the diagnostic. The highest-leverage next step is landing one decisive resource (a real parent-treasury relationship, a real partner conversation, a real incumbent to build on) rather than continuing to plan in the abstract."
-        : "Your answers don't concentrate on one pattern — that's a finding, not a failure.";
+        ? "A common, legitimate result before you've secured a real cold-start resource or distribution relationship, not a failure of the diagnostic. The highest-leverage next step is landing one decisive resource (a real parent-treasury relationship, a real partner conversation, a real incumbent to build on) rather than continuing to plan in the abstract."
+        : "Your answers don't concentrate on one pattern; that's a finding, not a failure.";
       html += `
         <div class="noclean">
           <div class="memo-head"><div class="memo-row"><span class="memo-tag">${isRecommender ? "No clean recommendation" : "No clean fit"}</span></div></div>
@@ -617,7 +617,7 @@
     if (flags.length) {
       html += `<div class="flags-head">Watch-outs from your answers</div>`;
       html += flags.map((f) => `<div class="flag"><strong>${esc(f.title)}</strong><p>${esc(f.text)}</p></div>`).join("");
-      // Flags all point at incentive/durability risk — route to the calculator.
+      // Flags all point at incentive/durability risk, route to the calculator.
       const hasMercenary = flags.some((f) => f.title === "Mercenary TVL risk");
       if (hasMercenary) {
         html += `<p class="steps-more links" style="margin-top:14px">Pressure-test your incentive plan against the durable-loop framework → <a href="calculator.html">Incentive Durability calculator</a></p>`;
@@ -640,13 +640,13 @@
     if (!r.lowConfidence) loadBenchmark(r.primary);
     // Rich permalink: the tab/share title reflects the actual result.
     if (r.lowConfidence) {
-      document.title = "No clean fit — DeFi GTM Archetype Finder";
+      document.title = "No clean fit: DeFi GTM Archetype Finder";
     } else {
-      document.title = `${ARCHETYPES[r.primary].name} (${ARCHETYPES[r.primary].exemplar}) — DeFi GTM Archetype Finder`;
+      document.title = `${ARCHETYPES[r.primary].name} (${ARCHETYPES[r.primary].exemplar}): DeFi GTM Archetype Finder`;
     }
     document.getElementById("restart").addEventListener("click", () => {
       answers = []; history.replaceState(null, "", location.pathname);
-      document.title = "DeFi GTM Archetype Finder — DeFi GTM Playbook";
+      document.title = "DeFi GTM Archetype Finder: DeFi GTM Playbook";
       window.scrollTo(0, 0); render();
     });
     document.getElementById("share").addEventListener("click", (e) => {
