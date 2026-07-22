@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incentive Durability Calculator — DeFi GTM Playbook</title>
+<meta name="description" content="Model a DeFi incentive plan against the playbook's core test: does it unlock a loop that survives after rewards stop, or does it rent mercenary TVL?">
+<style>
+  @font-face { font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/inter-400.woff2") format("woff2"); }
+  @font-face { font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/inter-500.woff2") format("woff2"); }
+  @font-face { font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/inter-600.woff2") format("woff2"); }
+  @font-face { font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/inter-700.woff2") format("woff2"); }
+  @font-face { font-family:"Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/plexmono-400.woff2") format("woff2"); }
+  @font-face { font-family:"Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/plexmono-500.woff2") format("woff2"); }
+
+  :root {
+    --paper:#fbfaf8; --ink:#16181d; --ink-2:#3d434e; --muted:#767d8a; --faint:#a2a8b2;
+    --rule:#e4e2dc; --rule-strong:#cfccc4; --panel:#ffffff; --panel-2:#f4f2ee;
+    --accent:#1b4d3e; --accent-ink:#123a2f; --accent-wash:#eef2ef;
+    --warn:#8a5a1a; --warn-wash:#f7f0e4; --warn-rule:#e6d6b8;
+    --bad:#8a2b22; --bad-wash:#f6ebe9;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#0e0f12; --ink:#eceef2; --ink-2:#c2c7d0; --muted:#8a909c; --faint:#5f6672;
+      --rule:#24272e; --rule-strong:#333843; --panel:#16181d; --panel-2:#1b1e24;
+      --accent:#6fd8b0; --accent-ink:#8fe6c4; --accent-wash:#12241d;
+      --warn:#d9a441; --warn-wash:#241c0d; --warn-rule:#423418;
+      --bad:#e08074; --bad-wash:#2a1512;
+    }
+  }
+  :root[data-theme="light"]{--paper:#fbfaf8;--ink:#16181d;--ink-2:#3d434e;--muted:#767d8a;--faint:#a2a8b2;--rule:#e4e2dc;--rule-strong:#cfccc4;--panel:#ffffff;--panel-2:#f4f2ee;--accent:#1b4d3e;--accent-ink:#123a2f;--accent-wash:#eef2ef;--warn:#8a5a1a;--warn-wash:#f7f0e4;--warn-rule:#e6d6b8;--bad:#8a2b22;--bad-wash:#f6ebe9;}
+  :root[data-theme="dark"]{--paper:#0e0f12;--ink:#eceef2;--ink-2:#c2c7d0;--muted:#8a909c;--faint:#5f6672;--rule:#24272e;--rule-strong:#333843;--panel:#16181d;--panel-2:#1b1e24;--accent:#6fd8b0;--accent-ink:#8fe6c4;--accent-wash:#12241d;--warn:#d9a441;--warn-wash:#241c0d;--warn-rule:#423418;--bad:#e08074;--bad-wash:#2a1512;}
+
+  *{box-sizing:border-box;margin:0;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .wrap{max-width:680px;margin:0 auto;padding:0 24px 96px;}
+
+  .masthead{border-bottom:1px solid var(--rule-strong);padding:40px 0 20px;margin-bottom:8px;}
+  .kicker{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);}
+  .masthead h1{font-size:1.9rem;font-weight:700;letter-spacing:-0.025em;line-height:1.12;margin:10px 0 0;}
+  .dateline{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);margin-top:12px;}
+  .dateline a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule-strong);}
+  .dateline a:hover{color:var(--ink);}
+  .lede{color:var(--ink-2);font-size:1.0rem;line-height:1.62;margin:18px 0 0;max-width:62ch;}
+  .lede em{font-style:normal;font-weight:600;color:var(--ink);}
+
+  .factor{padding:22px 0;border-bottom:1px solid var(--rule);}
+  .factor .f-q{font-size:1.05rem;font-weight:600;letter-spacing:-0.01em;line-height:1.3;}
+  .factor .f-note{color:var(--muted);font-size:.88rem;line-height:1.5;margin-top:5px;max-width:58ch;}
+  .choices{display:flex;flex-direction:column;margin-top:14px;border-top:1px solid var(--rule);}
+  button.choice{
+    display:flex;align-items:baseline;gap:12px;text-align:left;font:inherit;color:var(--ink);
+    background:none;border:none;border-bottom:1px solid var(--rule);padding:12px 4px;cursor:pointer;width:100%;
+    transition:background .12s,padding-left .12s;
+  }
+  button.choice:hover{background:var(--panel-2);padding-left:10px;}
+  button.choice.selected{background:var(--accent-wash);}
+  button.choice .pip{font-family:var(--mono);font-size:.72rem;color:var(--faint);flex-shrink:0;width:1.2em;}
+  button.choice.selected .pip{color:var(--accent);}
+  button.choice .c-label{flex:1;}
+  button.choice .c-pts{font-family:var(--mono);font-size:.72rem;color:var(--faint);flex-shrink:0;}
+  button.choice.selected .c-pts{color:var(--accent);}
+
+  /* Result */
+  .result{margin-top:30px;}
+  .verdict-head{border-top:2px solid var(--ink);padding:16px 0 14px;}
+  .verdict-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+  .verdict-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:6px;}
+  .verdict-name{font-size:1.55rem;font-weight:700;letter-spacing:-0.02em;}
+  .verdict-name.durable{color:var(--accent);}
+  .verdict-name.mixed{color:var(--warn);}
+  .verdict-name.mercenary{color:var(--bad);}
+  .verdict-score{font-family:var(--mono);font-size:1.4rem;font-weight:500;}
+  .meter{height:3px;background:var(--rule);position:relative;margin-top:12px;}
+  .meter span{position:absolute;inset:0 auto 0 0;transition:width .4s cubic-bezier(.4,0,.2,1);}
+  .meter span.durable{background:var(--accent);}
+  .meter span.mixed{background:var(--warn);}
+  .meter span.mercenary{background:var(--bad);}
+  .meter-scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:6px;}
+
+  .section-label{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);}
+  .survives{font-size:1.0rem;line-height:1.6;color:var(--ink-2);}
+  .survives strong{color:var(--ink);font-weight:600;}
+
+  .fix{border-left:2px solid var(--accent);padding:2px 0 2px 16px;}
+  .fix .fix-what{font-size:1.0rem;line-height:1.55;color:var(--ink);}
+  .fix .fix-who{font-family:var(--mono);font-size:.78rem;color:var(--accent);margin-top:8px;}
+
+  .grounding{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+  @media (max-width:520px){.grounding{grid-template-columns:1fr;}}
+  .ground-cell{background:var(--panel);padding:14px 16px;}
+  .ground-cell .g-label{font-family:var(--mono);font-size:.64rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px;}
+  .ground-cell.good .g-label{color:var(--accent);}
+  .ground-cell.bad .g-label{color:var(--bad);}
+  .ground-cell .g-text{font-size:.9rem;line-height:1.5;color:var(--ink-2);}
+  .ground-cell a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-wash);}
+  .ground-cell a:hover{border-bottom-color:var(--accent);}
+
+  .actions{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;}
+  .actions button{font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.04em;cursor:pointer;padding:10px 18px;border:1px solid var(--rule-strong);background:var(--panel);color:var(--ink);}
+  .actions button:hover{border-color:var(--ink);}
+
+  .backrow{margin-top:30px;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;}
+  .backrow a{color:var(--muted);text-decoration:none;}
+  .backrow a:hover{color:var(--ink);}
+
+  .theme-toggle{position:fixed;top:16px;right:16px;z-index:10;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;background:var(--panel);color:var(--muted);border:1px solid var(--rule);padding:6px 10px;cursor:pointer;}
+  .theme-toggle:hover{color:var(--ink);border-color:var(--rule-strong);}
+
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);}
+  footer .disclaimer{font-family:var(--mono);font-size:.68rem;line-height:1.6;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);}
+  footer a:hover{color:var(--ink);}
+  .hidden{display:none;}
+  @media print { .theme-toggle,.actions,.choices,.backrow{display:none !important;} button.choice:not(.selected){display:none;} }
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Theme</button>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">DeFi GTM Playbook</div>
+    <h1>Incentive Durability</h1>
+    <div class="dateline"><a href="index.html">the finder</a> · <a href="compare.html">compare</a> · <a id="synthLink" href="#" target="_blank" rel="noopener">the framework</a></div>
+    <p class="lede">The playbook's single most-repeated finding: <em>incentives create value only when
+    they unlock a loop that survives after rewards stop.</em> The test is retention through utility,
+    not acquisition through novelty. Describe your incentive plan and see whether it looks like a
+    durable loop or mercenary TVL — and the one change most likely to move it.</p>
+  </header>
+
+  <main id="app"></main>
+
+  <p class="backrow"><a href="index.html">← Back to the diagnostic</a></p>
+
+  <footer>
+    <p class="disclaimer">Research for strategy purposes, not investment advice. Scoring follows the
+    incentive-quality framework in the <a id="synthLink2" href="#" target="_blank" rel="noopener">cross-protocol synthesis</a>.</p>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const synthUrl = LINKS.synthesis;
+  document.getElementById("synthLink").href = synthUrl;
+  document.getElementById("synthLink2").href = synthUrl;
+  const root = document.documentElement;
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    const cur = root.getAttribute("data-theme");
+    const next = cur === "dark" ? "light" : cur === "light" ? "dark"
+      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark");
+    root.setAttribute("data-theme", next);
+  });
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  // ── The model ────────────────────────────────────────────
+  // Five factors drawn from docs/15-synthesis.md, "Incentive architecture
+  // quality: mercenary TVL vs. durable loops." Each factor's best answer
+  // scores its full weight; weights sum to 100. The weakest-scoring factor
+  // (largest gap to its max) drives the prescriptive fix.
+  const FACTORS = [
+    {
+      id: "engine",
+      weight: 30,
+      q: "Is there a real yield or efficiency engine underneath the incentive?",
+      note: "The single strongest predictor that growth survives the end of emissions — Ethena's basis trade, Sky's T-bills, Maple's credit spreads, Morpho's rate edge.",
+      options: [
+        { label: "Yes — structural cash flow (credit spreads, T-bills, rate efficiency)", v: 30 },
+        { label: "Yes — but market-cyclical (funding rates, staking demand)", v: 18 },
+        { label: "No real engine yet — the incentive is the product for now", v: 0 },
+      ],
+      fix: "Anchor the incentive to a real economic engine before you scale it. Ethena rode a funding-rate basis trade; Sky funds its savings rate from T-bill revenue. An incentive with nothing underneath rents TVL — it can't buy it.",
+      goodEx: "ETHENA", badEx: "SPARK",
+    },
+    {
+      id: "doubt",
+      weight: 22,
+      q: "Does the incentive target a specific adoption doubt, or just simulate PMF?",
+      note: "The highest-ROI spend kills the one fear blocking adoption — exit liquidity, safety, compliance — rather than broadly buying deposits (Lido subsidized the doubt that stETH couldn't be redeemed).",
+      options: [
+        { label: "Targets a specific structural doubt (exit liquidity, safety, compliance)", v: 22 },
+        { label: "Somewhat — it rewards a useful behavior but not a named fear", v: 12 },
+        { label: "Broad emissions to whoever shows up — buying deposits", v: 0 },
+      ],
+      fix: "Point the subsidy at the one fear blocking adoption, not at deposits in general. Lido spent LDO on Curve exit liquidity — the specific doubt that stETH couldn't be redeemed — so the spend bought permanent credibility, not temporary TVL.",
+      goodEx: "LIDO", badEx: "SPARK",
+    },
+    {
+      id: "loop",
+      weight: 22,
+      q: "Is there a retention loop that outlives the campaign?",
+      note: "The test is what remains when rewards fall. Composability integrations, curator economics, or a daily-use relationship keep users after the points stop (Ethena's points rewarded the loops that outlived them).",
+      options: [
+        { label: "Yes — integrations / composability / a daily-use relationship", v: 22 },
+        { label: "Partial — some stickiness, but most TVL is reward-chasing", v: 11 },
+        { label: "No — when rewards stop, there's no reason to stay", v: 0 },
+      ],
+      fix: "Design the incentive around a loop that compounds, not a rebate that ends. Ethena's points rewarded the composability loops (Pendle, looping collateral) that kept the asset useful once the campaign closed. Reward the loop, not the deposit.",
+      goodEx: "ETHENA", badEx: "EIGEN",
+    },
+    {
+      id: "funding",
+      weight: 16,
+      q: "How is the reward funded?",
+      note: "Revenue-backed incentives outlast emission- and expectation-backed ones. Maple committed ~25% of protocol revenue to buybacks and retired its points program.",
+      options: [
+        { label: "Revenue-funded (buybacks, revenue-backed yield)", v: 16 },
+        { label: "Token emissions from treasury, with a taper plan", v: 8 },
+        { label: "Emissions / points with no revenue behind them yet", v: 0 },
+      ],
+      fix: "Move from emissions toward revenue-funded rewards as soon as you have revenue. Maple retired its Drips points program and routed ~25% of protocol revenue into SYRUP buybacks — that turns tokenomics from renting TVL into compounding it.",
+      goodEx: "MAPLE", badEx: "EIGEN",
+    },
+    {
+      id: "selection",
+      weight: 10,
+      q: "Does the reward select for real users or bribe prospective capital?",
+      note: "Retroactive rewards for past behavior select real users and create goodwill; prospective bribes attract mercenaries (Uniswap's airdrop rewarded people who had already used the protocol).",
+      options: [
+        { label: "Retroactive — rewards past, demonstrated usage", v: 10 },
+        { label: "Mixed — some retroactive, some prospective", v: 5 },
+        { label: "Prospective — pays capital to show up now", v: 0 },
+      ],
+      fix: "Reward behavior that already happened, not capital you hope will arrive. Uniswap's retroactive UNI airdrop went to people who had already used the protocol — it selected real users and built goodwill, where prospective bribes select mercenaries.",
+      goodEx: "UNI", badEx: "SPARK",
+    },
+  ];
+
+  const app = document.getElementById("app");
+  let picks = {}; // factor id -> chosen option index
+
+  function render() {
+    const factorsHtml = FACTORS.map((f, fi) => {
+      const chosen = picks[f.id];
+      return `
+        <div class="factor" data-fid="${f.id}">
+          <div class="f-q">${fi + 1}. ${esc(f.q)}</div>
+          <div class="f-note">${esc(f.note)}</div>
+          <div class="choices">
+            ${f.options.map((o, oi) => `
+              <button class="choice${chosen === oi ? " selected" : ""}" data-fid="${f.id}" data-oi="${oi}">
+                <span class="pip">${chosen === oi ? "●" : "○"}</span>
+                <span class="c-label">${esc(o.label)}</span>
+                <span class="c-pts">+${o.v}</span>
+              </button>`).join("")}
+          </div>
+        </div>`;
+    }).join("");
+
+    app.innerHTML = factorsHtml + `<div id="resultSlot"></div>`;
+    app.querySelectorAll("button.choice").forEach((b) => {
+      b.addEventListener("click", () => {
+        picks[b.dataset.fid] = +b.dataset.oi;
+        renderResult();
+        // keep the just-answered factor's selection visible without a full jump
+        b.closest(".factor").querySelectorAll(".choice").forEach((c) => {
+          const sel = +c.dataset.oi === picks[c.dataset.fid];
+          c.classList.toggle("selected", sel);
+          c.querySelector(".pip").textContent = sel ? "●" : "○";
+        });
+      });
+    });
+    renderResult();
+  }
+
+  function renderResult() {
+    const slot = document.getElementById("resultSlot");
+    const answered = FACTORS.filter((f) => picks[f.id] !== undefined);
+    if (answered.length < FACTORS.length) {
+      slot.innerHTML = `<p style="color:var(--muted);font-size:.92rem;margin-top:22px">Answer all ${FACTORS.length} factors to score the plan. (${answered.length}/${FACTORS.length})</p>`;
+      return;
+    }
+
+    let score = 0;
+    let worst = null, worstGap = -1;
+    for (const f of FACTORS) {
+      const v = f.options[picks[f.id]].v;
+      score += v;
+      const gap = f.weight - v;                 // how far this factor is from its max
+      if (gap > worstGap) { worstGap = gap; worst = f; }
+    }
+
+    let band, bandName, survives;
+    if (score >= 70) {
+      band = "durable"; bandName = "Durable loop";
+      survives = "When rewards taper, <strong>most of this holds</strong>. You've built an incentive that unlocks a loop rather than one that rents capital — the retention is in the utility, not the reward.";
+    } else if (score >= 40) {
+      band = "mixed"; bandName = "Mixed";
+      survives = "When rewards taper, <strong>some of this holds and some walks</strong>. There's a real seed here, but enough of your TVL is reward-chasing that a campaign wind-down would show up as a visible drawdown. Close the weakest factor before you scale spend.";
+    } else {
+      band = "mercenary"; bandName = "Mercenary TVL";
+      survives = "When rewards stop, <strong>most of this leaves</strong>. This looks like the pattern that gave EigenLayer a ~75% drawdown from peak and Spark its campaign-cycle swings — the subsidy is simulating product-market fit rather than funding a loop that survives it.";
+    }
+
+    const good = ARCHETYPES[worst.goodEx], bad = ARCHETYPES[worst.badEx];
+
+    // When there's a real gap, show the prescriptive fix + the two versions of
+    // that move. When the plan already maxes every factor, there's nothing to fix.
+    const fixBlock = worstGap > 0
+      ? `<div class="section-label">Highest-leverage fix</div>
+         <div class="fix">
+           <p class="fix-what">${esc(worst.fix)}</p>
+           <p class="fix-who">Weakest factor: ${esc(worst.q.replace(/\?$/, ""))}</p>
+         </div>
+
+         <div class="section-label">The two versions of this move</div>
+         <div class="grounding">
+           <div class="ground-cell good">
+             <span class="g-label">Durable — ${esc(good.exemplar)}</span>
+             <span class="g-text">${esc(good.thesis)} <a href="${good.file}" target="_blank" rel="noopener">Read →</a></span>
+           </div>
+           <div class="ground-cell bad">
+             <span class="g-label">Mercenary — ${esc(bad.exemplar)}</span>
+             <span class="g-text">${esc(bad.thesis)} <a href="${bad.file}" target="_blank" rel="noopener">Read →</a></span>
+           </div>
+         </div>`
+      : `<div class="section-label">Nothing to fix</div>
+         <p class="survives">Every factor maxes out — this is the shape the playbook describes as a durable loop. The remaining risk is execution, not design: the plan is only as good as your ability to honor it. Re-run this as the incentive evolves.</p>`;
+
+    slot.innerHTML = `
+      <div class="result">
+        <div class="verdict-head">
+          <div class="verdict-tag">Incentive durability</div>
+          <div class="verdict-row">
+            <span class="verdict-name ${band}">${bandName}</span>
+            <span class="verdict-score">${score}<span style="color:var(--faint);font-size:1rem"> / 100</span></span>
+          </div>
+          <div class="meter"><span class="${band}" style="width:${score}%"></span></div>
+          <div class="meter-scale"><span>Mercenary</span><span>Mixed</span><span>Durable</span></div>
+        </div>
+
+        <div class="section-label">What survives when rewards stop</div>
+        <p class="survives">${survives}</p>
+
+        ${fixBlock}
+
+        <div class="actions">
+          <button id="resetBtn">Reset</button>
+          <button id="printBtn">Print / save PDF</button>
+        </div>
+      </div>`;
+
+    document.getElementById("resetBtn").addEventListener("click", () => { picks = {}; render(); window.scrollTo(0, 0); });
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+    // Persist answers in URL for sharing (one digit per factor).
+    location.hash = FACTORS.map((f) => picks[f.id]).join("");
+  }
+
+  // Restore from hash
+  const hash = location.hash.slice(1);
+  if (hash && new RegExp(`^\\d{${FACTORS.length}}$`).test(hash)) {
+    const vals = hash.split("").map(Number);
+    if (vals.every((v, i) => v < FACTORS[i].options.length)) {
+      FACTORS.forEach((f, i) => { picks[f.id] = vals[i]; });
+    }
+  }
+  render();
+})();
+</script>
+</body>
+</html>

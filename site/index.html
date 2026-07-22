@@ -310,6 +310,7 @@
     transparent and traces to the case studies it was derived from.</p>
     <p class="links-row">
       <a href="compare.html">Compare archetypes</a> &nbsp;·&nbsp;
+      <a href="calculator.html">Incentive durability</a> &nbsp;·&nbsp;
       <a id="specLink" href="#" target="_blank" rel="noopener">Scoring methodology</a> &nbsp;·&nbsp;
       <a id="footerRepo" href="#" target="_blank" rel="noopener">Source on GitHub</a>
     </p>
@@ -521,6 +522,11 @@
     if (flags.length) {
       html += `<div class="flags-head">Watch-outs from your answers</div>`;
       html += flags.map((f) => `<div class="flag"><strong>${esc(f.title)}</strong><p>${esc(f.text)}</p></div>`).join("");
+      // Flags all point at incentive/durability risk — route to the calculator.
+      const hasMercenary = flags.some((f) => f.title === "Mercenary TVL risk");
+      if (hasMercenary) {
+        html += `<p class="steps-more links" style="margin-top:14px">Pressure-test your incentive plan against the durable-loop framework → <a href="calculator.html">Incentive Durability calculator</a></p>`;
+      }
     }
 
     html += `
