@@ -309,6 +309,7 @@
     <p class="disclaimer">Research for strategy purposes, not investment advice. Every match is
     transparent and traces to the case studies it was derived from.</p>
     <p class="links-row">
+      <a href="compare.html">Compare archetypes</a> &nbsp;·&nbsp;
       <a id="specLink" href="#" target="_blank" rel="noopener">Scoring methodology</a> &nbsp;·&nbsp;
       <a id="footerRepo" href="#" target="_blank" rel="noopener">Source on GitHub</a>
     </p>
@@ -433,7 +434,7 @@
     const runnerUp = kind === "primary" && r.runnerUpId ? ARCHETYPES[r.runnerUpId] : null;
     const runnerUpBlock = runnerUp
       ? `<div class="section-label">Why not ${esc(runnerUp.exemplar)}</div>
-         <p class="notmatch">You scored ${r.totals[r.runnerUpId]} points on the ${esc(runnerUp.name)} pattern — not enough to place, but worth reading if this ${isRecommender ? "recommendation" : "match"} doesn't feel right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>.</p>`
+         <p class="notmatch">You scored ${r.totals[r.runnerUpId]} points on the ${esc(runnerUp.name)} pattern — not enough to place, but worth reading if this ${isRecommender ? "recommendation" : "match"} doesn't feel right: <a href="${runnerUp.file}" target="_blank" rel="noopener">${esc(runnerUp.exemplar)} case study</a>, or <a href="compare.html#${id}-${r.runnerUpId}">see the two side by side</a>.</p>`
       : "";
 
     const next90 = a.next90 && !isRecommender
