@@ -4,7 +4,7 @@
 
 This project looks at how the most successful DeFi protocols went to market and grew, and distills a repeatable playbook from the patterns. It is open source: corrections, updates as protocols evolve, and new case studies are welcome via PR — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-**🧭 Try the [interactive GTM Archetype Finder](https://firedintern.github.io/DeFi-GTM-Playbook/)** — answer 8 questions about your protocol and get the closest archetype from the case studies, the trap that comes with it, and your stage-appropriate playbook steps. Scoring is fully transparent: see the [matching spec](site/matching-logic.md).
+**🧭 Try the [interactive GTM Archetype Finder](https://firedintern.github.io/DeFi-GTM-Playbook/)** — answer 10 questions about your protocol and get the closest archetype from the case studies, the trap that comes with it, and your stage-appropriate playbook steps. Scoring is fully transparent: see the [matching spec](site/matching-logic.md).
 
 ## Contents
 
