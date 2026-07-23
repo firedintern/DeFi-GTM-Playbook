@@ -15,7 +15,7 @@ Maple launched in 2021 as an onchain **institutional capital market**: undercoll
 
 ## Crisis and rebuild (a GTM lesson in itself)
 
-The 2022 bear market exposed the model. Orthogonal Trading's $36M default (post-FTX) and related credit losses hit lenders and nearly killed the protocol (verified; widely reported). The precise GTM reading: **underwriting failure is a GTM failure**. Maple's entire growth loop ran through pool delegates' credibility. Once that broke, the acquisition engine collapsed with it, not just the balance sheet.
+The 2022 bear market exposed the model. Orthogonal Trading's $36M default (post-FTX) and related credit losses hit lenders and nearly killed the protocol (verified; widely reported). The precise GTM reading: **underwriting failure is a GTM failure**. Maple's entire growth loop ran through pool delegates' credibility. Once that broke, the acquisition engine collapsed alongside the balance sheet.
 
 The response was a full reset: Maple 2.0 re-architected around secured, overcollateralized lending, tighter delegate standards, cash-management pools (T-bill yield onchain, 2023), and a compliance-forward institutional posture. Trust had to be re-earned product-first, and institutional demand returned only once the underwriting and collateral model matched the new risk regime.
 
@@ -31,7 +31,7 @@ The rebuild shows up in the numbers, but label them carefully. The $4.1–4.6B f
 
 ## Distribution channels
 
-Direct institutional BD (borrower and lender relationships; the closest thing to a classic sales motion in this report). **Pool delegates as GTM nodes, not just underwriters**: each delegate brings its own borrower network and LP base, so Maple grows through delegates' franchises rather than only through the core team. And syrupUSDC/syrupUSDT integrations across DeFi (Pendle markets, money-market collateral listings) for retail reach.
+Direct institutional BD (borrower and lender relationships; the closest thing to a classic sales motion in this report). **Pool delegates as GTM nodes, beyond underwriting**: each delegate brings its own borrower network and LP base, so Maple grows through delegates' franchises rather than only through the core team. And syrupUSDC/syrupUSDT integrations across DeFi (Pendle markets, money-market collateral listings) for retail reach.
 
 ## GTM lessons (inference)
 

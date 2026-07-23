@@ -32,7 +32,7 @@ Three types of statement appear in this document, and they carry different confi
 2. **Time-sensitive metrics**: TVL, supply, revenue, user counts. Accurate at the July 2026 DeFiLlama snapshot or at the cited report date, and will drift. Treat all figures as point-in-time.
 3. **Analytical inference**: interpretation of why a tactic worked. These sit in "GTM lessons" subsections and in the synthesis, and should be read as argued judgment, not fact. Figures that could only be sourced to secondary summaries are marked "reported."
 
-One note on terms. DeFi GTM rarely looks like SaaS GTM. There is usually no sales team at launch. GTM runs through token incentive design, liquidity bootstrapping, integrations (composability as distribution), narrative and category creation, and increasingly B2B2C embedding into exchanges, wallets, and fintech apps. A useful framing: **DeFi GTM is the system a protocol uses to acquire three scarce resources at the same time: users, liquidity, and credibility.**
+DeFi GTM rarely looks like SaaS GTM. There is usually no sales team at launch. GTM runs through token incentive design, liquidity bootstrapping, integrations (composability as distribution), narrative and category creation, and increasingly B2B2C embedding into exchanges, wallets, and fintech apps. A useful framing: **DeFi GTM is the system a protocol uses to acquire three scarce resources at the same time: users, liquidity, and credibility.**
 
 ### Limitations and scope
 

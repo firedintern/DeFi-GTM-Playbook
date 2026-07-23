@@ -1,6 +1,6 @@
 # Market Snapshot (DeFiLlama, July 2026)
 
-**Global context.** Aggregate DeFi TVL sits in the ~$130–180B range depending on which components are included (staking, liquid staking, double counting), and headline totals vary with those settings. Two things matter for this report. First, TVL and revenue are heavily concentrated: a small set of protocols and categories captures most of the economics. Second, the categories capturing sustainable fee revenue are lending, liquid staking, and stablecoin/RWA rails rather than long-tail yield farms. That is exactly where this thirteen-protocol set sits. These protocols are not just big; they sit where the economics actually concentrate (reported: Yellow Research, iBuidl 2026 analyses).
+**Global context.** Aggregate DeFi TVL sits in the ~$130–180B range depending on which components are included (staking, liquid staking, double counting), and headline totals vary with those settings. Two things matter for this report. First, TVL and revenue are heavily concentrated: a small set of protocols and categories captures most of the economics. Second, the categories capturing sustainable fee revenue are lending, liquid staking, and stablecoin/RWA rails rather than long-tail yield farms. That is exactly where this thirteen-protocol set sits: at the intersection of scale and where the economics concentrate (reported: Yellow Research, iBuidl 2026 analyses).
 
 | Protocol | Category | TVL | Primary GTM motion | Signature tactic |
 |---|---|---|---|---|

@@ -37,7 +37,7 @@ const ARCHETYPES = {
     related: ["SPARK", "CURVE"],
     next90: {
       prove: "Deep, credibly redeemable exit liquidity for your receipt token",
-      delay: "Chasing new integrations before the first one is truly liquid",
+      delay: "Chasing new integrations before the first one is credibly liquid",
       watch: "% of your receipt token accepted as collateral elsewhere",
       avoid: "Subsidizing yield instead of subsidizing liquidity",
     },
@@ -72,9 +72,9 @@ const ARCHETYPES = {
     file: CS + "sky-maker.md",
     related: ["ETHENA", "AAVE"],
     next90: {
-      prove: "Real reuse of your stable unit as collateral elsewhere, not just supply growth",
+      prove: "Real reuse of your stable unit as collateral elsewhere, beyond supply growth",
       delay: "Any rebrand or migration before habit is fully established",
-      watch: "Combined old+new asset supply, not just the new asset in isolation",
+      watch: "Combined old+new asset supply, not the new asset alone",
       avoid: "Treating a token migration as a growth event instead of a retention risk",
     },
   },
@@ -182,7 +182,7 @@ const ARCHETYPES = {
     next90: {
       prove: "A second sales/distribution channel beyond your first institutional partner",
       delay: "Assuming compliance alone will generate inbound demand",
-      watch: "Enterprise pipeline and sales cycle length, not just AUM",
+      watch: "Enterprise pipeline and sales cycle length, not AUM alone",
       avoid: "Calling a licensed wrapper \"GTM\" without a salesforce behind it",
     },
   },
@@ -218,7 +218,7 @@ const ARCHETYPES = {
     next90: {
       prove: "A second team building on your primitive without your help",
       delay: "Turning on fees or extraction before default status is unquestioned",
-      watch: "External developers/integrations building on you, not just volume",
+      watch: "External developers/integrations building on you, not volume alone",
       avoid: "Monetizing before the free-growth flywheel has fully compounded",
     },
   },
@@ -234,7 +234,7 @@ const ARCHETYPES = {
     file: CS + "curve.md",
     related: ["LIDO", "MORPHO"],
     next90: {
-      prove: "A real-revenue engine (fees, not just emissions) live before the emissions cycle turns",
+      prove: "A real-revenue engine (fees, beyond emissions) live before the emissions cycle turns",
       delay: "Assuming votes/bribes alone are a durable moat",
       watch: "Share of your emissions value directed by third parties vs. your own treasury",
       avoid: "Treating an aggregator that captures your incentive market as a partner rather than a competitor for the margin",
@@ -456,7 +456,7 @@ const FLAGS = [
     title: "Underwriting is your GTM",
     modes: ["diagnostic", "recommender"],
     test: (a) => a[1] === 5,
-    text: "Credit protocols sell underwriting. One default can kill the growth loop, not just the balance sheet. Maple's 2022 Orthogonal default nearly killed the protocol. Risk management is the growth strategy.",
+    text: "Credit protocols sell underwriting. One default can kill the growth loop alongside the balance sheet. Maple's 2022 Orthogonal default nearly killed the protocol. Risk management is the growth strategy.",
   },
   {
     title: "Compliance is coming either way",

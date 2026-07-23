@@ -42,7 +42,7 @@ The GTM reading: Curve outsourced its own BD twice. First to token buyers (the C
 
 ## Distribution channels
 
-Almost purely DeFi-native: pool integrations (every stablecoin or LST launch needed a Curve pool to be credible), aggregator routing, and, uniquely, the bribe market as a self-service distribution channel for third parties. Curve's sales team was the gauge ballot: outside protocols did the selling, paid the incentives, and competed for the outcome.
+Almost entirely DeFi-native: pool integrations (every stablecoin or LST launch needed a Curve pool to be credible), aggregator routing, and, uniquely, the bribe market as a self-service distribution channel for third parties. Curve's sales team was the gauge ballot: outside protocols did the selling, paid the incentives, and competed for the outcome.
 
 ## Current phase & honest assessment (time-sensitive)
 

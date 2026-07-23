@@ -38,7 +38,7 @@ Ethena growth loop: native yield, points, CEX rails
 
 **Centralized exchanges are the moat.** Bybit and Binance listed USDe as margin collateral and spot pairs. The venues that host Ethena's hedges also distribute its product. The Binance embedding alone (reward-bearing collateral, Earn products) exposes USDe to a reported 280M+ registered users; USDe is listed as collateral or spot pairs across most major exchanges (a widely repeated ~60% CEX-market figure could not be independently corroborated). Chain expansion follows leverage demand: Hyperliquid, and Solana venues (Jupiter, Kamino).
 
-TradFi wrappers extend the ladder: iUSDe for fixed-income portfolios, USDtb built with BlackRock's BUIDL, and **Converge**. Converge deserves precision: it is not just another chain expansion. It is an RWA-native, EVM-compatible L1 co-developed with Securitize, built to embed Ethena's synthetic dollar and T-bill wrapper into a tokenized-assets stack from day one. That makes it an institutional GTM hedge against funding-rate cyclicality, not a side project.
+TradFi wrappers extend the ladder: iUSDe for fixed-income portfolios, USDtb built with BlackRock's BUIDL, and **Converge**: an RWA-native, EVM-compatible L1 co-developed with Securitize, built to embed Ethena's synthetic dollar and T-bill wrapper into a tokenized-assets stack from day one, not a general-purpose chain expansion. That makes it an institutional GTM hedge against funding-rate cyclicality.
 
 ## GTM lessons (inference)
 

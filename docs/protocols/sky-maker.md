@@ -25,7 +25,7 @@ Historically: every DeFi venue that accepted DAI. In the Sky era: the Sky.money 
 
 ## Current phase & honest assessment
 
-Results are mixed (time-sensitive). The transition was slow at first: combined DAI+USDS supply was roughly flat through mid-2025 and DAI demand briefly resurged, showing how slowly preference migrates even when tokens do. Momentum then shifted: USDS grew strongly (~86% YTD by the 2026 reporting) while DAI declined as the migration completed in April 2026, the largest stablecoin conversion in crypto history. On revenue, be precise about the metric: trailing-12-month total protocol revenue is ~$240M, but the holder-specific share (actually distributed to token holders) is ~$85M, roughly 2.8x lower. Sky remains top-5 ($6.6B TVL), but Endgame's complexity is widely cited as a drag on adoption (Blockworks).
+Results are mixed (time-sensitive). The transition was slow at first: combined DAI+USDS supply was roughly flat through mid-2025 and DAI demand briefly resurged, showing how slowly preference migrates even when tokens do. Momentum then shifted: USDS grew strongly (~86% YTD by the 2026 reporting) while DAI declined as the migration completed in April 2026, the largest stablecoin conversion in crypto history. On revenue, be precise about the metric: trailing-12-month total protocol revenue is ~$240M, but the share paid out to token holders is ~$85M, roughly 2.8x lower. Sky remains top-5 ($6.6B TVL), but Endgame's complexity is widely cited as a drag on adoption (Blockworks).
 
 ## GTM lessons (inference)
 

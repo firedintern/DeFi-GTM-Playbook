@@ -1,13 +1,13 @@
 # Appendix B: Key Mechanics & Terms (GTM Grammar)
 
-This is not a full DeFi glossary. It covers only the mechanics that drive the growth loops in the case studies, and every entry says why the mechanic matters for GTM, not just what it is. Non-DeFi-native readers should skim this before the [protocol case studies](01-market-snapshot.md).
+This is not a full DeFi glossary. It covers only the mechanics that drive the growth loops in the case studies, and every entry says why the mechanic matters for GTM, beyond a bare definition. Non-DeFi-native readers should skim this before the [protocol case studies](01-market-snapshot.md).
 
 ## B.1 Liquidity, trading, and composability
 
 - **Liquidity pool (LP) and LP token.** A smart contract holding assets for trading; depositors receive LP tokens representing their share. GTM angle: LP tokens are the handle for incentives (emissions, points) and for composability (LP positions reused as collateral or strategy inputs).
 - **Automated Market Maker (AMM).** A DEX that prices trades with a formula instead of an order book. Matters because permissionless pool creation ([Uniswap](protocols/uniswap.md)) turns every token launch into a distribution event for the DEX.
 - **Slippage and impermanent loss.** Slippage: the gap between expected and executed price. Impermanent loss: LP underperformance when prices move away from the pool's initial ratio. Both degrade pool attractiveness, which is why protocols subsidize liquidity ([Lido](protocols/lido.md) on [Curve](protocols/curve.md)) or engineer efficiency (Uniswap v3 concentrated liquidity).
-- **Aggregator / router.** Tools (1inch, UniswapX) that route orders across venues for best execution. GTM angle: routers are distribution channels; being integrated into a major aggregator means your liquidity gets used, not just parked.
+- **Aggregator / router.** Tools (1inch, UniswapX) that route orders across venues for best execution. GTM angle: routers are distribution channels; being integrated into a major aggregator means your liquidity gets used, not parked.
 - **Composability.** Plugging protocols and positions into each other like Lego. The core GTM superpower in this report: integrations are how stETH, USDe, and syrupUSDC became default building blocks.
 
 ## B.2 Credit, leverage, and looping
@@ -39,7 +39,7 @@ This is not a full DeFi glossary. It covers only the mechanics that drive the gr
 ## B.6 Governance, tokenomics, and bribes
 
 - **Governance token.** Voting rights over protocol parameters and treasury. Distribution of it (LM, points, airdrops) is both an incentive system and an alignment mechanism.
-- **veTokenomics, gauges, and bribes.** Vote-escrowed systems ([Curve](protocols/curve.md), Balancer): lock tokens for boosted voting power; gauges route emissions where votes direct them; bribes are side payments to voters. GTM angle: this is a market for distribution. Protocols without big treasuries can rent emission flows in established ecosystems, but it tips into purely mercenary GTM if not tied to lasting utility. The full case study is [Curve](protocols/curve.md) (including the CRV/CVX layer); note the model is in decline industry-wide as of 2026 (veBAL ended after Balancer's Nov 2025 exploit; Pendle moved to lock-free sPENDLE in Jan 2026; see the [synthesis](15-synthesis.md#archetypes-not-fully-covered-here)).
+- **veTokenomics, gauges, and bribes.** Vote-escrowed systems ([Curve](protocols/curve.md), Balancer): lock tokens for boosted voting power; gauges route emissions where votes direct them; bribes are side payments to voters. GTM angle: this is a market for distribution. Protocols without big treasuries can rent emission flows in established ecosystems, but it tips into mercenary GTM if not tied to lasting utility. The full case study is [Curve](protocols/curve.md) (including the CRV/CVX layer); note the model is in decline industry-wide as of 2026 (veBAL ended after Balancer's Nov 2025 exploit; Pendle moved to lock-free sPENDLE in Jan 2026; see the [synthesis](15-synthesis.md#archetypes-not-fully-covered-here)).
 - **Buyback-and-burn / revenue buybacks.** Using protocol revenue to repurchase (and sometimes burn) the token. When real revenue funds it ([Maple](protocols/maple-finance.md)'s SYRUP program), the token becomes a credible claim on protocol economics, turning tokenomics into retention.
 
 ## B.7 Ecosystem and GTM slang
