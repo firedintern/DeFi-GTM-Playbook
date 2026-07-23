@@ -2,7 +2,7 @@
 
 ## The evolution of the incentive stack
 
-Three eras are visible across these twelve stories.
+Three eras are visible across these thirteen stories.
 
 - **Era 1, liquidity mining (2020–21)**: Compound-style emissions, adopted by Aave and countered by Uniswap's retroactive airdrop. Effective but mercenary.
 - **Era 2, points and seasons (2023–25)**: Ethena, EigenLayer, ether.fi, Spark, and Maple's Syrup ran pre-token point campaigns: deferred, off-balance-sheet, expectation-priced incentives tuned toward high-value behaviors before committing token supply.
@@ -14,7 +14,7 @@ The dividing line across every case: **incentives create value only when they un
 
 High-quality examples: [Lido](protocols/lido.md)'s Curve subsidies (bought credible liquidity, which integrations then made permanent); [Uniswap](protocols/uniswap.md)'s airdrop (rewarded past behavior, so it selected real users); [Morpho](protocols/morpho.md)'s Merkl campaigns (seed one market, then let curator economics sustain it); [Ethena](protocols/ethena.md)'s points (rewarded the composability loops that outlived the campaign); [Maple](protocols/maple-finance.md)'s move to allocate ~25% of protocol revenue to SYRUP buybacks and retire Drips (incentives shift from renting TVL to compounding it).
 
-Low-quality, from the same set: [Spark](protocols/spark.md)'s TVL swings with campaign cycles; [EigenLayer](protocols/eigencloud.md)'s TVL fell roughly 75% from peak once points-era expectations cleared; [Sky](protocols/sky-maker.md)'s migration bonuses moved tokens faster than preference. Same instrument, opposite outcomes. The difference is whether the subsidy targets a structural doubt or just simulates product-market fit.
+Low-quality, from the same set: [Spark](protocols/spark.md)'s TVL swings with campaign cycles; [EigenLayer](protocols/eigencloud.md)'s TVL fell roughly 75% from peak once points-era expectations cleared; [Sky](protocols/sky-maker.md)'s migration bonuses moved tokens faster than preference; [Curve](protocols/curve.md)'s ~95% drawdown from its January 2022 peak, the deepest in this set, as emissions-priced liquidity lost to revenue-backed and embedded models. Same instrument, opposite outcomes. The difference is whether the subsidy targets a structural doubt or just simulates product-market fit.
 
 ## GTM archetype map
 
@@ -32,6 +32,7 @@ Low-quality, from the same set: [Spark](protocols/spark.md)'s TVL swings with ca
 | [Ondo](protocols/ondo-finance.md) | Tokenized treasuries | Compliance-first institutional | Custodians, exchanges, 14 chains | Minimal; product yield |
 | [ether.fi](protocols/etherfi.md) | LRT with key control | Narrative surfing + points | Points economy → consumer fintech | Stacked/seasonal points |
 | [Uniswap](protocols/uniswap.md) | Permissionless AMM | Developer platform | Aggregators, API, hooks, own chain/L2 | One retroactive airdrop; grants |
+| [Curve](protocols/curve.md) | Stable-asset AMM | Incentive marketplace (ve) | Pool integrations; bribe market | Gauge-directed emissions |
 
 ## Recurring strategic patterns
 
@@ -44,6 +45,7 @@ Low-quality, from the same set: [Spark](protocols/spark.md)'s TVL swings with ca
 - **Institutionalization is a distribution upgrade, not a separate category.** In most cases the product barely changes; the access path does. Custody workflows (Lido–Anchorage), permissioned wrappers (Aave Horizon, Ethena iUSDe), compliance-native design (Ondo, Maple). Custody, governance controls, and reporting standards are the new distribution rails.
 - **Trust is a growth asset, and decentralization is part of it.** Surviving cycles without a major exploit compounds into distribution power (Aave, Uniswap, Maker). Underwriting failure is the converse proof (Maple 2022). Proactive decentralization (Lido DVT/CSM, dual governance) defuses the concentration critiques that cap institutional adoption.
 - **Escape velocity requires a second act.** Uniswap to Unichain/hooks, ether.fi to neobanking, EigenLayer to cloud, Aave to consumer app plus stablecoin, Maple to retail Syrup. Category leadership decays; winners re-platform from strength.
+- **Sell the emissions decision, and expect an aggregator to rent it back to you.** Curve's gauge votes turned "where do incentives go" into a market: customers became CRV/veCRV buyers, but Convex then captured the interface to that market itself. Designing a token your customers must accumulate outsources BD; it does not guarantee you keep the margin.
 
 ## Common GTM failure modes (anti-playbook)
 
@@ -61,7 +63,7 @@ This report is TVL-anchored, so several GTM archetypes fall outside the case-stu
 - **Router/aggregator GTM** (1inch, LiFi, bridge aggregators): selling best execution and integrating everywhere. Little TVL by design; the GTM variable is routing share and partnership depth.
 - **TradFi-brand-led tokenization** (Securitize): excluded from the case-study set (see [Appendix A](appendix-a-methodology.md)), but worth contrast with [Ondo](protocols/ondo-finance.md). Securitize is the #1 RWA sub-protocol by TVL (~$3.7B, ahead of any single Ondo product line), and its GTM mechanic is the inverse of Ondo's: BlackRock's existing brand and distribution do the customer acquisition, with Securitize as the rails. Ondo builds crypto-native distribution toward institutions; Securitize rides institutional distribution into crypto.
 - **AI-agent distribution** (2026, emerging): PancakeSwap's Agent Studio, Bancor/Carbon's MCP server, and Injective's iAgent SDK target agent-to-agent rather than human-facing distribution: making a protocol easy for autonomous agents to discover and transact with. Too early to score, but it is a genuinely new channel that none of the twelve human-GTM case studies capture.
-- **veTokenomics status check**: not covered in the case studies, but note the 2026 development: Balancer's veBAL effectively ended after the November 2025 exploit-driven shutdown, and Pendle replaced vePENDLE with a lock-free sPENDLE model in January 2026. The rigid multi-year-lock design is being displaced industry-wide; treat ve-style locks as a declining GTM pattern, not a current default.
+- **veTokenomics status check**: the model itself is covered in depth via the [Curve case study](protocols/curve.md), including the CRV/CVX meta-layer. Note the 2026 development beyond Curve: Balancer's veBAL effectively ended after the November 2025 exploit-driven shutdown, and Pendle replaced vePENDLE with a lock-free sPENDLE model in January 2026. The rigid multi-year-lock design is being displaced industry-wide; treat ve-style locks as a declining GTM pattern, not a current default.
 
 ## What separates winners from the rest
 

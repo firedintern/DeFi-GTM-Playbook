@@ -1,15 +1,21 @@
 # DeFi GTM Playbook
 
-**GTM & Growth Strategies of the Leading DeFi Protocols**: twelve protocol case studies, a cross-protocol synthesis, and a condensed playbook for builders. Fact-checked edition (v9), July 2026.
+**GTM & Growth Strategies of the Leading DeFi Protocols**: thirteen protocol case studies, a cross-protocol synthesis, and a condensed playbook for builders. Fact-checked edition (v11), July 2026.
 
 This project looks at how the most successful DeFi protocols went to market and grew, and distills a repeatable playbook from the patterns. It is open source: corrections, updates as protocols evolve, and new case studies are welcome via PR; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-**🧭 Try the [interactive GTM Archetype Finder](https://firedintern.github.io/DeFi-GTM-Playbook/)**: answer 10 questions about your protocol and get the closest archetype from the case studies, the trap that comes with it, and your stage-appropriate playbook steps. Scoring is fully transparent: see the [matching spec](site/matching-logic.md).
+**🧭 Try the interactive tools** built on this research, live at [firedintern.github.io/DeFi-GTM-Playbook](https://firedintern.github.io/DeFi-GTM-Playbook/):
+
+- **[Archetype Finder](https://firedintern.github.io/DeFi-GTM-Playbook/)**: answer 10 questions and get the closest GTM archetype from the case studies, the trap that comes with it, your stage-appropriate playbook steps, and a live DeFiLlama benchmark showing where that pattern sits today. Pre-idea founders get a grounded recommendation instead of a diagnosis. Scoring is fully transparent: see the [matching spec](site/matching-logic.md).
+- **[Compare Archetypes](https://firedintern.github.io/DeFi-GTM-Playbook/compare.html)**: put any two archetypes side by side (wedge, channels, incentive style, the trap each carries) to see the least-obvious distinctions, like Aave vs. Morpho or Maple vs. Ondo.
+- **[Incentive Durability Calculator](https://firedintern.github.io/DeFi-GTM-Playbook/calculator.html)**: model an incentive plan against the playbook's core test, whether it unlocks a loop that survives after rewards stop, or rents mercenary TVL, and get the single highest-leverage fix.
+
+All three are static, self-contained pages (no tracking, no external calls beyond the optional live DeFiLlama lookup) that read directly from the case studies below.
 
 ## Contents
 
-- **[Market snapshot](docs/01-market-snapshot.md)**: the twelve-protocol set, TVL, and primary GTM motion at a glance.
-- **Case studies** (in `docs/protocols/`): [Aave](docs/protocols/aave.md), [Lido](docs/protocols/lido.md), [Morpho](docs/protocols/morpho.md), [Sky (MakerDAO)](docs/protocols/sky-maker.md), [Spark](docs/protocols/spark.md), [EigenCloud](docs/protocols/eigencloud.md), [Ethena](docs/protocols/ethena.md), [Maple Finance](docs/protocols/maple-finance.md), [JustLend](docs/protocols/justlend.md), [Ondo Finance](docs/protocols/ondo-finance.md), [ether.fi](docs/protocols/etherfi.md), [Uniswap](docs/protocols/uniswap.md).
+- **[Market snapshot](docs/01-market-snapshot.md)**: the thirteen-protocol set, TVL, and primary GTM motion at a glance.
+- **Case studies** (in `docs/protocols/`): [Aave](docs/protocols/aave.md), [Lido](docs/protocols/lido.md), [Morpho](docs/protocols/morpho.md), [Sky (MakerDAO)](docs/protocols/sky-maker.md), [Spark](docs/protocols/spark.md), [EigenCloud](docs/protocols/eigencloud.md), [Ethena](docs/protocols/ethena.md), [Maple Finance](docs/protocols/maple-finance.md), [JustLend](docs/protocols/justlend.md), [Ondo Finance](docs/protocols/ondo-finance.md), [ether.fi](docs/protocols/etherfi.md), [Uniswap](docs/protocols/uniswap.md), [Curve](docs/protocols/curve.md).
 - **[Cross-protocol synthesis](docs/15-synthesis.md)**: the recurring patterns, incentive-architecture quality test, GTM archetype map, and common failure modes.
 - **[Condensed playbook](docs/16-playbook.md)**: the distilled sequence for a new DeFi protocol's GTM.
 - **[Builder's guide](docs/17-builders-guide.md)**: maps common builder situations ("designing a points campaign," "landing a B2B2C embed") to the case studies worth reading.
@@ -18,7 +24,7 @@ This project looks at how the most successful DeFi protocols went to market and 
 
 ## Methodology and how to read claims
 
-The protocol set is fixed: Aave, Lido, Morpho, Sky (MakerDAO), Spark, EigenCloud (EigenLayer), Ethena, Maple Finance, JustLend, Ondo Finance, ether.fi, and Uniswap, anchored on the DeFiLlama TVL leaderboard and finalized editorially (see [Appendix A](docs/appendix-a-methodology.md)). Each profile covers the founding wedge, the launch GTM, the growth levers that compounded, distribution channels, and the current phase.
+The protocol set is fixed: Aave, Lido, Morpho, Sky (MakerDAO), Spark, EigenCloud (EigenLayer), Ethena, Maple Finance, JustLend, Ondo Finance, ether.fi, Uniswap, and Curve, anchored on the DeFiLlama TVL leaderboard and finalized editorially (see [Appendix A](docs/appendix-a-methodology.md)). Each profile covers the founding wedge, the launch GTM, the growth levers that compounded, distribution channels, and the current phase.
 
 Three types of statement appear in this document, and they carry different confidence:
 

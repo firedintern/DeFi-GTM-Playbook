@@ -1,6 +1,6 @@
 # GTM Archetype Finder: Question Bank & Scoring Spec
 
-Design spec for the interactive portal. The quiz maps a founder's answers to the closest GTM archetype(s) from the [twelve case studies](../docs/15-synthesis.md#gtm-archetype-map), with transparent scoring. Every match must be explainable as "you answered X, which is the pattern <protocol> used."
+Design spec for the interactive portal. The quiz maps a founder's answers to the closest GTM archetype(s) from the [thirteen case studies](../docs/15-synthesis.md#gtm-archetype-map), with transparent scoring. Every match must be explainable as "you answered X, which is the pattern <protocol> used."
 
 The tool classifies **current shape** for founders who are already building, and offers a **grounded recommendation** for founders who aren't yet; see [Mode split](#mode-split-diagnostic-vs-recommender) below. For anyone with a current shape, every question describes what they already have or are doing today (their actual cold-start resource, actual user relationship, actual yield source), not what they should aspire to become. That keeps the result a diagnostic ("here's the pattern you're already in, and its trap") rather than a recommendation, which matters because the stakes of a wrong recommendation are much higher than the stakes of a wrong diagnosis. Pre-idea founders have no current shape to diagnose, so they get a different question set and a different framing; see below.
 
@@ -24,7 +24,7 @@ The tool classifies **current shape** for founders who are already building, and
 Q8 (Stage) is asked first and branches the rest of the quiz:
 
 - **Diagnostic mode** (Building / Live / Scaling): unchanged from v2. Questions ask "what do you have," output is "here's the pattern you're already in."
-- **Recommender mode** (Idea / pre-build): same 9 scored questions, same scoring engine, same 12 archetypes, but reworded to ask about **actual access, not aspiration or preference**. A founder with no lined-up resource should get an honest low-confidence result, not a flattering guess. Output is reframed as a suggested starting archetype: "founders with your constraints most often built the <X> pattern, here's the sequence to pursue it deliberately," not "here's the pattern you're in."
+- **Recommender mode** (Idea / pre-build): same 9 scored questions, same scoring engine, same 13 archetypes, but reworded to ask about **actual access, not aspiration or preference**. A founder with no lined-up resource should get an honest low-confidence result, not a flattering guess. Output is reframed as a suggested starting archetype: "founders with your constraints most often built the <X> pattern, here's the sequence to pursue it deliberately," not "here's the pattern you're in."
 
 **Why access, not preference.** An earlier draft considered asking "which cold-start approach would you rather pursue?" Rejected, because that reduces straight back to a personality quiz (the exact failure mode the v2 rewrite fixed for diagnostic mode). Asking about actual access keeps the recommender grounded: if you don't have a real relationship with a parent treasury, the tool shouldn't let you select "parent treasury" just because it sounds appealing.
 
@@ -54,7 +54,7 @@ The pattern across every rewrite: diagnostic mode asks about **fact** (what is t
 
 ---
 
-## The 12 archetypes
+## The 13 archetypes
 
 | ID | Archetype | Exemplar | Case study |
 |---|---|---|---|
@@ -70,6 +70,9 @@ The pattern across every rewrite: diagnostic mode asks about **fact** (what is t
 | `ONDO` | Compliance-first institutional | Ondo Finance | [ondo-finance.md](../docs/protocols/ondo-finance.md) |
 | `ETHERFI` | Narrative surfing + points | ether.fi | [etherfi.md](../docs/protocols/etherfi.md) |
 | `UNI` | Developer platform | Uniswap | [uniswap.md](../docs/protocols/uniswap.md) |
+| `CURVE` | Incentive marketplace (ve) | Curve | [curve.md](../docs/protocols/curve.md) |
+
+**v4 revision.** Adds Curve as a 13th archetype following the v11 research update. Curve's GTM shape (sell the emissions decision via gauge votes; customers become token buyers; distribution outsourced to a third-party bribe market) doesn't overlap cleanly with any existing option, so it gets one new decisive signal (Q1's new "DEX / incentive marketplace" option, +4) plus light secondary scoring (+1 to +3) on existing options in Q2, Q7, Q9, and Q10 where its pattern genuinely overlaps with Lido, Morpho, and Uniswap's. No existing option's scoring for the other 12 archetypes changed. CURVE's max plausible score (~13) sits below the other archetypes' typical 16-24 winning range by design: it is a narrower, more mechanically specific pattern (you need an actual gauge/ve-system to fit it), so it should surface confidently only when a founder's answers genuinely point at token-directed emissions markets, not as a default high scorer.
 
 ---
 
@@ -91,6 +94,7 @@ Split the old "credit/RWA" bucket in two. Maple and Ondo are adjacent by categor
 | Private / onchain credit, underwriting-led | MAPLE +4 |
 | Tokenized treasury / regulated yield access | ONDO +4 |
 | DEX / trading / liquidity infrastructure | UNI +3 |
+| DEX / incentive marketplace (gauge votes, ve-tokenomics, bribe market) | **CURVE +4**, UNI +1 |
 | An entirely new primitive (no existing category) | EIGEN +3, ETHENA +1 |
 
 ### Q2. What's your cold-start resource? (the biggest single differentiator)
@@ -103,7 +107,7 @@ Added a fifth option, "already have a partner channel," since B2B2C archetypes (
 | A chain/foundation sponsors me as their ecosystem default | **JUSTLEND +6**, SPARK +1 |
 | I build on top of incumbents and inherit their trust/liquidity | **MORPHO +6**, LIDO +1 |
 | I already have (or am close to) a distribution deal with an exchange, wallet, or fintech | **AAVE +5**, ETHENA +2, MORPHO +1 |
-| Strong credibility capital (top-tier VC, academic, founder brand) behind a new narrative | EIGEN +3, LIDO +1, ETHENA +1 |
+| Strong credibility capital (top-tier VC, academic, founder brand) behind a new narrative | EIGEN +3, LIDO +1, ETHENA +1, CURVE +2 |
 | None of the above, product + incentives, bootstrapped in the open | UNI +2, ETHENA +1, ETHERFI +1 |
 
 ### Q3. Who is your primary user in year one?
@@ -160,7 +164,7 @@ Unchanged from v1.
 | Option | Scores |
 |---|---|
 | Crowded category, I win on execution/distribution | AAVE +1, MORPHO +2, ETHERFI +1 |
-| Existing category with a structural twist (better rates, liquid wrapper, new collateral) | MORPHO +2, ETHENA +2, LIDO +1 |
+| Existing category with a structural twist (better rates, liquid wrapper, new collateral) | MORPHO +2, ETHENA +2, LIDO +1, CURVE +1 |
 | I'm creating the category, it doesn't exist yet | EIGEN +3, ETHENA +1 |
 
 ### Q8. Stage: asked FIRST, and now a mode switch (not just routing)
@@ -183,7 +187,7 @@ The single highest-leverage addition. This is what separates Aave (partners own 
 | We do: our own app or front end is the primary touchpoint | UNI +2, ETHERFI +1, ETHENA +1 |
 | Partners do: exchanges, wallets, custodians, fintechs embed us | **AAVE +5**, MORPHO +2, ETHENA +2 |
 | A parent ecosystem does: DAO, chain, or foundation channels users to us | **SPARK +5**, JUSTLEND +3 |
-| Integrators/builders do: other protocols build on top of us | **MORPHO +5**, EIGEN +2, UNI +1 |
+| Integrators/builders do: other protocols build on top of us | **MORPHO +5**, EIGEN +2, UNI +1, CURVE +3 |
 | Institutional sales/distribution partners do: brokers, allocators, custodians | **ONDO +4**, MAPLE +3 |
 
 ### Q10. If incentives disappeared tomorrow, what would still pull users in? *(new)*
@@ -192,7 +196,7 @@ The second highest-leverage addition. This directly encodes the [incentive-quali
 
 | Option | Scores |
 |---|---|
-| Deep liquidity, integrations, and composability | **LIDO +5**, MORPHO +1 |
+| Deep liquidity, integrations, and composability | **LIDO +5**, MORPHO +1, CURVE +3 |
 | Better rates or balance-sheet efficiency that we can actually honor | AAVE +2, MORPHO +2, SPARK +1 |
 | Captive distribution from a sponsor or parent ecosystem | **SPARK +4**, JUSTLEND +3 |
 | A regulatory wrapper or institutional access path competitors don't have | **ONDO +4**, MAPLE +2 |
@@ -204,7 +208,7 @@ The second highest-leverage addition. This directly encodes the [incentive-quali
 
 ## Result logic
 
-Scoring is identical in both modes: same weights, same engine, same 12 archetypes. Only labeling and which output sections render differ (see [Mode split](#mode-split-diagnostic-vs-recommender)).
+Scoring is identical in both modes: same weights, same engine, same 13 archetypes. Only labeling and which output sections render differ (see [Mode split](#mode-split-diagnostic-vs-recommender)).
 
 1. Sum scores across Q1–Q7 and Q9–Q10 (nine scored questions total; Q8 is asked first, gates mode selection, and is not itself scored). Typical winning scores land between 16 and 24 (validated against the four worked personas below); max plausible ≈ 30.
 2. **Primary match** = highest score. **Secondary match** shown if its score ≥ 60% of the primary's.
@@ -241,6 +245,7 @@ Scoring is identical in both modes: same weights, same engine, same 12 archetype
 | ONDO | Compliance-first GTM eventually scales with sales headcount, not points. Budget for enterprise sales |
 | ETHERFI | You're renting the category's growth, not owning it. Convert mercenary users into a daily-use relationship before yields compress |
 | UNI | Free growth builds the moat but monetizing too early invites forks. Activate fees only once default status is unassailable |
+| CURVE | When incentives become a market, expect an aggregator to capture the margin. Emission-denominated moats decay as the emissions' value falls; build the real-revenue engine before the cycle turns, not after |
 
 ### Next 90 days (per archetype)
 
@@ -260,6 +265,7 @@ Four short, concrete lines per archetype: one thing to prove, one to delay, a me
 | ONDO | A second sales/distribution channel beyond your first institutional partner | Assuming compliance alone will generate inbound demand | Enterprise pipeline and sales cycle length, not just AUM | Calling a licensed wrapper "GTM" without a salesforce behind it |
 | ETHERFI | Daily-active usage on your non-yield product surface (card, app) | Scaling a second points season before the first cohort's retention is known | Daily actives on the retention product vs. total TVL | Confusing farmed TVL with a loyal user base |
 | UNI | A second team building on your primitive without your help | Turning on fees or extraction before default status is unquestioned | External developers/integrations building on you, not just volume | Monetizing before the free-growth flywheel has fully compounded |
+| CURVE | A real-revenue engine (fees, not just emissions) live before the emissions cycle turns | Assuming votes/bribes alone are a durable moat | Share of your emissions value directed by third parties vs. your own treasury | Treating an aggregator that captures your incentive market as a partner rather than a competitor for the margin |
 
 ---
 
@@ -299,7 +305,10 @@ Spark 18 · JustLend 8 · Morpho 6 · Aave 5 → **Primary SPARK, High confidenc
 Morpho 20 · Lido 11 · Aave 5 · EigenCloud 5 → **Primary MORPHO, High confidence** (20 ≥ 16 and ≥ 1.8× third place). No secondary (11 is 55% of 20, just under the bar). This is a much cleaner separation from Aave than v1 produced (14 vs. 6, a 43% ratio there too, but Aave was the *only* real contender; here Lido edges into second by way of the "durable pull = liquidity/integrations" answer, which is honestly closer to Morpho's own graduation story than Aave's embedded-distribution story is). The lesson holds even better than intended: Q9's "integrators own distribution" is a Morpho-exclusive +5 signal that Aave structurally cannot also claim, which is what the rewrite was for.
 
 **Persona 5 (v3, recommender mode): "founder with scattered, non-decisive answers": planning a lending product, credibility-capital cold start, targeting retail, betting on default-money habit (not yield) as the payer, deliberately single-chain, compliance only for a narrow institutional wrapper later, crowded category, running their own app, hoping a regulatory wrapper is the durable pull**
-Nine-way tie at 4 points each (AAVE, MORPHO, LIDO, ETHENA, UNI, ETHERFI, SKY, MAPLE, ONDO), Spark/EigenCloud at 3, JustLend at 1 → **Low-confidence fallback** (top score 4 < 8; verified as the true minimum achievable across all 2,721,600 possible answer combinations, not just this persona's construction). This is the correct outcome, not a bug: none of this founder's answers landed on a decisive +5/+6 signal for any single archetype, so nine patterns tie at the floor value everyone gets from the common-signal questions. No flags fire either; the answers are simply too scattered to trigger any specific one. Result page shows "the field is open" framing and points to the [synthesis](15-synthesis.md) and [builder's guide](17-builders-guide.md) instead of forcing a pick. This is a legitimate and useful pre-idea outcome: it tells this founder that none of their current answers (credibility capital, retail focus, monetary-habit bet, single-chain, narrow compliance) is yet decisive enough to commit to a specific playbook, and that the highest-leverage next step is landing one of Q2's or Q9's decisive-signal answers (a real partner conversation, a real parent-treasury relationship) rather than continuing to plan in the abstract.
+Nine-way tie at 4 points each (AAVE, MORPHO, LIDO, ETHENA, UNI, ETHERFI, SKY, MAPLE, ONDO), Spark/EigenCloud at 3, CURVE at 2, JustLend at 1 → **Low-confidence fallback** (top score 4 < 8). This is the correct outcome, not a bug: none of this founder's answers landed on a decisive +5/+6 signal for any single archetype, so nine patterns tie at the floor value everyone gets from the common-signal questions. No flags fire either; the answers are simply too scattered to trigger any specific one. Result page shows "the field is open" framing and points to the [synthesis](15-synthesis.md) and [builder's guide](17-builders-guide.md) instead of forcing a pick. This is a legitimate and useful pre-idea outcome: it tells this founder that none of their current answers (credibility capital, retail focus, monetary-habit bet, single-chain, narrow compliance) is yet decisive enough to commit to a specific playbook, and that the highest-leverage next step is landing one of Q2's or Q9's decisive-signal answers (a real partner conversation, a real parent-treasury relationship) rather than continuing to plan in the abstract.
+
+**Persona 6 (v4, added for the Curve archetype): "gauge-and-bribe founder": building a DEX/incentive marketplace, credibility-capital cold start, targeting other protocols (B2B), yield from a utility/workflow advantage rather than a payer, Ethereum-first, compliance probably never core, existing category with a structural twist, other protocols/integrators own distribution, deep liquidity and integrations as the durable pull**
+Curve 13 · Morpho 10 · EigenCloud 9 · Lido 9 · Uniswap 8 → **Primary CURVE, Mixed archetype** (10 is 77% of 13, above the 60% secondary bar). This is an honest result, not a miscalibration: Curve's B2B-via-integrators distribution and its "deep liquidity, integrations, composability" durable pull genuinely overlap with Morpho's embedded-B2B-infrastructure DNA (both grow by having other protocols build on top of them), so the two options that carry Curve's only decisive signals (Q1's new option, +4, and Q9's "integrators/builders" and Q10's "liquidity/integrations," +3 each) also feed Morpho, Lido, and EigenCloud. No flags fire (this persona's Q6 = "probably never core" would normally be flag-neutral for a non-credit, non-compliance archetype). Confirms Curve is reachable as a primary match without a forced or artificially inflated score, and that adding it did not change any of Personas 1-5's primary or secondary outcome (Persona 4 gains a new third-place CURVE score of 7, since its "integrators own distribution" and "liquidity/integrations" answers now also carry Curve's light secondary weights, but this sits well below Morpho's winning 20 and doesn't cross the 60% secondary threshold, so Persona 4's result is unchanged).
 
 ---
 

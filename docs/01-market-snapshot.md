@@ -1,6 +1,6 @@
 # Market Snapshot (DeFiLlama, July 2026)
 
-**Global context.** Aggregate DeFi TVL sits in the ~$130–180B range depending on which components are included (staking, liquid staking, double counting), and headline totals vary with those settings. Two things matter for this report. First, TVL and revenue are heavily concentrated: a small set of protocols and categories captures most of the economics. Second, the categories capturing sustainable fee revenue are lending, liquid staking, and stablecoin/RWA rails rather than long-tail yield farms. That is exactly where this twelve-protocol set sits. These protocols are not just big; they sit where the economics actually concentrate (reported: Yellow Research, iBuidl 2026 analyses).
+**Global context.** Aggregate DeFi TVL sits in the ~$130–180B range depending on which components are included (staking, liquid staking, double counting), and headline totals vary with those settings. Two things matter for this report. First, TVL and revenue are heavily concentrated: a small set of protocols and categories captures most of the economics. Second, the categories capturing sustainable fee revenue are lending, liquid staking, and stablecoin/RWA rails rather than long-tail yield farms. That is exactly where this thirteen-protocol set sits. These protocols are not just big; they sit where the economics actually concentrate (reported: Yellow Research, iBuidl 2026 analyses).
 
 | Protocol | Category | TVL | Primary GTM motion | Signature tactic |
 |---|---|---|---|---|
@@ -16,5 +16,6 @@
 | [Ondo Finance](protocols/ondo-finance.md) | RWA / treasuries | $3.5B | Institutional, compliance-first | Jurisdiction-segmented products |
 | [ether.fi](protocols/etherfi.md) | Restaking / neobank | $3.2B | Narrative surfing + points | Double-points meta; neobank pivot |
 | [Uniswap](protocols/uniswap.md) | DEX | $3.0B | Developer-first, permissionless | Retroactive UNI airdrop |
+| [Curve](protocols/curve.md) | DEX (stableswap) | $1.3B | Incentive-market GTM | veCRV gauges; Curve Wars / CVX |
 
-TVL figures per the July 2026 DeFiLlama leaderboard view supplied by the research owner. Rankings exclude Binance staked ETH, Securitize, Circle, and Tether Gold (see [Appendix A](appendix-a-methodology.md)).
+TVL figures per the July 2026 DeFiLlama leaderboard view supplied by the research owner, except Curve (added editorially; ~$1.3B per DeFiLlama's aggregate curve-finance protocol entry; the DEX-only sub-protocol reads higher, ~$1.4–1.8B depending on inclusion settings, and this report uses the aggregate). Rankings exclude Binance staked ETH, Securitize, Circle, and Tether Gold (see [Appendix A](appendix-a-methodology.md)).

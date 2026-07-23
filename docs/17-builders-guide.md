@@ -16,3 +16,5 @@ Read the [Cross-Protocol Synthesis](15-synthesis.md) first for the patterns, the
 | Creating a new category | [EigenCloud](protocols/eigencloud.md), [Ethena](protocols/ethena.md) | Own the vocabulary; plan the pivot early |
 | Escaping a commoditizing category | [ether.fi](protocols/etherfi.md), [EigenCloud](protocols/eigencloud.md), [Uniswap](protocols/uniswap.md) | Re-platform from strength, before churn |
 | Building on a single chain ecosystem | [JustLend](protocols/justlend.md), [Spark](protocols/spark.md) | Sponsorship works but does not travel |
+| Designing emissions, gauges, or a bribe system | [Curve](protocols/curve.md), [Appendix B.6](appendix-b-glossary.md#b6-governance-tokenomics-and-bribes) | Sell the decision, but plan for decay |
+| Renting governance as distribution (no ve-system of your own) | [Curve](protocols/curve.md#the-curve-wars-and-the-crvcvx-correlation), [Appendix B.6](appendix-b-glossary.md#b6-governance-tokenomics-and-bribes) | Buy votes or bribes to rent someone else's liquidity |

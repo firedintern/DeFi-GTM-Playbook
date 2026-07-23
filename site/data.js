@@ -34,7 +34,7 @@ const ARCHETYPES = {
     llamaName: "Lido", llamaCategory: "Liquid Staking",
     trap: "Subsidizing liquidity works only if integrations make it permanent before subsidies taper.",
     file: CS + "lido.md",
-    related: ["SPARK", "MORPHO"],
+    related: ["SPARK", "CURVE"],
     next90: {
       prove: "Deep, credibly redeemable exit liquidity for your receipt token",
       delay: "Chasing new integrations before the first one is truly liquid",
@@ -222,6 +222,24 @@ const ARCHETYPES = {
       avoid: "Monetizing before the free-growth flywheel has fully compounded",
     },
   },
+  CURVE: {
+    name: "Incentive marketplace (ve)",
+    exemplar: "Curve",
+    thesis: "Incentives as the product, and the market that grew on top.",
+    wedge: "Stable-asset AMM",
+    channels: "Pool integrations; bribe market",
+    incentiveStyle: "Gauge-directed emissions",
+    llamaName: "Curve DEX", llamaCategory: "Dexs",
+    trap: "When incentives become a market, expect an aggregator to capture the margin. Emission-denominated moats decay as the emissions' value falls; build the real-revenue engine before the cycle turns, not after.",
+    file: CS + "curve.md",
+    related: ["LIDO", "MORPHO"],
+    next90: {
+      prove: "A real-revenue engine (fees, not just emissions) live before the emissions cycle turns",
+      delay: "Assuming votes/bribes alone are a durable moat",
+      watch: "Share of your emissions value directed by third parties vs. your own treasury",
+      avoid: "Treating an aggregator that captures your incentive market as a partner rather than a competitor for the margin",
+    },
+  },
 };
 
 const QUESTIONS = [
@@ -251,6 +269,7 @@ const QUESTIONS = [
       { label: "Private / onchain credit, underwriting-led", scores: { MAPLE: 4 } },
       { label: "Tokenized treasury / regulated yield access", scores: { ONDO: 4 } },
       { label: "DEX / trading / liquidity infrastructure", scores: { UNI: 3 } },
+      { label: "DEX / incentive marketplace (gauge votes, ve-tokenomics, bribe market)", scores: { CURVE: 4, UNI: 1 } },
       { label: "An entirely new primitive, no existing category", scores: { EIGEN: 3, ETHENA: 1 } },
     ],
   },
@@ -265,7 +284,7 @@ const QUESTIONS = [
       { label: "A chain/foundation sponsors me as their ecosystem default", scores: { JUSTLEND: 6, SPARK: 1 } },
       { label: "I build on top of incumbents and inherit their trust/liquidity", scores: { MORPHO: 6, LIDO: 1 } },
       { label: "I already have (or am close to) a distribution deal with an exchange, wallet, or fintech", scores: { AAVE: 5, ETHENA: 2, MORPHO: 1 } },
-      { label: "Strong credibility capital (top-tier VC, academic, founder brand) behind a new narrative", scores: { EIGEN: 3, LIDO: 1, ETHENA: 1 } },
+      { label: "Strong credibility capital (top-tier VC, academic, founder brand) behind a new narrative", scores: { EIGEN: 3, LIDO: 1, ETHENA: 1, CURVE: 2 } },
       {
         label: "None of the above, product + incentives, bootstrapped in the open",
         recommenderLabel: "None of these yet, I'd be bootstrapping",
@@ -329,7 +348,7 @@ const QUESTIONS = [
     subtitle: null,
     options: [
       { label: "Crowded, I win on execution and distribution", scores: { AAVE: 1, MORPHO: 2, ETHERFI: 1 } },
-      { label: "Existing category with a structural twist (better rates, liquid wrapper, new collateral)", scores: { MORPHO: 2, ETHENA: 2, LIDO: 1 } },
+      { label: "Existing category with a structural twist (better rates, liquid wrapper, new collateral)", scores: { MORPHO: 2, ETHENA: 2, LIDO: 1, CURVE: 1 } },
       { label: "I'm creating the category, it doesn't exist yet", scores: { EIGEN: 3, ETHENA: 1 } },
     ],
   },
@@ -343,7 +362,7 @@ const QUESTIONS = [
       { label: "We do: our own app or front end is the primary touchpoint", scores: { UNI: 2, ETHERFI: 1, ETHENA: 1 } },
       { label: "Partners do: exchanges, wallets, custodians, fintechs embed us", scores: { AAVE: 5, MORPHO: 2, ETHENA: 2 } },
       { label: "A parent ecosystem does: DAO, chain, or foundation channels users to us", scores: { SPARK: 5, JUSTLEND: 3 } },
-      { label: "Integrators/builders do: other protocols build on top of us", scores: { MORPHO: 5, EIGEN: 2, UNI: 1 } },
+      { label: "Integrators/builders do: other protocols build on top of us", scores: { MORPHO: 5, EIGEN: 2, UNI: 1, CURVE: 3 } },
       { label: "Institutional sales/distribution partners do: brokers, allocators, custodians", scores: { ONDO: 4, MAPLE: 3 } },
     ],
   },
@@ -353,7 +372,7 @@ const QUESTIONS = [
     subtitle: "The durable-loop test: the difference between renting TVL and owning it.",
     recommenderTitle: "Once you're live, what's your actual plan to pull users in without incentives? Not what would be nice, what will you build?",
     options: [
-      { label: "Deep liquidity, integrations, and composability", scores: { LIDO: 5, MORPHO: 1 } },
+      { label: "Deep liquidity, integrations, and composability", scores: { LIDO: 5, MORPHO: 1, CURVE: 3 } },
       { label: "Better rates or balance-sheet efficiency that we can actually honor", scores: { AAVE: 2, MORPHO: 2, SPARK: 1 } },
       { label: "Captive distribution from a sponsor or parent ecosystem", scores: { SPARK: 4, JUSTLEND: 3 } },
       { label: "A regulatory wrapper or institutional access path competitors don't have", scores: { ONDO: 4, MAPLE: 2 } },
