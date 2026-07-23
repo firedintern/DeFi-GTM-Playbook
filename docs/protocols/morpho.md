@@ -18,13 +18,15 @@ Morpho (2022) launched not as a competitor to Aave/Compound but as an optimizer 
 - **Unbundle risk into a partner ecosystem.** Morpho Blue (2023–24) reduced the protocol to a minimal, immutable primitive. Risk management moved to curated vaults run by third parties (Steakhouse Financial, Gauntlet and others; curators themselves now rank in DeFiLlama's top 20). Curators earn fees on deposits they attract. That is a commissioned salesforce.
 - **Partner legibility as an asset.** Morpho's modular structure makes it clear to enterprise partners who owns risk, who curates markets, and where the protocol boundary sits. That legibility directly reduces partner-side regulatory friction: a compliance team can draw the line between Morpho's immutable primitive and curator-controlled risk. It is a large part of why exchanges and custodians are willing to embed it.
 - **Surgical incentives**: targeted reward campaigns (via Merkl) to bootstrap specific markets and vaults. Never broad emissions. MORPHO launched non-transferable, prioritizing alignment over speculation.
-- **Product roadmap as enterprise GTM**: Morpho V2 (2025) introduced intent-based fixed-rate, fixed-term loans, the missing primitive for institutional credit.
+- **Product roadmap as enterprise GTM**: Morpho V2 (2025) previewed intent-based fixed-rate, fixed-term loans; Midnight shipped it, launching publicly on Base on July 21, 2026 (cbBTC/USDC, the largest Morpho Blue market, across multiple maturities) after a months-long beta. Fixed rates and real maturity dates are the primitive institutional credit needs: repo-style terms, RWA-compatible structuring, the kind of predictability variable-rate DeFi never offered TradFi allocators.
 
 ## Distribution channels
 
 The **"DeFi mullet"** (fintech front end, DeFi back end) at scale. Coinbase launched BTC-backed loans powered by Morpho in January 2025: $2B+ originated, expanded to USDC lending routed through Steakhouse-curated vaults (verified: Morpho blog). Replicated across Crypto.com, Gemini, Bitget, Bitpanda, Ledger, Trust Wallet, Safe, and World. Custody providers (Anchorage Digital, Ledger Enterprise, Taurus) are building institutional versions.
 
 Validation followed the channel: in June 2026 the Morpho Association raised $175M co-led by Paradigm, a16z crypto, and Ribbit Capital at up to $2B valuation, with Apollo Funds, Circle Ventures, VanEck and Ledger Cathay participating (verified: Fortune, Unchained). The investor mix mirrors the B2B thesis. TVL stands at $10.8B at snapshot; Morpho reported $11B+ in deposits around the raise (time-sensitive).
+
+New products reuse the same channel instead of building a new one: Midnight launched by tapping the existing network of 30+ vault curators (Steakhouse, Gauntlet, and others) for day-one liquidity, rather than bootstrapping fixed-rate demand from scratch. CEO Paul Frambot noted "many platforms, institutions, and partners" were already interested pre-launch; Coinbase's integration status was unconfirmed at launch, despite Coinbase already running on Morpho Blue for its BTC-backed and USDC loans (reported: The Block).
 
 ## GTM lessons (inference)
 
